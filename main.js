@@ -73,9 +73,9 @@ Vue.createApp({
             this.expenses = [];
             this.totalExpenses = 0;
         },
-        clearExpenseAmounts() {
+        /* clearExpenseAmounts() {
             this.totalExpenses = 0;
-        },
+        }, */
         filterExpenses() {
 
         }
