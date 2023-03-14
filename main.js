@@ -41,7 +41,6 @@ Vue.createApp({
                 this.incomeAmount = '',                
                 this.incomeDate = ''
         },
-
         addExpense() {
             if (this.expenseText.trim() === '' || this.expenseAmount === ''
                 || this.expenseCategory === '' || this.expenseDate === '') {
@@ -63,13 +62,15 @@ Vue.createApp({
                 this.expenseCategory = '',
                 this.expenseAmount = '',
                 this.expenseDate = ''
+            
+            this.addExpenseAmounts(expenses)
+        },        
+        addExpenseAmounts(expenses) {
+            this.totalExpenses = expenses.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
         },
         clearExpenses() {
             this.expenses = [];
             this.totalExpenses = 0;
-        },
-        addExpenseAmounts(expenses) {
-            this.totalExpenses = expenses.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
         },
         clearExpenseAmounts() {
             this.totalExpenses = 0;
