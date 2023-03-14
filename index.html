@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Super Budget Program</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>The Super Budget Program</h1>
+
+        <h2>Add an income:</h2>
+        <form @submit.prevent="addIncome">
+            <p>Title:</p>
+            <input type="text" v-model="incomeText">
+
+            <p>Category:</p>
+            <select v-model="incomeCategory">
+                <option value="Monthly pay">Monthly pay</option>
+                <option value="Gift">Gift</option>
+            </select>
+
+            <p>Amount:</p>
+            <input type="number" v-model="incomeAmount">
+
+            <p>Date:</p>
+            <input type="date" v-model="incomeDate">
+
+            <button type="submit">Save income</button>
+        </form>
+
+        <h3>All income posts:</h3>
+        <ul>
+            <li v-for="inc in income":key="inc.id"> {{inc.incomeText}}, {{inc.incomeCategory}},
+                {{inc.incomeAmount}}, {{inc.incomeDate}}</li>
+        </ul>
+
+        <hr>
+
+        <h2>Add an expense:</h2>
+        <form @submit.prevent="addExpense">
+            <p>Title:</p>
+            <input type="text" v-model="expenseText">
+
+            <p>Category:</p>
+            <select v-model="expenseCategory">
+                <option value="Groceries">Groceries</option>
+                <option value="Clothes">Clothes</option>
+                <option value="Eating Out">Eating out</option>
+                <option value="Transport">Transport</option>
+            </select>
+
+            <p>Amount:</p>
+            <input type="number" v-model="expenseAmount">
+
+            <p>Date:</p>
+            <input type="date" v-model="expenseDate">
+
+            <button type="submit">Save expense</button>
+        </form>
+
+        <h3>All expense posts:</h3>
+        <ul>
+            <li v-for="expense in expenses" :key="expense.id">{{expense.expenseText}}, {{expense.expenseCategory}},
+                {{expense.expenseAmount}}, {{expense.expenseDate}}</li>
+        </ul>
+
+        <button type="button" @click="addAmounts(expenses)">Add all amounts</button>
+        <button type="button" @click="clearAmounts">Clear all amounts</button>
+
+        <h3>Total amount of expenses:</h3>
+        <p>{{totalExpenses}}</p>
+        <!-- <p>Amount:</p>
+
+        <p id="date">Date:</p> -->
+
+        <p>Total expenses:</p>
+        <select v-model="selectedTotal">
+            <option value="perMonth">Per month</option>
+            <option value="perCategory">Per category</option>
+            <option value="perDay">Per day</option>
+        </select>
+
+        <hr>
+        <button type="button" @click="clearExpenses">Clear all expense posts</button>
+    </div>
+
+</body>
+
+</html>
