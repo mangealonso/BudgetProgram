@@ -41,6 +41,9 @@
                 {{inc.incomeAmount}}, {{inc.incomeDate}}</li>
         </ul>
 
+        <h3>Total amount of income:</h3>
+        <p></p>
+
         <hr>
 
         <h2>Add an expense:</h2>
@@ -70,12 +73,14 @@
             <li v-for="expense in expenses" :key="expense.id">{{expense.expenseText}}, {{expense.expenseCategory}},
                 {{expense.expenseAmount}}, {{expense.expenseDate}}</li>
         </ul>
+        
+        <button type="button" @click="clearExpenseAmounts">Clear all expense posts</button>        
 
-        <button type="button" @click="addAmounts(expenses)">Add all amounts</button>
-        <button type="button" @click="clearAmounts">Clear all amounts</button>
-
-        <h3>Total amount of expenses:</h3>
+        <h3>Total amount of expenses:</h3>        
         <p>{{totalExpenses}}</p>
+        
+        <button type="button" @click="addExpenseAmounts(expenses)">Add all amounts</button>
+        <button type="button" @click="clearAmounts">Clear all amounts</button>
         <!-- <p>Amount:</p>
 
         <p id="date">Date:</p> -->
@@ -86,9 +91,6 @@
             <option value="perCategory">Per category</option>
             <option value="perDay">Per day</option>
         </select>
-
-        <hr>
-        <button type="button" @click="clearExpenses">Clear all expense posts</button>
     </div>
 
 </body>

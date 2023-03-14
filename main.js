@@ -68,10 +68,10 @@ Vue.createApp({
             this.expenses = [];
             this.totalExpenses = 0;
         },
-        addAmounts(expenses) {
+        addExpenseAmounts(expenses) {
             this.totalExpenses = expenses.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
         },
-        clearAmounts() {
+        clearExpenseAmounts() {
             this.totalExpenses = 0;
         },
         filterExpenses() {
