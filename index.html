@@ -37,7 +37,7 @@
 
         <h3>All income posts:</h3>
         <ul>
-            <li v-for="inc in income":key="inc.id"> {{inc.incomeText}}, {{inc.incomeCategory}},
+            <li v-for="inc in income" :key="inc.id"> {{inc.incomeText}}, {{inc.incomeCategory}},
                 {{inc.incomeAmount}}, {{inc.incomeDate}}</li>
         </ul>
 
@@ -75,12 +75,12 @@
             <li v-for="expense in expenses" :key="expense.id">{{expense.expenseText}}, {{expense.expenseCategory}},
                 {{expense.expenseAmount}}, {{expense.expenseDate}}</li>
         </ul>
-        
-        <button type="button" @click="clearExpenses">Clear all expense posts</button>        
 
-        <h3>Total amount of expenses:</h3>        
+        <button type="button" @click="clearExpenses">Clear all expense posts</button>
+
+        <h3>Total amount of expenses:</h3>
         <p>{{totalExpenses}}</p>
-        
+
         <button type="button" @click="addExpenseAmounts(expenses)">Add all expense amounts</button>
         <button type="button" @click="clearAmounts">Clear all expense amounts</button>
         <!-- <p>Amount:</p>

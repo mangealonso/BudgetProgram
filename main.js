@@ -37,11 +37,11 @@ Vue.createApp({
             this.incomeID++;
 
             this.incomeText = '',
-            this.incomeCategory = '',
-                this.incomeAmount = '',                
+                this.incomeCategory = '',
+                this.incomeAmount = '',
                 this.incomeDate = ''
         },
-        addIncomeAmounts(income){
+        addIncomeAmounts(income) {
             this.totalIncome = income.reduce((accumulator, income) => accumulator + income.incomeAmount, 0);
         },
         addExpense() {
@@ -65,7 +65,7 @@ Vue.createApp({
                 this.expenseCategory = '',
                 this.expenseAmount = '',
                 this.expenseDate = ''
-        },        
+        },
         addExpenseAmounts(expenses) {
             this.totalExpenses = expenses.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
         },
