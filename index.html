@@ -15,25 +15,61 @@
     <div id="app">
         <h1>The Super Budget Program</h1>
 
-        <h2>Add an income:</h2>
-        <form @submit.prevent="addIncome">
-            <p>Title:</p>
-            <input type="text" v-model="incomeText">
+        <!-- <h2>Add a budget post:</h2>
+        <ul>
+            <li><label><input type="radio" name="budgetOption" value="incomeOption" v-model="selectedOption">Income</label></li>
+            <li><label><input type="radio" name="budgetOption" value="expenseOption" v-model="selectedOption">Expense</label></li>
+        </ul>
 
-            <p>Category:</p>
-            <select v-model="incomeCategory">
-                <option value="Monthly pay">Monthly pay</option>
-                <option value="Gift">Gift</option>
-            </select>
+        <div v-for="option in budgetPostOption" :key="option">
+            {{option}}
+        </div> -->
 
-            <p>Amount:</p>
-            <input type="number" v-model="incomeAmount">
+        <section id="incomeSection">
+            <h2>Add an income:</h2>
+            <form @submit.prevent="addIncome">
+                <p>Title:</p>
+                <input type="text" v-model="incomeText">
 
-            <p>Date:</p>
-            <input type="date" v-model="incomeDate">
+                <p>Category:</p>
+                <select v-model="incomeCategory">
+                    <option value="Monthly pay">Monthly pay</option>
+                    <option value="Gift">Gift</option>
+                </select>
 
-            <button type="submit">Save income</button>
-        </form>
+                <p>Amount:</p>
+                <input type="number" v-model="incomeAmount">
+
+                <p>Date:</p>
+                <input type="date" v-model="incomeDate">
+
+                <button type="submit">Save income</button>
+            </form>
+        </section>
+
+        <section id="expenseSection">
+            <h2>Add an expense:</h2>
+            <form @submit.prevent="addExpense">
+                <p>Title:</p>
+                <input type="text" v-model="expenseText">
+
+                <p>Category:</p>
+                <select v-model="expenseCategory">
+                    <option value="Groceries">Groceries</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Eating Out">Eating out</option>
+                    <option value="Transport">Transport</option>
+                </select>
+
+                <p>Amount:</p>
+                <input type="number" v-model="expenseAmount">
+
+                <p>Date:</p>
+                <input type="date" v-model="expenseDate">
+
+                <button type="submit">Save expense</button>
+            </form>
+        </section>
 
         <h3>All income posts:</h3>
         <ul>
@@ -47,28 +83,7 @@
         <button type="button" @click="addIncomeAmounts(income)">Add all income amounts</button>
 
         <hr>
-
-        <h2>Add an expense:</h2>
-        <form @submit.prevent="addExpense">
-            <p>Title:</p>
-            <input type="text" v-model="expenseText">
-
-            <p>Category:</p>
-            <select v-model="expenseCategory">
-                <option value="Groceries">Groceries</option>
-                <option value="Clothes">Clothes</option>
-                <option value="Eating Out">Eating out</option>
-                <option value="Transport">Transport</option>
-            </select>
-
-            <p>Amount:</p>
-            <input type="number" v-model="expenseAmount">
-
-            <p>Date:</p>
-            <input type="date" v-model="expenseDate">
-
-            <button type="submit">Save expense</button>
-        </form>
+        
 
         <h3>All expense posts:</h3>
         <ul>

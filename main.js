@@ -1,6 +1,9 @@
 Vue.createApp({
     data() {
         return {
+
+            selectedOption: '',
+
             income: [],
             incomeID: 0,
             incomeText: '',
@@ -19,6 +22,14 @@ Vue.createApp({
         }
     },
     methods: {
+        budgetPostOption() {
+            if (this.selectedOption === 'incomeOption') {
+                incomeSection.hidden = false;
+            }
+            else {
+                expenseSection.hidden = false;
+            }
+        },
         addIncome() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
                 || this.incomeCategory === '' || this.incomeDate === '') {
@@ -40,6 +51,8 @@ Vue.createApp({
                 this.incomeCategory = '',
                 this.incomeAmount = '',
                 this.incomeDate = ''
+
+            /* incomeSection.hidden = true; */
         },
         addIncomeAmounts(income) {
             this.totalIncome = income.reduce((accumulator, income) => accumulator + income.incomeAmount, 0);
@@ -65,6 +78,8 @@ Vue.createApp({
                 this.expenseCategory = '',
                 this.expenseAmount = '',
                 this.expenseDate = ''
+
+            /* expenseSection.hidden = true; */
         },
         addExpenseAmounts(expenses) {
             this.totalExpenses = expenses.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
