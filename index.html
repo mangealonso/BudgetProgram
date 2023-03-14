@@ -42,7 +42,9 @@
         </ul>
 
         <h3>Total amount of income:</h3>
-        <p></p>
+        <p>{{totalIncome}}</p>
+
+        <button type="button" @click="addIncomeAmounts(income)">Add all income amounts</button>
 
         <hr>
 
@@ -79,8 +81,8 @@
         <h3>Total amount of expenses:</h3>        
         <p>{{totalExpenses}}</p>
         
-        <button type="button" @click="addExpenseAmounts(expenses)">Add all amounts</button>
-        <button type="button" @click="clearAmounts">Clear all amounts</button>
+        <button type="button" @click="addExpenseAmounts(expenses)">Add all expense amounts</button>
+        <button type="button" @click="clearAmounts">Clear all expense amounts</button>
         <!-- <p>Amount:</p>
 
         <p id="date">Date:</p> -->
