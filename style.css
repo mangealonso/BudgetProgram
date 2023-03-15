@@ -45,3 +45,17 @@ header {
 li {
     list-style-type: none;
 }
+
+button{
+    margin-left: 5px;
+}
+
+p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+h3{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
