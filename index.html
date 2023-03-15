@@ -26,7 +26,7 @@
 
                 <p>Category:</p>
                 <select v-model="incomeCategory">
-                    <option value="Monthly pay">Monthly pay</option>
+                    <option value="Pay">Pay</option>
                     <option value="Gift">Gift</option>
                 </select>
 
@@ -42,9 +42,10 @@
             <h3>All income posts:</h3>
             <ul>
                 <li v-for="income in incomePosts" :key="income.id">
-                    <input type="checkbox" v-model="income.isChecked" v-if="income.hasCheckbox"> {{income.incomeText}}, {{income.incomeCategory}},
-                    {{income.incomeAmount}}, {{income.incomeDate}}</li>
-            </ul>            
+                    <input type="checkbox" v-model="income.isChecked" v-if="income.hasCheckbox"> {{income.incomeText}},
+                    {{income.incomeCategory}}, {{income.incomeAmount}}, {{income.incomeDate}}
+                </li>
+            </ul>
 
         </section>
 
@@ -74,15 +75,17 @@
             <h3>All expense posts:</h3>
             <ul>
                 <li v-for="expense in expensesPosts" :key="expense.id">
-                    <input type="checkbox" v-model="expense.isChecked" v-if="expense.hasCheckbox">{{expense.expenseText}}, {{expense.expenseCategory}},
-                    {{expense.expenseAmount}}, {{expense.expenseDate}}</li>
+                    <input type="checkbox" v-model="expense.isChecked"
+                        v-if="expense.hasCheckbox">{{expense.expenseText}},
+                    {{expense.expenseCategory}}, {{expense.expenseAmount}}, {{expense.expenseDate}}
+                </li>
             </ul>
 
-            <!-- <button type="button" @click="clearExpenses">Clear all expense posts</button> -->           
+            <!-- <button type="button" @click="clearExpenses">Clear all expense posts</button> -->
 
         </section>
 
-        <!-- <button type="button" @click="clearAmounts">Clear all expense amounts</button> -->      
+        <!-- <button type="button" @click="clearAmounts">Clear all expense amounts</button> -->
 
         <section id="summarySection">
 
