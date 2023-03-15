@@ -44,6 +44,7 @@
                 <li v-for="income in incomePosts" :key="income.id">
                     <input type="checkbox" v-model="income.isChecked" v-if="income.hasCheckbox"> {{income.incomeText}},
                     {{income.incomeCategory}}, {{income.incomeAmount}}, {{income.incomeDate}}
+                    <button v-if="income.hasButton">Delete</button>
                 </li>
             </ul>
 
@@ -78,6 +79,7 @@
                     <input type="checkbox" v-model="expense.isChecked"
                         v-if="expense.hasCheckbox">{{expense.expenseText}},
                     {{expense.expenseCategory}}, {{expense.expenseAmount}}, {{expense.expenseDate}}
+                    <button v-if="expense.hasButton">Delete</button>
                 </li>
             </ul>
 

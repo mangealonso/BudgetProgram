@@ -34,7 +34,8 @@ Vue.createApp({
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
                 incomeAmount: this.incomeAmount,
-                incomeDate: this.incomeDate
+                incomeDate: this.incomeDate,
+                hasButton: false
             };
             this.incomePosts.push(incomeObject);
 
@@ -46,11 +47,6 @@ Vue.createApp({
                 this.incomeDate = ''
 
             this.calculateIncome(this.incomePosts);
-        },
-        calculateIncome(incomePosts) {
-            this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
-
-            this.calculateBalance();
         },
         addExpensePost() {
             if (this.expenseText.trim() === '' || this.expenseAmount === ''
@@ -66,6 +62,7 @@ Vue.createApp({
                 expenseCategory: this.expenseCategory,
                 expenseAmount: this.expenseAmount,
                 expenseDate: this.expenseDate,
+                hasButton: false
             };
             this.expensesPosts.push(expenseObject);
 
@@ -78,6 +75,11 @@ Vue.createApp({
 
             this.calculateExpenses(this.expensesPosts);
         },
+        calculateIncome(incomePosts) {
+            this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
+
+            this.calculateBalance();
+        },        
         calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
@@ -85,6 +87,9 @@ Vue.createApp({
         },
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
+        },
+        deletePost(){
+            
         },
         /* clearExpenses() {
             this.expensesPosts = [];
