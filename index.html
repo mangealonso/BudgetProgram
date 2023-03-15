@@ -13,7 +13,9 @@
 
 <body>
     <div id="app">
-        <h1>The Super Budget Program</h1>
+        <header>
+            <h1>The Super Budget Program</h1>
+        </header>
 
         <!-- <h2>Add a budget post:</h2>
         <ul>
@@ -45,6 +47,18 @@
 
                 <button type="submit">Save income</button>
             </form>
+
+            <h3>All income posts:</h3>
+            <ul>
+                <li v-for="inc in income" :key="inc.id"> {{inc.incomeText}}, {{inc.incomeCategory}},
+                    {{inc.incomeAmount}}, {{inc.incomeDate}}</li>
+            </ul>
+
+            <button type="button" @click="addIncomeAmounts(income)">Add all income amounts</button>
+
+            <h3>Total amount of income:</h3>
+            <p>{{totalIncome}}</p>
+
         </section>
 
         <section id="expenseSection">
@@ -69,45 +83,36 @@
 
                 <button type="submit">Save expense</button>
             </form>
+
+            <h3>All expense posts:</h3>
+            <ul>
+                <li v-for="expense in expenses" :key="expense.id">{{expense.expenseText}}, {{expense.expenseCategory}},
+                    {{expense.expenseAmount}}, {{expense.expenseDate}}</li>
+            </ul>
+
+            <!-- <button type="button" @click="clearExpenses">Clear all expense posts</button> -->
+
+            <button type="button" @click="addExpenseAmounts(expenses)">Add all expense amounts</button>
+
+            <h3>Total amount of expenses:</h3>
+            <p>{{totalExpenses}}</p>
+
         </section>
 
-        <h3>All income posts:</h3>
-        <ul>
-            <li v-for="inc in income" :key="inc.id"> {{inc.incomeText}}, {{inc.incomeCategory}},
-                {{inc.incomeAmount}}, {{inc.incomeDate}}</li>
-        </ul>
-
-        <h3>Total amount of income:</h3>
-        <p>{{totalIncome}}</p>
-
-        <button type="button" @click="addIncomeAmounts(income)">Add all income amounts</button>
-
-        <hr>
-        
-
-        <h3>All expense posts:</h3>
-        <ul>
-            <li v-for="expense in expenses" :key="expense.id">{{expense.expenseText}}, {{expense.expenseCategory}},
-                {{expense.expenseAmount}}, {{expense.expenseDate}}</li>
-        </ul>
-
-        <button type="button" @click="clearExpenses">Clear all expense posts</button>
-
-        <h3>Total amount of expenses:</h3>
-        <p>{{totalExpenses}}</p>
-
-        <button type="button" @click="addExpenseAmounts(expenses)">Add all expense amounts</button>
         <!-- <button type="button" @click="clearAmounts">Clear all expense amounts</button> -->
-        <!-- <p>Amount:</p>
+        <!-- <p>Amount:</p> -->
+        <!--<p id="date">Date:</p> -->
 
-        <p id="date">Date:</p> -->
+        <section id="summarySection">
 
-        <p>Total expenses:</p>
-        <select v-model="selectedTotal">
-            <option value="perMonth">Per month</option>
-            <option value="perCategory">Per category</option>
-            <option value="perDay">Per day</option>
-        </select>
+            <h2>Summary:</h2>
+            <p>Total expenses:</p>
+            <select v-model="selectedTotal">
+                <option value="perMonth">Per month</option>
+                <option value="perCategory">Per category</option>
+                <option value="perDay">Per day</option>
+            </select>
+        </section>
     </div>
 
 </body>
