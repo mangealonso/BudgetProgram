@@ -20,7 +20,6 @@
         <section id="incomeSection">
             <h2>Add an income:</h2>
             <form @submit.prevent="addIncomePost">
-                <input type="checkbox" v-model="incomePosts.isChecked" v-if="incomePosts.hasCheckbox">
 
                 <p>Title:</p>
                 <input type="text" v-model="incomeText">

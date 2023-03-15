@@ -2,8 +2,6 @@ Vue.createApp({
     data() {
         return {
             incomePosts: [],
-            /* isChecked: false,
-            hasCheckbox: false, */
             incomeID: 0,
             incomeText: '',
             incomeCategory: '',

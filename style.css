@@ -4,16 +4,19 @@
     box-sizing: border-box;
 }
 
-
 html {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    background-color:antiquewhite;
 }
 
 #app {
     display: grid;
     grid-template:
         "a a a"
-        "b c d" / 1fr 1fr 2fr;
+        "b c d" / 2fr 2fr 3fr;
 }
 
 header {
@@ -26,12 +29,19 @@ header {
 
 #incomeSection {
     grid-area: b;
+    padding: 10px;
 }
 
 #expenseSection {
     grid-area: c;
+    padding: 10px;
 }
 
 #summarySection {
     grid-area: d;
+    padding: 10px;
+}
+
+li {
+    list-style-type: none;
 }
