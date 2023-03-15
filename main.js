@@ -87,7 +87,7 @@ Vue.createApp({
             this.totalExpenses = expenses.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
         },
         calculateBalance(){
-            
+            this.totalBalance = this.totalIncome - this.totalExpenses;
         },
         clearExpenses() {
             this.expenses = [];
