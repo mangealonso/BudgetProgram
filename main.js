@@ -29,13 +29,11 @@ Vue.createApp({
 
             let incomeObject = {
                 isChecked: false,
-                /* hasCheckbox: true, */
                 incomeID: this.incomeID,
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
                 incomeAmount: this.incomeAmount,
                 incomeDate: this.incomeDate,
-                /* hasButton: false */
             };
             this.incomePosts.push(incomeObject);
 
@@ -56,13 +54,11 @@ Vue.createApp({
 
             let expenseObject = {
                 isChecked: false,
-                /* hasCheckbox: true, */
                 expenseID: this.expenseID,
                 expenseText: this.expenseText,
                 expenseCategory: this.expenseCategory,
                 expenseAmount: this.expenseAmount,
                 expenseDate: this.expenseDate,
-                /* hasButton: false */
             };
             this.expensesPosts.push(expenseObject);
 
