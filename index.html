@@ -17,16 +17,6 @@
             <h1>The Super Budget Program</h1>
         </header>
 
-        <!-- <h2>Add a budget post:</h2>
-        <ul>
-            <li><label><input type="radio" name="budgetOption" value="incomeOption" v-model="selectedOption">Income</label></li>
-            <li><label><input type="radio" name="budgetOption" value="expenseOption" v-model="selectedOption">Expense</label></li>
-        </ul>
-
-        <div v-for="option in budgetPostOption" :key="option">
-            {{option}}
-        </div> -->
-
         <section id="incomeSection">
             <h2>Add an income:</h2>
             <form @submit.prevent="addIncomePost">
@@ -89,23 +79,18 @@
 
         </section>
 
-        <!-- <button type="button" @click="clearAmounts">Clear all expense amounts</button> -->
-        <!-- <p>Amount:</p> -->
-        <!--<p id="date">Date:</p> -->
+        <!-- <button type="button" @click="clearAmounts">Clear all expense amounts</button> -->      
 
         <section id="summarySection">
 
             <h2>Summary:</h2>
 
-            <button type="button" @click="calculateIncome(incomePosts)">Calculate income</button>
             <h3>Total income:</h3>
             <p>{{totalIncome}}</p>
 
-            <button type="button" @click="calculateExpenses(expensesPosts)">Calculate expenses</button>
             <h3>Total expenses:</h3>
             <p>{{totalExpenses}}</p>
 
-            <button type="button" @click="calculateBalance">Calculate total balance</button>
             <h3>Total balance:</h3>
             <p>{{totalBalance}}</p>
 
