@@ -2,7 +2,7 @@ Vue.createApp({
     data() {
         return {
 
-            selectedOption: '',
+            /* selectedOption: '', */
 
             income: [],
             incomeID: 0,
@@ -18,19 +18,21 @@ Vue.createApp({
             expenseCategory: '',
             expenseDate: '',
             expenseAmount: '',
-            totalExpenses: 0
+            totalExpenses: 0,
+
+            totalBalance: 0
         }
     },
     methods: {
-        budgetPostOption() {
+        /* budgetPostOption() {
             if (this.selectedOption === 'incomeOption') {
                 incomeSection.hidden = false;
             }
             else {
                 expenseSection.hidden = false;
             }
-        },
-        addIncome() {
+        }, */
+        addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
                 || this.incomeCategory === '' || this.incomeDate === '') {
                 return;
@@ -54,10 +56,10 @@ Vue.createApp({
 
             /* incomeSection.hidden = true; */
         },
-        addIncomeAmounts(income) {
+        calculateIncome(income) {
             this.totalIncome = income.reduce((accumulator, income) => accumulator + income.incomeAmount, 0);
         },
-        addExpense() {
+        addExpensePost() {
             if (this.expenseText.trim() === '' || this.expenseAmount === ''
                 || this.expenseCategory === '' || this.expenseDate === '') {
                 return;
@@ -81,8 +83,11 @@ Vue.createApp({
 
             /* expenseSection.hidden = true; */
         },
-        addExpenseAmounts(expenses) {
+        calculateExpenses(expenses) {
             this.totalExpenses = expenses.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
+        },
+        calculateBalance(){
+            
         },
         clearExpenses() {
             this.expenses = [];

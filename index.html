@@ -29,7 +29,7 @@
 
         <section id="incomeSection">
             <h2>Add an income:</h2>
-            <form @submit.prevent="addIncome">
+            <form @submit.prevent="addIncomePost">
                 <p>Title:</p>
                 <input type="text" v-model="incomeText">
 
@@ -45,7 +45,7 @@
                 <p>Date:</p>
                 <input type="date" v-model="incomeDate">
 
-                <button type="submit">Save income</button>
+                <button type="submit">Save income post</button>
             </form>
 
             <h3>All income posts:</h3>
@@ -60,7 +60,7 @@
 
         <section id="expenseSection">
             <h2>Add an expense:</h2>
-            <form @submit.prevent="addExpense">
+            <form @submit.prevent="addExpensePost">
                 <p>Title:</p>
                 <input type="text" v-model="expenseText">
 
@@ -78,7 +78,7 @@
                 <p>Date:</p>
                 <input type="date" v-model="expenseDate">
 
-                <button type="submit">Save expense</button>
+                <button type="submit">Save expense post</button>
             </form>
 
             <h3>All expense posts:</h3>
@@ -101,22 +101,24 @@
 
             <h2>Summary:</h2>
 
-            <button type="button" @click="addIncomeAmounts(income)">Add all income amounts</button>
-
-            <h3>Total amount of income:</h3>
+            <button type="button" @click="calculateIncome(income)">Calculate income</button>
+            <h3>Total income:</h3>
             <p>{{totalIncome}}</p>
 
-            <button type="button" @click="addExpenseAmounts(expenses)">Add all expense amounts</button>
-
-            <h3>Total amount of expenses:</h3>
+            <button type="button" @click="calculateExpenses(expenses)">Calculate expenses</button>
+            <h3>Total expenses:</h3>
             <p>{{totalExpenses}}</p>
 
-            <p>Total expenses:</p>
+            <button type="button" @click="calculateBalance">Calculate total balance</button>
+            <h3>Total balance:</h3>
+            <p>{{totalBalance}}</p>
+
+            <!-- <p>Total expenses:</p>
             <select v-model="selectedTotal">
                 <option value="perMonth">Per month</option>
                 <option value="perCategory">Per category</option>
                 <option value="perDay">Per day</option>
-            </select>
+            </select> -->
         </section>
     </div>
 
