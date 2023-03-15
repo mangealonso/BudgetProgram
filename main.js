@@ -101,7 +101,7 @@ Vue.createApp({
         showIncomeDeleteButton(index){
             return this.incomePosts[index].isChecked;
         },
-        showExpensesDeleteButton(index){
+        showExpenseDeleteButton(index){
             return this.expensesPosts[index].isChecked;  
         }
         /* clearExpenses() {
