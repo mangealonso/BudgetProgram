@@ -29,13 +29,13 @@ Vue.createApp({
 
             let incomeObject = {
                 isChecked: false,
-                hasCheckbox: true,
+                /* hasCheckbox: true, */
                 incomeID: this.incomeID,
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
                 incomeAmount: this.incomeAmount,
                 incomeDate: this.incomeDate,
-                hasButton: false
+                /* hasButton: false */
             };
             this.incomePosts.push(incomeObject);
 
@@ -56,13 +56,13 @@ Vue.createApp({
 
             let expenseObject = {
                 isChecked: false,
-                hasCheckbox: true,
+                /* hasCheckbox: true, */
                 expenseID: this.expenseID,
                 expenseText: this.expenseText,
                 expenseCategory: this.expenseCategory,
                 expenseAmount: this.expenseAmount,
                 expenseDate: this.expenseDate,
-                hasButton: false
+                /* hasButton: false */
             };
             this.expensesPosts.push(expenseObject);
 
@@ -88,9 +88,22 @@ Vue.createApp({
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
         },
-        deletePost(){
-            
+        deleteExpensePost(indexToDelete){
+            this.expensesPosts.splice(indexToDelete, 1)
+
+            this.calculateExpenses(this.expensesPosts)
         },
+        deleteIncomePost(indexToDelete){
+            this.incomePosts.splice(indexToDelete, 1)
+
+            this.calculateIncome(this.incomePosts)
+        },
+        showIncomeDeleteButton(index){
+            return this.incomePosts[index].isChecked;
+        },
+        showExpensesDeleteButton(index){
+            return this.expensesPosts[index].isChecked;  
+        }
         /* clearExpenses() {
             this.expensesPosts = [];
             this.totalExpenses = 0;
