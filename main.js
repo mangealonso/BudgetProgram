@@ -42,9 +42,13 @@ Vue.createApp({
                 this.incomeCategory = '',
                 this.incomeAmount = '',
                 this.incomeDate = ''
+
+                this.calculateIncome(this.incomePosts);
         },
         calculateIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
+
+            this.calculateBalance();
         },
         addExpensePost() {
             if (this.expenseText.trim() === '' || this.expenseAmount === ''
@@ -67,9 +71,13 @@ Vue.createApp({
                 this.expenseCategory = '',
                 this.expenseAmount = '',
                 this.expenseDate = ''
+
+                this.calculateExpenses(this.expensesPosts);
         },
         calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
+
+            this.calculateBalance();
         },
         calculateBalance(){
             this.totalBalance = this.totalIncome - this.totalExpenses;
