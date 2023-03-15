@@ -20,6 +20,8 @@
         <section id="incomeSection">
             <h2>Add an income:</h2>
             <form @submit.prevent="addIncomePost">
+                <input type="checkbox" v-model="incomePosts.isChecked" v-if="incomePosts.hasCheckbox">
+
                 <p>Title:</p>
                 <input type="text" v-model="incomeText">
 
@@ -40,7 +42,8 @@
 
             <h3>All income posts:</h3>
             <ul>
-                <li v-for="income in incomePosts" :key="income.id"> {{income.incomeText}}, {{income.incomeCategory}},
+                <li v-for="income in incomePosts" :key="income.id">
+                    <input type="checkbox" v-model="income.isChecked" v-if="income.hasCheckbox"> {{income.incomeText}}, {{income.incomeCategory}},
                     {{income.incomeAmount}}, {{income.incomeDate}}</li>
             </ul>            
 
@@ -71,7 +74,8 @@
 
             <h3>All expense posts:</h3>
             <ul>
-                <li v-for="expense in expensesPosts" :key="expense.id">{{expense.expenseText}}, {{expense.expenseCategory}},
+                <li v-for="expense in expensesPosts" :key="expense.id">
+                    <input type="checkbox" v-model="expense.isChecked" v-if="expense.hasCheckbox">{{expense.expenseText}}, {{expense.expenseCategory}},
                     {{expense.expenseAmount}}, {{expense.expenseDate}}</li>
             </ul>
 

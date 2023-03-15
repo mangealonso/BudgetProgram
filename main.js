@@ -2,6 +2,8 @@ Vue.createApp({
     data() {
         return {
             incomePosts: [],
+            /* isChecked: false,
+            hasCheckbox: false, */
             incomeID: 0,
             incomeText: '',
             incomeCategory: '',
@@ -28,6 +30,8 @@ Vue.createApp({
             }
 
             let incomeObject = {
+                isChecked: false,
+                hasCheckbox: true,
                 incomeID: this.incomeID,
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
@@ -43,7 +47,7 @@ Vue.createApp({
                 this.incomeAmount = '',
                 this.incomeDate = ''
 
-                this.calculateIncome(this.incomePosts);
+            this.calculateIncome(this.incomePosts);
         },
         calculateIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
@@ -57,6 +61,8 @@ Vue.createApp({
             }
 
             let expenseObject = {
+                isChecked: false,
+                hasCheckbox: true,
                 expenseID: this.expenseID,
                 expenseText: this.expenseText,
                 expenseCategory: this.expenseCategory,
@@ -72,14 +78,14 @@ Vue.createApp({
                 this.expenseAmount = '',
                 this.expenseDate = ''
 
-                this.calculateExpenses(this.expensesPosts);
+            this.calculateExpenses(this.expensesPosts);
         },
         calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
             this.calculateBalance();
         },
-        calculateBalance(){
+        calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
         },
         /* clearExpenses() {
