@@ -50,11 +50,9 @@
 
             <h3>All income posts:</h3>
             <ul>
-                <li v-for="inc in income" :key="inc.id"> {{inc.incomeText}}, {{inc.incomeCategory}},
-                    {{inc.incomeAmount}}, {{inc.incomeDate}}</li>
-            </ul>
-
-            
+                <li v-for="income in incomePosts" :key="income.id"> {{income.incomeText}}, {{income.incomeCategory}},
+                    {{income.incomeAmount}}, {{income.incomeDate}}</li>
+            </ul>            
 
         </section>
 
@@ -83,7 +81,7 @@
 
             <h3>All expense posts:</h3>
             <ul>
-                <li v-for="expense in expenses" :key="expense.id">{{expense.expenseText}}, {{expense.expenseCategory}},
+                <li v-for="expense in expensesPosts" :key="expense.id">{{expense.expenseText}}, {{expense.expenseCategory}},
                     {{expense.expenseAmount}}, {{expense.expenseDate}}</li>
             </ul>
 
@@ -99,11 +97,11 @@
 
             <h2>Summary:</h2>
 
-            <button type="button" @click="calculateIncome(income)">Calculate income</button>
+            <button type="button" @click="calculateIncome(incomePosts)">Calculate income</button>
             <h3>Total income:</h3>
             <p>{{totalIncome}}</p>
 
-            <button type="button" @click="calculateExpenses(expenses)">Calculate expenses</button>
+            <button type="button" @click="calculateExpenses(expensesPosts)">Calculate expenses</button>
             <h3>Total expenses:</h3>
             <p>{{totalExpenses}}</p>
 

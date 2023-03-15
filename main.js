@@ -4,7 +4,7 @@ Vue.createApp({
 
             /* selectedOption: '', */
 
-            income: [],
+            incomePosts: [],
             incomeID: 0,
             incomeText: '',
             incomeCategory: '',
@@ -12,7 +12,7 @@ Vue.createApp({
             incomeDate: '',
             totalIncome: 0,
 
-            expenses: [],
+            expensesPosts: [],
             expenseID: 0,
             expenseText: '',
             expenseCategory: '',
@@ -45,7 +45,7 @@ Vue.createApp({
                 incomeAmount: this.incomeAmount,
                 incomeDate: this.incomeDate
             };
-            this.income.push(incomeObject);
+            this.incomePosts.push(incomeObject);
 
             this.incomeID++;
 
@@ -56,8 +56,8 @@ Vue.createApp({
 
             /* incomeSection.hidden = true; */
         },
-        calculateIncome(income) {
-            this.totalIncome = income.reduce((accumulator, income) => accumulator + income.incomeAmount, 0);
+        calculateIncome(incomePosts) {
+            this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
         },
         addExpensePost() {
             if (this.expenseText.trim() === '' || this.expenseAmount === ''
@@ -72,7 +72,7 @@ Vue.createApp({
                 expenseAmount: this.expenseAmount,
                 expenseDate: this.expenseDate,
             };
-            this.expenses.push(expenseObject);
+            this.expensesPosts.push(expenseObject);
 
             this.expenseID++;
 
@@ -83,21 +83,21 @@ Vue.createApp({
 
             /* expenseSection.hidden = true; */
         },
-        calculateExpenses(expenses) {
-            this.totalExpenses = expenses.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
+        calculateExpenses(expensesPosts) {
+            this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
         },
         calculateBalance(){
             this.totalBalance = this.totalIncome - this.totalExpenses;
         },
-        clearExpenses() {
-            this.expenses = [];
+        /* clearExpenses() {
+            this.expensesPosts = [];
             this.totalExpenses = 0;
-        },
+        }, */
         /* clearExpenseAmounts() {
             this.totalExpenses = 0;
         }, */
-        filterExpenses() {
+        /* filterExpenses() {
 
-        }
+        } */
     }
 }).mount('#app')
