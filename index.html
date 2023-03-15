@@ -54,10 +54,7 @@
                     {{inc.incomeAmount}}, {{inc.incomeDate}}</li>
             </ul>
 
-            <button type="button" @click="addIncomeAmounts(income)">Add all income amounts</button>
-
-            <h3>Total amount of income:</h3>
-            <p>{{totalIncome}}</p>
+            
 
         </section>
 
@@ -92,10 +89,7 @@
 
             <!-- <button type="button" @click="clearExpenses">Clear all expense posts</button> -->
 
-            <button type="button" @click="addExpenseAmounts(expenses)">Add all expense amounts</button>
-
-            <h3>Total amount of expenses:</h3>
-            <p>{{totalExpenses}}</p>
+            
 
         </section>
 
@@ -106,6 +100,17 @@
         <section id="summarySection">
 
             <h2>Summary:</h2>
+
+            <button type="button" @click="addIncomeAmounts(income)">Add all income amounts</button>
+
+            <h3>Total amount of income:</h3>
+            <p>{{totalIncome}}</p>
+
+            <button type="button" @click="addExpenseAmounts(expenses)">Add all expense amounts</button>
+
+            <h3>Total amount of expenses:</h3>
+            <p>{{totalExpenses}}</p>
+
             <p>Total expenses:</p>
             <select v-model="selectedTotal">
                 <option value="perMonth">Per month</option>
