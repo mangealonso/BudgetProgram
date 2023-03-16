@@ -50,6 +50,12 @@
                 </li>
             </ul>
 
+            <h3>Pay:</h3>
+            <ul>
+                <li v-for="income in incomeCategoryPay" :key="income.id">id: {{income.incomeId}} text: {{income.incomeText}} amount: {{income.incomeAmount}} </li>
+            </ul>
+
+
         </section>
 
         <section id="expenseSection">
@@ -85,6 +91,8 @@
                     <button v-if="showExpenseDeleteButton(index)" @click="deleteExpensePost(index)">Delete</button>
                 </li>
             </ul>
+
+            
 
             <!-- <button type="button" @click="clearExpenses">Clear all expense posts</button> -->
 

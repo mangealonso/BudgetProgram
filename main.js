@@ -20,6 +20,13 @@ Vue.createApp({
             totalBalance: 0
         }
     },
+
+    computed: {
+        incomeCategoryPay() {
+            return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory==='Pay')
+        }
+    },
+
     methods: {
         addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
