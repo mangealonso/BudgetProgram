@@ -111,7 +111,13 @@ Vue.createApp({
             fetch('start-data.json')
                 .then(response => response.json())
                 .then(data => {
-                    this.users = data.users;
+                    this.incomePosts = data.incomePosts;
+                    this.expensesPosts = data.expensesPosts;
+                    this.incomeID = data.incomeID;
+                    this.expenseID = data.expenseID;
+                    this.totalIncome = data.totalIncome;
+                    this.totalExpenses = data.totalExpenses;
+                    this.totalBalance = data.totalBalance;
                 })
         }
         /* clearExpenses() {
