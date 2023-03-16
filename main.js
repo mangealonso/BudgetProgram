@@ -115,10 +115,11 @@ Vue.createApp({
                     this.expensesPosts = data.expensesPosts;
                     this.incomeID = data.incomeID;
                     this.expenseID = data.expenseID;
-                    this.totalIncome = data.totalIncome;
-                    this.totalExpenses = data.totalExpenses;
-                    this.totalBalance = data.totalBalance;
-                    this.calculateIncome(this.incomePosts)
+                    // this.totalIncome = data.totalIncome;
+                    // this.totalExpenses = data.totalExpenses;
+                    // this.totalBalance = data.totalBalance;
+                    this.calculateIncome(this.incomePosts);
+                    this.calculateExpenses(this.expensesPosts);
                 })
 
                
