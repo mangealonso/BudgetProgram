@@ -101,5 +101,15 @@
         "incomeDate": "2023-06-27"
       }
     
+    ],
+
+    "expensesPosts": [
+      {
+      "expenseID": "200",
+      "expenseText": "T-shirt",
+      "expenseCategory": "Clothes",
+      "expenseDate": "2022-12-12",
+      "expenseAmount": 200
+      }
     ]
   }

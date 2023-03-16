@@ -118,7 +118,11 @@ Vue.createApp({
                     this.totalIncome = data.totalIncome;
                     this.totalExpenses = data.totalExpenses;
                     this.totalBalance = data.totalBalance;
+                    this.calculateIncome(this.incomePosts)
                 })
+
+               
+
         }
         /* clearExpenses() {
             this.expensesPosts = [];
