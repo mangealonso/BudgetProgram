@@ -1,0 +1,105 @@
+{
+    "incomePosts": [
+      {
+        "incomeID": "0",
+        "incomeText": "Salary" ,
+        "incomeCategory": "Pay" ,
+        "incomeAmount": 25000,
+        "incomeDate": "2023-01-25"
+      },
+
+      {
+        "incomeID": "1",
+        "incomeText": "Child benefit" ,
+        "incomeCategory": "Benefit" ,
+        "incomeAmount": 650,
+        "incomeDate": "2023-01-27"
+      },
+
+      {
+        "incomeID": "2",
+        "incomeText": "Salary" ,
+        "incomeCategory": "Pay" ,
+        "incomeAmount": 25000,
+        "incomeDate": "2023-02-25"
+      },
+
+      {
+        "incomeID": "3",
+        "incomeText": "Child benefit" ,
+        "incomeCategory": "Benefit" ,
+        "incomeAmount": 650,
+        "incomeDate": "2023-02-27"
+      },
+      {
+        "incomeID": "4",
+        "incomeText": "Salary" ,
+        "incomeCategory": "Pay" ,
+        "incomeAmount": 25000,
+        "incomeDate": "2023-03-25"
+      },
+
+      {
+        "incomeID": "5",
+        "incomeText": "Child benefit" ,
+        "incomeCategory": "Benefit" ,
+        "incomeAmount": 650,
+        "incomeDate": "2023-03-27"
+      },
+
+      {
+        "incomeID": "6",
+        "incomeText": "Table" ,
+        "incomeCategory": "Selling things" ,
+        "incomeAmount": 850,
+        "incomeDate": "2023-04-15"
+      },
+
+      {
+        "incomeID": "7",
+        "incomeText": "Salary" ,
+        "incomeCategory": "Pay" ,
+        "incomeAmount": 25000,
+        "incomeDate": "2023-04-25"
+      },
+
+      {
+        "incomeID": "8",
+        "incomeText": "Child benefit" ,
+        "incomeCategory": "Benefit" ,
+        "incomeAmount": 650,
+        "incomeDate": "2023-04-27"
+      },
+      {
+        "incomeID": "9",
+        "incomeText": "Salary" ,
+        "incomeCategory": "Pay" ,
+        "incomeAmount": 25000,
+        "incomeDate": "2023-05-25"
+      },
+
+      {
+        "incomeID": "10",
+        "incomeText": "Child benefit" ,
+        "incomeCategory": "Benefit" ,
+        "incomeAmount": 650,
+        "incomeDate": "2023-05-27"
+      },
+      {
+        "incomeID": "11",
+        "incomeText": "Salary" ,
+        "incomeCategory": "Pay" ,
+        "incomeAmount": 25000,
+        "incomeDate": "2023-06-25"
+      },
+
+      {
+        "incomeID": "12",
+        "incomeText": "Child benefit" ,
+        "incomeCategory": "Benefit" ,
+        "incomeAmount": 650,
+        "incomeDate": "2023-06-27"
+      }
+    
+    ]
+  }
