@@ -23,7 +23,7 @@ Vue.createApp({
 
     computed: {
         incomeCategoryPay() {
-            return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory==='Pay')
+            return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
         }
     },
 
@@ -82,7 +82,7 @@ Vue.createApp({
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
 
             this.calculateBalance();
-        },        
+        },
         calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
@@ -91,21 +91,28 @@ Vue.createApp({
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
         },
-        deleteExpensePost(indexToDelete){
+        deleteExpensePost(indexToDelete) {
             this.expensesPosts.splice(indexToDelete, 1)
 
             this.calculateExpenses(this.expensesPosts)
         },
-        deleteIncomePost(indexToDelete){
+        deleteIncomePost(indexToDelete) {
             this.incomePosts.splice(indexToDelete, 1)
 
             this.calculateIncome(this.incomePosts)
         },
-        showIncomeDeleteButton(index){
+        showIncomeDeleteButton(index) {
             return this.incomePosts[index].isChecked;
         },
-        showExpenseDeleteButton(index){
-            return this.expensesPosts[index].isChecked;  
+        showExpenseDeleteButton(index) {
+            return this.expensesPosts[index].isChecked;
+        },
+        fetchData() {
+            fetch('start-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    this.users = data.users;
+                })
         }
         /* clearExpenses() {
             this.expensesPosts = [];
