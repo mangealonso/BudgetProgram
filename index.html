@@ -15,6 +15,7 @@
     <div id="app">
         <header>
             <h1>The Super Budget Program</h1>
+            <button @click="fetchData">Load data</button>
         </header>
 
         <section id="incomeSection">
@@ -43,16 +44,19 @@
             <h3>All income posts:</h3>
             <ul>
                 <li v-for="(income, index) in incomePosts" :key="income.id">
-                    <input type="checkbox" v-model="income.isChecked">
-                    {{income.incomeText}}, {{income.incomeCategory}}
-                    , {{income.incomeAmount}}, {{income.incomeDate}}
+                    <label>
+                        <input type="checkbox" v-model="income.isChecked">
+                        {{income.incomeText}}, {{income.incomeCategory}}
+                        , {{income.incomeAmount}}, {{income.incomeDate}}
+                    </label>
                     <button v-if="showIncomeDeleteButton(index)" @click="deleteIncomePost(index)">Delete</button>
                 </li>
             </ul>
 
             <h3>Pay:</h3>
             <ul>
-                <li v-for="income in incomeCategoryPay" :key="income.id">id: {{income.incomeId}} text: {{income.incomeText}} amount: {{income.incomeAmount}} </li>
+                <li v-for="income in incomeCategoryPay" :key="income.id">id: {{income.incomeId}} text:
+                    {{income.incomeText}} amount: {{income.incomeAmount}} </li>
             </ul>
 
 
@@ -85,14 +89,16 @@
             <h3>All expense posts:</h3>
             <ul>
                 <li v-for="(expense, index) in expensesPosts" :key="expense.id">
-                    <input type="checkbox" v-model="expense.isChecked">
-                    {{expense.expenseText}}, {{expense.expenseCategory}}
-                    , {{expense.expenseAmount}}, {{expense.expenseDate}}
+                    <label>
+                        <input type="checkbox" v-model="expense.isChecked">
+                        {{expense.expenseText}}, {{expense.expenseCategory}}
+                        , {{expense.expenseAmount}}, {{expense.expenseDate}}
+                    </label>
                     <button v-if="showExpenseDeleteButton(index)" @click="deleteExpensePost(index)">Delete</button>
                 </li>
             </ul>
 
-            
+
 
             <!-- <button type="button" @click="clearExpenses">Clear all expense posts</button> -->
 
