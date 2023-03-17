@@ -120,7 +120,7 @@ Vue.createApp({
                     // this.totalBalance = data.totalBalance;
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
-                    this.incomeID++
+                    this.incomeID++;
                 })
 
                
