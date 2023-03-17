@@ -5,7 +5,7 @@ Vue.createApp({
             filteredPosts: [],
 
             incomePosts: [],
-            incomeID: 0,
+            incomeID: 7,
             incomeText: '',
             incomeCategory: '',
             incomeAmount: '',
@@ -13,7 +13,7 @@ Vue.createApp({
             totalIncome: 0,
 
             expensesPosts: [],
-            expenseID: 0,
+            expenseID: 25,
             expenseText: '',
             expenseCategory: '',
             expenseDate: '',
