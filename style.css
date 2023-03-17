@@ -47,7 +47,8 @@ li {
 }
 
 button{
-    margin-left: 5px;
+    margin-left: 5px;    
+    padding: 1px;
 }
 
 p{
@@ -58,8 +59,4 @@ p{
 h3{
     margin-top: 5px;
     margin-bottom: 5px;
-}
-
-button{
-    padding: 1px;
 }
