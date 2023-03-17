@@ -5,7 +5,7 @@ Vue.createApp({
             filteredPosts: [],
 
             incomePosts: [],
-            incomeID: 7,
+            incomeID: 0,
             incomeText: '',
             incomeCategory: '',
             incomeAmount: '',
@@ -13,7 +13,7 @@ Vue.createApp({
             totalIncome: 0,
 
             expensesPosts: [],
-            expenseID: 25,
+            expenseID: 0,
             expenseText: '',
             expenseCategory: '',
             expenseDate: '',
@@ -23,7 +23,9 @@ Vue.createApp({
             totalBalance: 0,
 
             perMonth: '',
-            monthlyExpenses:0,
+            monthlyExpenses: 0,
+
+            dataLoaded: false
         }
     },
 
@@ -36,15 +38,15 @@ Vue.createApp({
     methods: {
 
         filterByMonth(month) {
-           this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
-        //    let expenses = this.monthlyExpenses
+            this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
+            //    let expenses = this.monthlyExpenses
 
-           this.filteredPosts.forEach(element => {
-            
-            this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
-           });
+            this.filteredPosts.forEach(element => {
 
-        //    this.monthlyExpenses = expenses;
+                this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
+            });
+
+            //    this.monthlyExpenses = expenses;
         },
 
 
@@ -56,7 +58,7 @@ Vue.createApp({
 
             let incomeObject = {
                 isChecked: false,
-                incomeID: this.incomeID,
+                incomeID: this.incomePosts.length + 1,
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
                 incomeAmount: this.incomeAmount,
@@ -81,7 +83,7 @@ Vue.createApp({
 
             let expenseObject = {
                 isChecked: false,
-                expenseID: this.expenseID,
+                expenseID: this.expensesPosts.length + 1,
                 expenseText: this.expenseText,
                 expenseCategory: this.expenseCategory,
                 expenseAmount: this.expenseAmount,
@@ -126,25 +128,22 @@ Vue.createApp({
         },
         showExpenseDeleteButton(index) {
             return this.expensesPosts[index].isChecked;
-        },
+        },        
         fetchData() {
+            if(this.dataLoaded){
+                return
+            }
             fetch('start-data.json')
                 .then(response => response.json())
                 .then(data => {
-                    this.incomePosts = data.incomePosts;
-                    this.expensesPosts = data.expensesPosts;
-                    // this.incomeID = this.incomeID;
-                    this.expenseID = data.expenseID;
-                    // this.totalIncome = data.totalIncome;
-                    // this.totalExpenses = data.totalExpenses;
-                    // this.totalBalance = data.totalBalance;
+                    this.incomePosts = [...this.incomePosts, ...data.incomePosts];
+                    this.expensesPosts = [...this.expensesPosts, ...data.expensesPosts];
+                    this.incomeID = this.incomePosts.length;
+                    this.expenseID = this.expensesPosts.length;
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
-                    this.incomeID++;
+                    this.dataLoaded = true;
                 })
-
-               
-
         }
         /* clearExpenses() {
             this.expensesPosts = [];
