@@ -23,6 +23,7 @@ Vue.createApp({
             totalBalance: 0,
 
             perMonth: '',
+            
             monthlyExpenses: 0,
 
             dataLoaded: false
@@ -31,6 +32,10 @@ Vue.createApp({
 
     computed: {
 
+            // hiddenPerMonth() {
+            //   return this.perMonth ? '' : 'hidden';
+            // },
+
         hasIncomePosts() {
             return this.incomePosts.length > 0;
         },
@@ -38,6 +43,7 @@ Vue.createApp({
         hasExpensePosts() {
             return this.expensesPosts.length > 0;
         }
+
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
         //     }
@@ -56,6 +62,15 @@ Vue.createApp({
 
             //    this.monthlyExpenses = expenses;
         },
+
+        // shouldDisplayOption(optionValue) {
+        //     if (optionValue === this.perMonth) {
+        //         return 'none';
+        //     }
+        //     else {
+        //         return 'block';
+        //     }
+        //     },
 
 
         addIncomePost() {

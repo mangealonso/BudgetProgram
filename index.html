@@ -128,18 +128,22 @@
                 <option value="perDay">Per day</option>
             </select> -->
 
-            <div><h4>Monthly Summary:</h4>{{perMonth}}
+            <div><h4>Monthly Summary:</h4>
 
             <label>
                 <select v-model="perMonth" @change= "filterByMonth(perMonth)">
                     <option disabled value="">Month</option>
+                    <!-- <option v-for="month in months" :key="month.value" :value="month.value" v-show="perMonth != month.value" >
+                        {{ month.label}}
+                    </option> -->
+
                     <option value="2023-03">Mar 2023</option>
                     <option value="2023-02">Feb 2023</option>
                     <option value="2023-01">Jan 2023</option>
                     <option value="2022-12">Dec 2022</option>
                 </select>
             </label>
-
+          
             <p>Amount: {{monthlyExpenses}}</p>
 
             <ul>
