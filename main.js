@@ -37,11 +37,14 @@ Vue.createApp({
 
         filterByMonth(month) {
            this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
-           
+        //    let expenses = this.monthlyExpenses
+
            this.filteredPosts.forEach(element => {
             
-            this.monthlyExpenses = this.monthlyExpenses + this.filteredPosts.expenseAmount
+            this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
            });
+
+        //    this.monthlyExpenses = expenses;
         },
 
 
