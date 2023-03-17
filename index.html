@@ -131,21 +131,21 @@
             <div><h4>Monthly Summary:</h4>{{perMonth}}
 
             <label>
-                <select v-model="perMonth" @change="filterByMonth(perMonth)">
+                <select v-model="perMonth" @change= "filterByMonth(perMonth)">
                     <option disabled value="">Month</option>
                     <option value="2023-03">Mar 2023</option>
                     <option value="2023-02">Feb 2023</option>
                     <option value="2023-01">Jan 2023</option>
                     <option value="2022-12">Dec 2002</option>
-
-                    <ul>
-                        <li v-for="month in filterByMonth" :key="income.id">id: {{income.incomeId}} text:
-                            {{income.incomeText}} amount: {{income.incomeAmount}} </li>
-                    </ul>
                 </select>
             </label>
 
-    
+            <ul>
+                <li v-for="post in filteredPosts" :key="post.id"> {{post.expenseText}}, {{post.expenseCategory}}
+                    , {{post.expenseAmount}}, {{post.expenseDate}} </li>
+              </ul>
+            </div>
+     
 
             
         </div>

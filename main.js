@@ -1,6 +1,9 @@
 Vue.createApp({
     data() {
         return {
+
+            filteredPosts: [],
+
             incomePosts: [],
             incomeID: 0,
             incomeText: '',
@@ -18,6 +21,7 @@ Vue.createApp({
             totalExpenses: 0,
 
             totalBalance: 0,
+
             perMonth: ''
         }
     },
@@ -31,7 +35,7 @@ Vue.createApp({
     methods: {
 
         filterByMonth(month) {
-            return selectedMonth= this.expensesPosts.filter(expensesPosts => incomePosts.incomeDate.includes(month))
+           this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
         },
 
 
