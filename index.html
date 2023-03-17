@@ -131,7 +131,7 @@
             <div><h4>Monthly Summary:</h4>
 
             <label>
-                <select v-model="perMonth" @change= "filterByMonth(perMonth)">
+                <select v-model="perMonth" @change= "filterByMonth(perMonth), showAmount">
                     <option value="">Month</option>
                     <!-- <option v-for="month in months" :key="month.value" :value="month.value" v-show="perMonth != month.value" >
                         {{ month.label}}
@@ -144,7 +144,7 @@
                 </select>
             </label>
           
-            <p>Amount: {{monthlyExpenses}}</p>
+            <p v-if="perMonth && perMonth !== ''">Amount: {{monthlyExpenses}}</p>
 
             <ul>
                 <li v-for="post in filteredPosts" :key="post.id"> {{post.expenseText}}, {{post.expenseCategory}}

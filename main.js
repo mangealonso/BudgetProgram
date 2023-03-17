@@ -51,8 +51,10 @@ Vue.createApp({
 
     methods: {
 
+        
         filterByMonth(month) {
 
+            //betyder != "är inte" eller måste det vara typ !==
             if (month !='') {
                 this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
             //    let expenses = this.monthlyExpenses
