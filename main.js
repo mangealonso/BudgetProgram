@@ -22,7 +22,8 @@ Vue.createApp({
 
             totalBalance: 0,
 
-            perMonth: ''
+            perMonth: '',
+            monthlyExpenses:0,
         }
     },
 
@@ -36,6 +37,11 @@ Vue.createApp({
 
         filterByMonth(month) {
            this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
+           
+           this.filteredPosts.forEach(element => {
+            
+            this.monthlyExpenses = this.monthlyExpenses + this.filteredPosts.expenseAmount
+           });
         },
 
 
