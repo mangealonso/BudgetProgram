@@ -42,6 +42,18 @@ header {
     padding: 10px;
 }
 
+#monthlySummary {
+ border: 2px solid black;
+ padding:5px;
+}
+
+/* #monthlySummary {
+    display:grid; 
+    grid-template: 
+    "a b"
+    "c c" /1fr 2fr;
+} */
+
 li {
     list-style-type: none;
 }
