@@ -52,8 +52,15 @@ Vue.createApp({
     methods: {
 
         filterByMonth(month) {
-            this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
+
+            if (month !='') {
+                this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
             //    let expenses = this.monthlyExpenses
+            }
+
+            else {
+                this.filteredPosts = []
+            }
 
             this.monthlyExpenses = 0;
 
@@ -126,6 +133,8 @@ Vue.createApp({
             this.calculateExpenses(this.expensesPosts);
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
             this.filterByMonth(this.perMonth);
+
+            // this.PerMonth = '';
         },
         calculateIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
