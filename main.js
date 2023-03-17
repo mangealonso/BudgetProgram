@@ -17,17 +17,24 @@ Vue.createApp({
             expenseAmount: '',
             totalExpenses: 0,
 
-            totalBalance: 0
+            totalBalance: 0,
+            perMonth: ''
         }
     },
 
-    computed: {
-        incomeCategoryPay() {
-            return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
-        }
-    },
+    // computed: {
+    //     incomeCategoryPay() {
+    //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
+    //     }
+    // },
 
     methods: {
+
+        filterByMonth(month) {
+            return selectedMonth= this.expensesPosts.filter(expensesPosts => incomePosts.incomeDate.includes(month))
+        },
+
+
         addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
                 || this.incomeCategory === '' || this.incomeDate === '') {
