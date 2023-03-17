@@ -42,13 +42,13 @@
                 <button type="submit">Save income</button>
             </form>
 
-            <h3>All income posts:</h3>
+            <h3 v-if="hasIncomePosts">All income posts:</h3>
+            <p v-if="hasIncomePosts">Click on any post to delete</p>
             <ul>
                 <li v-for="(income, index) in incomePosts" :key="income.id">
                     <label>
                         <input type="checkbox" v-model="income.isChecked">
-                        {{income.incomeText}}, {{income.incomeCategory}}
-                        , {{income.incomeAmount}}, {{income.incomeDate}}
+                        {{income.incomeText}}, {{income.incomeCategory}}, {{income.incomeAmount}}, {{income.incomeDate}}
                     </label>
                     <button v-if="showIncomeDeleteButton(index)" @click="deleteIncomePost(index)">Delete</button>
                 </li>
@@ -88,13 +88,13 @@
                 <button type="submit">Save expense</button>
             </form>
 
-            <h3>All expense posts:</h3>
+            <h3 v-if="hasExpensePosts">All expense posts:</h3>
+            <p v-if="hasExpensePosts">Click on any post to delete</p>
             <ul>
                 <li v-for="(expense, index) in expensesPosts" :key="expense.id">
                     <label>
                         <input type="checkbox" v-model="expense.isChecked">
-                        {{expense.expenseText}}, {{expense.expenseCategory}}
-                        , {{expense.expenseAmount}}, {{expense.expenseDate}}
+                        {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}}, {{expense.expenseDate}}
                     </label>
                     <button v-if="showExpenseDeleteButton(index)" @click="deleteExpensePost(index)">Delete</button>
                 </li>

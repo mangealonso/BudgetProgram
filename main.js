@@ -29,11 +29,19 @@ Vue.createApp({
         }
     },
 
-    // computed: {
-    //     incomeCategoryPay() {
-    //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
-    //     }
-    // },
+    computed: {
+
+        hasIncomePosts() {
+            return this.incomePosts.length > 0;
+        },
+
+        hasExpensePosts() {
+            return this.expensesPosts.length > 0;
+        }
+        //     incomeCategoryPay() {
+        //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
+        //     }
+    },
 
     methods: {
 
@@ -128,9 +136,9 @@ Vue.createApp({
         },
         showExpenseDeleteButton(index) {
             return this.expensesPosts[index].isChecked;
-        },        
+        },
         fetchData() {
-            if(this.dataLoaded){
+            if (this.dataLoaded) {
                 return
             }
             fetch('start-data.json')
