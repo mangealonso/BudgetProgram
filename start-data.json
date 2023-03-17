@@ -1,157 +1,231 @@
 {
     "incomePosts": [
-      {
-        "incomeID": "0",
-        "incomeText": "Salary" ,
-        "incomeCategory": "Pay" ,
-        "incomeAmount": 25000,
-        "incomeDate": "2023-02-27"
-      },
-
-      {
-        "incomeID": "1",
-        "incomeText": "Child benefit" ,
-        "incomeCategory": "Benefit" ,
-        "incomeAmount": 650,
-        "incomeDate": "2023-02-20"
-      },
-
-      {
-        "incomeID": "2",
-        "incomeText": "Salary" ,
-        "incomeCategory": "Pay" ,
-        "incomeAmount": 25000,
-        "incomeDate": "2023-01-27"
-      },
-
-      {
-        "incomeID": "3",
-        "incomeText": "Child benefit" ,
-        "incomeCategory": "Benefit" ,
-        "incomeAmount": 650,
-        "incomeDate": "2023-01-20"
-      },
-      {
-        "incomeID": "4",
-        "incomeText": "Salary" ,
-        "incomeCategory": "Pay" ,
-        "incomeAmount": 25000,
-        "incomeDate": "2022-12-22"
-      },
-
-      {
-        "incomeID": "5",
-        "incomeText": "Child benefit" ,
-        "incomeCategory": "Benefit" ,
-        "incomeAmount": 650,
-        "incomeDate": "2022-12-20"
-      },
-
-      {
-        "incomeID": "6",
-        "incomeText": "Table" ,
-        "incomeCategory": "Selling things" ,
-        "incomeAmount": 850,
-        "incomeDate": "2022-12-18"
-      }     
-    
+        {
+            "incomeID": "0",
+            "incomeText": "Salary",
+            "incomeCategory": "Pay",
+            "incomeAmount": 25000,
+            "incomeDate": "2023-02-27"
+        },
+        {
+            "incomeID": "1",
+            "incomeText": "Child benefit",
+            "incomeCategory": "Benefit",
+            "incomeAmount": 650,
+            "incomeDate": "2023-02-20"
+        },
+        {
+            "incomeID": "2",
+            "incomeText": "Salary",
+            "incomeCategory": "Pay",
+            "incomeAmount": 25000,
+            "incomeDate": "2023-01-27"
+        },
+        {
+            "incomeID": "3",
+            "incomeText": "Child benefit",
+            "incomeCategory": "Benefit",
+            "incomeAmount": 650,
+            "incomeDate": "2023-01-20"
+        },
+        {
+            "incomeID": "4",
+            "incomeText": "Salary",
+            "incomeCategory": "Pay",
+            "incomeAmount": 25000,
+            "incomeDate": "2022-12-22"
+        },
+        {
+            "incomeID": "5",
+            "incomeText": "Child benefit",
+            "incomeCategory": "Benefit",
+            "incomeAmount": 650,
+            "incomeDate": "2022-12-20"
+        },
+        {
+            "incomeID": "6",
+            "incomeText": "Table",
+            "incomeCategory": "Selling things",
+            "incomeAmount": 850,
+            "incomeDate": "2022-12-18"
+        }
     ],
-
     "expensesPosts": [
-      {
-      "expenseID": "0",
-      "expenseText": "T-shirt",
-      "expenseCategory": "Clothes",      
-      "expenseAmount": 200,
-      "expenseDate": "2023-03-12"
-      },
+        {
+            "expenseID": "0",
+            "expenseText": "T-shirt",
+            "expenseCategory": "Clothes",
+            "expenseAmount": 200,
+            "expenseDate": "2023-03-12"
+        },
+        {
+            "expenseID": "1",
+            "expenseText": "Electricity",
+            "expenseCategory": "Bills",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-03-11"
+        },
+        {
+            "expenseID": "2",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-03-10"
+        },
+        {
+            "expenseID": "3",
+            "expenseText": "Rent",
+            "expenseCategory": "Bills",
+            "expenseAmount": 8000,
+            "expenseDate": "2023-02-28"
+        },
+        {
+            "expenseID": "4",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-02-26"
+        },
+        {
+            "expenseID": "5",
+            "expenseText": "Dinner",
+            "expenseCategory": "Eating out",
+            "expenseAmount": 500,
+            "expenseDate": "2023-02-24"
+        },
+        {
+            "expenseID": "6",
+            "expenseText": "Movie",
+            "expenseCategory": "Entertainment",
+            "expenseAmount": 300,
+            "expenseDate": "2023-02-24"
+        },
+        {
+            "expenseID": "7",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-02-20"
+        },
+        {
+            "expenseID": "8",
+            "expenseText": "Bus card",
+            "expenseCategory": "Public transport",
+            "expenseAmount": 1000,
+            "expenseDate": "2023-02-18"
+        },
+        {
+            "expenseID": "9",
+            "expenseText": "Electricity",
+            "expenseCategory": "Bills",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-02-10"
+        },
+        {
+            "expenseID": "10",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-02-10"
+        },
+        {
+            "expenseID": "11",
+            "expenseText": "Concert",
+            "expenseCategory": "Entertainment",
+            "expenseAmount": 800,
+            "expenseDate": "2023-02-08"
+        },
+        {
+            "expenseID": "12",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-02-01"
+        },
+        {
+            "expenseID": "13",
+            "expenseText": "Movie",
+            "expenseCategory": "Entertainment",
+            "expenseAmount": 300,
+            "expenseDate": "2023-01-28"
+        },
+        {
+            "expenseID": "14",
+            "expenseText": "Rent",
+            "expenseCategory": "Bills",
+            "expenseAmount": 8000,
+            "expenseDate": "2023-01-28"
+        },
+        {
+            "expenseID": "15",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-01-26"
+        },
+        {
+            "expenseID": "16",
+            "expenseText": "Concert",
+            "expenseCategory": "Entertainment",
+            "expenseAmount": 600,
+            "expenseDate": "2023-01-23"
+        },
+        {
+            "expenseID": "17",
+            "expenseText": "Bus card",
+            "expenseCategory": "Public transport",
+            "expenseAmount": 1000,
+            "expenseDate": "2023-01-18"
+        },
+        {
+            "expenseID": "18",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-01-16"
+        },
+        {
+            "expenseID": "19",
+            "expenseText": "Pants",
+            "expenseCategory": "Clothes",
+            "expenseAmount": 750,
+            "expenseDate": "2023-01-12"
+        },
+        {
+            "expenseID": "20",
+            "expenseText": "Electricity",
+            "expenseCategory": "Bills",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-01-10"
+        },
+        {
+            "expenseID": "21",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-01-09"
+        },
+        {
+            "expenseID": "22",
+            "expenseText": "Movie",
+            "expenseCategory": "Entertainment",
+            "expenseAmount": 300,
+            "expenseDate": "2023-01-06"
+        },
+        {
+            "expenseID": "23",
+            "expenseText": "Shopping",
+            "expenseCategory": "Groceries",
+            "expenseAmount": 1500,
+            "expenseDate": "2023-01-02"
+        },
+        {
+            "expenseID": "24",
+            "expenseText": "Rent",
+            "expenseCategory": "Bills",
+            "expenseAmount": 8000,
+            "expenseDate": "2022-12-28"
+        }
 
-      {
-        "expenseID": "1",
-      "expenseText": "Electricity",
-      "expenseCategory": "Bills",      
-      "expenseAmount": 1500,
-      "expenseDate": "2023-03-11"
-      },
-
-      {
-        "expenseID": "2",
-      "expenseText": "Shopping",
-      "expenseCategory": "Groceries",      
-      "expenseAmount": 1500,
-      "expenseDate": "2023-03-10"
-      },
-
-      {
-        "expenseID": "3",
-      "expenseText": "Rent",
-      "expenseCategory": "Bills",      
-      "expenseAmount": 8000,
-      "expenseDate": "2023-02-28"
-      },
-
-      {
-        "expenseID": "4",
-      "expenseText": "Shopping",
-      "expenseCategory": "Groceries",      
-      "expenseAmount": 1500,
-      "expenseDate": "2023-02-26"
-      },
-
-      {
-        "expenseID": "5",
-      "expenseText": "Dinner",
-      "expenseCategory": "Eating out",      
-      "expenseAmount": 500,
-      "expenseDate": "2023-02-24"
-      },
-
-      {
-        "expenseID": "6",
-      "expenseText": "Movie",
-      "expenseCategory": "Entertainment",      
-      "expenseAmount": 300,
-      "expenseDate": "2023-02-24"
-      },
-
-      {
-        "expenseID": "7",
-      "expenseText": "Shopping",
-      "expenseCategory": "Groceries",      
-      "expenseAmount": 1500,
-      "expenseDate": "2023-02-20"
-      },
-
-      {
-        "expenseID": "8",
-      "expenseText": "Bus card",
-      "expenseCategory": "Public transport",      
-      "expenseAmount": 1000,
-      "expenseDate": "2023-02-18"
-      },
-
-      {
-        "expenseID": "9",
-      "expenseText": "Electricity",
-      "expenseCategory": "Bills",      
-      "expenseAmount": 1500,
-      "expenseDate": "2023-02-10"
-      },
-
-      {
-        "expenseID": "10",
-      "expenseText": "Shopping",
-      "expenseCategory": "Groceries",      
-      "expenseAmount": 1500,
-      "expenseDate": "2023-02-10"
-      },
-
-      {
-        "expenseID": "11",
-      "expenseText": "Concert",
-      "expenseCategory": "Entertainment",      
-      "expenseAmount": 800,
-      "expenseDate": "2023-02-08"
-      }
     ]
-  }
+}
