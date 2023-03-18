@@ -26,7 +26,8 @@ Vue.createApp({
 
             monthlyExpenses: 0,
 
-            dataLoaded: false
+            dataLoaded: false,
+            allDataCleared: false
         }
     },
 
@@ -55,7 +56,9 @@ Vue.createApp({
             this.calculateExpenses(this.expensesPosts);
         }
 
-        /* this.fetchData(); */
+        if (this.dataLoaded) {
+            this.fetchData();
+        }
     },
 
     computed: {
@@ -196,30 +199,31 @@ Vue.createApp({
         clearIncomePosts() {
             this.incomePosts = [];
             this.incomeID = 0;
-            this.totalIncome = 0;        
-            
-            this.saveToLocalStorage();
+            this.totalIncome = 0;
 
-            this.clearBalance();
-        },        
-        clearExpensesPosts() {
-            this.expensesPosts = [];
-            this.expenseID = 0;
-            this.totalExpenses = 0;
-        
             this.saveToLocalStorage();
 
             this.clearBalance();
         },
-        clearBalance(){
-            if(this.incomePosts.length === 0){
-                this.totalBalance = this.totalExpenses;
+        clearExpensesPosts() {
+            this.expensesPosts = [];
+            this.expenseID = 0;
+            this.totalExpenses = 0;
+
+            this.saveToLocalStorage();
+
+            this.clearBalance();
+        },
+        clearBalance() {
+            if (this.incomePosts.length === 0) {
+                this.totalBalance = - this.totalExpenses;
             }
-            else if(this.expensesPosts.length === 0){
+            else if (this.expensesPosts.length === 0) {
                 this.totalBalance = this.totalIncome;
             }
-            else{
-                this.totalBalance = 0;                
+            else {
+                this.totalBalance = 0;/* 
+                this.allDataCleared = true; */
             }
 
             this.saveToLocalStorage();
@@ -240,10 +244,12 @@ Vue.createApp({
         showExpenseDeleteButton(index) {
             return this.expensesPosts[index].isChecked;
         },
-        fetchData() {
-            if (this.dataLoaded) {
-                return
-            }
+        loadFetchData(){
+            if (!this.dataLoaded) {
+                this.fetchData();
+              }
+        },
+        fetchData() {            
             fetch('start-data.json')
                 .then(response => response.json())
                 .then(data => {
