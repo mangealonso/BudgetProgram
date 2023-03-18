@@ -37,7 +37,8 @@
                 <input type="number" v-model="incomeAmount">
 
                 <p>Date:</p>
-                <input type="date" v-model="incomeDate"> <!--Add a variable for date inside the input and set a variable for getdate in js-->
+                <input type="date" v-model="incomeDate">
+                <!--Add a variable for date inside the input and set a variable for getdate in js-->
 
                 <button type="submit">Save income</button>
             </form>
@@ -96,7 +97,8 @@
                 <li v-for="(expense, index) in expensesPosts" :key="expense.id">
                     <label>
                         <input type="checkbox" v-model="expense.isChecked">
-                        {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}}, {{expense.expenseDate}}
+                        {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}},
+                        {{expense.expenseDate}}
                     </label>
                     <button v-if="showExpenseDeleteButton(index)" @click="deleteExpensePost(index)">Delete</button>
                 </li>
@@ -133,42 +135,49 @@
             <div id="monthlySummary">
                 <button @click="toggleExpenses">Show Expenses Per Month</button>
                 <div id="expensesPerMonth" :hidden="expensesHidden">
-                
-                <label><input type="radio" id="year" value="Year" v-model="picked">Year</label>
-                <!-- <label for="one">Income</label> -->
-            
-                <label><input type="radio" id="month" value="month" v-model="picked">Month</label>
-                <!-- <label for="two">Expense</label> -->
 
-                <h4>Monthly Summary: {{picked}}</h4>
+                    <label><input type="radio" id="year" value="Year" v-model="picked">Year</label>
+                    <!-- <label for="one">Income</label> -->
 
-            <label>
-                <select v-model="perMonth" @change= "filterByMonth(perMonth), showAmount">
-                    <option value="">Month</option>
-                    <!-- <option v-for="month in months" :key="month.value" :value="month.value" v-show="perMonth != month.value" >
+                    <label><input type="radio" id="month" value="Month" v-model="picked">Month</label>
+                    <!-- <label for="two">Expense</label> -->
+
+                    <h4>Monthly Summary:
+                        {{picked}}</h4>
+
+                    <div v-if="picked !== 'Month'">
+
+                    </div>
+
+                    <div v-else-if="picked !== 'Year'">
+                        <label>
+                            <select v-model="perMonth" @change="filterByMonth(perMonth), showAmount">
+                                <option value="">Month</option>
+                                <!-- <option v-for="month in months" :key="month.value" :value="month.value" v-show="perMonth != month.value" >
                         {{ month.label}}
                     </option> -->
 
-                    <option value="2023-03">Mar 2023</option>
-                    <option value="2023-02">Feb 2023</option>
-                    <option value="2023-01">Jan 2023</option>
-                    <option value="2022-12">Dec 2022</option>
-                </select>
-            </label>
-          
-            <p v-if="perMonth && perMonth !== ''">Expenses this month: {{monthlyExpenses}}</p>
+                                <option value="2023-03">Mar 2023</option>
+                                <option value="2023-02">Feb 2023</option>
+                                <option value="2023-01">Jan 2023</option>
+                                <option value="2022-12">Dec 2022</option>
+                            </select>
+                        </label>
 
-            <!-- <ul>
+                        <p v-if="perMonth && perMonth !== ''">Expenses this month: {{monthlyExpenses}}</p>
+
+                        <!-- <ul>
                 <li v-for="post in filteredPosts" :key="post.id"> {{post.expenseText}}, {{post.expenseCategory}}
                     , {{post.expenseAmount}}, {{post.expenseDate}} </li>
               </ul> -->
+                    </div>
+                </div>
             </div>
-            </div>
-     
 
-            
-        </div>
-        </section>
+
+
+    </div>
+    </section>
     </div>
 
 </body>
