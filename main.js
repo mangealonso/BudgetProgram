@@ -27,7 +27,10 @@ Vue.createApp({
             monthlyExpenses: 0,
 
             dataLoaded: false,
-            allDataCleared: false
+            allDataCleared: false,
+
+            picked: 'Year',
+            expensesHidden: true
         }
     },
 
@@ -82,6 +85,11 @@ Vue.createApp({
 
     methods: {
 
+        toggleExpenses() {
+
+           this.expensesHidden = !this.expensesHidden;
+        },
+
         saveToLocalStorage() {
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
@@ -89,7 +97,7 @@ Vue.createApp({
 
         filterByMonth(month) {
 
-            //betyder != "är inte" eller måste det vara typ !== (Jag tror utropstecknet ska vara före month)
+            //betyder != "är inte" eller måste det vara typ !== (Jag tror utropstecknet ska vara före month) + Ojdå. Det här behöver jag kolla upp
             if (month != '') {
                 this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
                 //    let expenses = this.monthlyExpenses

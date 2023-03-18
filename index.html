@@ -130,7 +130,17 @@
                 <option value="perDay">Per day</option>
             </select> -->
 
-            <div id="monthlySummary"><h4>Monthly Summary:</h4>
+            <div id="monthlySummary">
+                <button @click="toggleExpenses">Show Expenses Per Month</button>
+                <div id="expensesPerMonth" :hidden="expensesHidden">
+                
+                <label><input type="radio" id="year" value="Year" v-model="picked">Year</label>
+                <!-- <label for="one">Income</label> -->
+            
+                <label><input type="radio" id="month" value="month" v-model="picked">Month</label>
+                <!-- <label for="two">Expense</label> -->
+
+                <h4>Monthly Summary: {{picked}}</h4>
 
             <label>
                 <select v-model="perMonth" @change= "filterByMonth(perMonth), showAmount">
@@ -152,6 +162,7 @@
                 <li v-for="post in filteredPosts" :key="post.id"> {{post.expenseText}}, {{post.expenseCategory}}
                     , {{post.expenseAmount}}, {{post.expenseDate}} </li>
               </ul> -->
+            </div>
             </div>
      
 
