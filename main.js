@@ -23,18 +23,46 @@ Vue.createApp({
             totalBalance: 0,
 
             perMonth: '',
-            
+
             monthlyExpenses: 0,
 
             dataLoaded: false
         }
     },
 
+    mounted() {
+        const incomePostsFromLocalStorage = JSON.parse(localStorage.getItem('incomePosts'));
+
+        if (incomePostsFromLocalStorage) {
+            this.incomePosts = incomePostsFromLocalStorage;
+        }
+
+        const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
+
+        if (expensesPostsFromLocalStorage) {
+            this.expensesPosts = expensesPostsFromLocalStorage;
+        }
+
+        let savedIncomePosts = localStorage.getItem('incomePosts');
+        if (savedIncomePosts) {
+            this.incomePosts = JSON.parse(savedIncomePosts);
+            this.calculateIncome(this.incomePosts);
+        }
+
+        let savedExpensesPosts = localStorage.getItem('expensesPosts');
+        if (savedExpensesPosts) {
+            this.expensesPosts = JSON.parse(savedExpensesPosts);
+            this.calculateExpenses(this.expensesPosts);
+        }
+
+        /* this.fetchData(); */
+    },
+
     computed: {
 
-            // hiddenPerMonth() {
-            //   return this.perMonth ? '' : 'hidden';
-            // },
+        // hiddenPerMonth() {
+        //   return this.perMonth ? '' : 'hidden';
+        // },
 
         hasIncomePosts() {
             return this.incomePosts.length > 0;
@@ -51,13 +79,17 @@ Vue.createApp({
 
     methods: {
 
-        
+        saveToLocalStorage() {
+            localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
+            localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
+        },
+
         filterByMonth(month) {
 
-            //betyder != "är inte" eller måste det vara typ !==
-            if (month !='') {
+            //betyder != "är inte" eller måste det vara typ !== (Jag tror utropstecknet ska vara före month)
+            if (month != '') {
                 this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
-            //    let expenses = this.monthlyExpenses
+                //    let expenses = this.monthlyExpenses
             }
 
             else {
@@ -108,6 +140,8 @@ Vue.createApp({
                 this.incomeDate = ''
 
             this.calculateIncome(this.incomePosts);
+
+            this.saveToLocalStorage();
         },
         addExpensePost() {
             if (this.expenseText.trim() === '' || this.expenseAmount === ''
@@ -133,6 +167,8 @@ Vue.createApp({
                 this.expenseDate = ''
 
             this.calculateExpenses(this.expensesPosts);
+
+            this.saveToLocalStorage();
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
             this.filterByMonth(this.perMonth);
 
@@ -141,15 +177,52 @@ Vue.createApp({
         calculateIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
 
+            this.saveToLocalStorage();
+
             this.calculateBalance();
         },
         calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
+            this.saveToLocalStorage();
+
             this.calculateBalance();
         },
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
+
+            this.saveToLocalStorage();
+        },
+        clearIncomePosts() {
+            this.incomePosts = [];
+            this.incomeID = 0;
+            this.totalIncome = 0;        
+            
+            this.saveToLocalStorage();
+
+            this.clearBalance();
+        },        
+        clearExpensesPosts() {
+            this.expensesPosts = [];
+            this.expenseID = 0;
+            this.totalExpenses = 0;
+        
+            this.saveToLocalStorage();
+
+            this.clearBalance();
+        },
+        clearBalance(){
+            if(this.incomePosts.length === 0){
+                this.totalBalance = this.totalExpenses;
+            }
+            else if(this.expensesPosts.length === 0){
+                this.totalBalance = this.totalIncome;
+            }
+            else{
+                this.totalBalance = 0;                
+            }
+
+            this.saveToLocalStorage();
         },
         deleteExpensePost(indexToDelete) {
             this.expensesPosts.splice(indexToDelete, 1)
@@ -183,15 +256,5 @@ Vue.createApp({
                     this.dataLoaded = true;
                 })
         }
-        /* clearExpenses() {
-            this.expensesPosts = [];
-            this.totalExpenses = 0;
-        }, */
-        /* clearExpenseAmounts() {
-            this.totalExpenses = 0;
-        }, */
-        /* filterExpenses() {
-
-        } */
     }
 }).mount('#app')
