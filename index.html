@@ -141,11 +141,16 @@
 
                     <label><input type="radio" id="month" value="Month" v-model="picked">Month</label>
                     <!-- <label for="two">Expense</label> -->
+                    <!-- @change="findUniqueMonths('expenseDate') -->
 
                     <h4>Monthly Summary:
                         {{picked}}</h4>
 
                     <div v-if="picked !== 'Month'">
+                        <p>Expenses:</p>
+                        <ol>
+                            <li></li>
+                        </ol>
 
                     </div>
 

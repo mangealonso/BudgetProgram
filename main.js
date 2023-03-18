@@ -20,6 +20,8 @@ Vue.createApp({
             expenseAmount: '',
             totalExpenses: 0,
 
+            // months: [],
+
             totalBalance: 0,
 
             perMonth: '',
@@ -62,6 +64,8 @@ Vue.createApp({
         if (this.dataLoaded) {
             this.fetchData();
         }
+
+
     },
 
     computed: {
@@ -94,6 +98,12 @@ Vue.createApp({
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
         },
+
+        // findUniqueMonths(expenseDate) 
+        // {
+        //     this.months = [...new Set(this.expensesPosts.map(item => item[expenseDate]))]
+        //     .filter(value => value !== undefined && value !== null);
+        // },
 
         filterByMonth(month) {
 
