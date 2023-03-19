@@ -156,7 +156,7 @@
 
                     <div v-else-if="picked !== 'Year'">
                         <label>
-                            <select v-model="perMonth" @change="filterByMonth(perMonth), showAmount">
+                            <select v-model="perMonth" @change="filterByMonth(perMonth),showAmount">
                                 <option value="">Month</option>
                                 <option v-for="option in dropDownOptions" :key="option.value" :value="option.value" v-show="perMonth != option.value" >
                         {{ option.label}}

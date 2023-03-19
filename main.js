@@ -25,10 +25,9 @@ Vue.createApp({
                 "July", "August", "September", "October", "November", "December"
             ],
 
-            dropDownOptions:[
-                // value = '',
-                // label = '',
-            ],
+            dropDownOptions:[],
+            filteredByMonth: [],
+
             yearAndMonth: '',
 
             totalBalance: 0,
@@ -114,22 +113,61 @@ Vue.createApp({
         //     .filter(value => value !== undefined && value !== null);
         // },
 
+        // getMonthYearArray(monthString) {
+
+        //     const d = new Date(expenseObject.expenseDate);
+
+        //     let currentExpenseMonth = this.months[d.getMonth()];
+        //     let currentExpenseYear = d.getFullYear().toString() ;
+        //     this.yearAndMonth = currentExpenseMonth + ' ' + currentExpenseYear;
+
+        //     let dropDownObject = {
+        //         label: this.yearAndMonth,
+        //         value: this.yearAndMonth
+        //     }
+
+        //     if (!this.dropDownOptions.some(option => 
+        //         option.value === dropDownObject.value)) {
+        //         this.dropDownOptions.push(dropDownObject);
+        //     }
+        // },
+
         filterByMonth(month) {
 
-            //betyder != "är inte" eller måste det vara typ !== (Jag tror utropstecknet ska vara före month) + Ojdå. Det här behöver jag kolla upp
-            if (month != '') {
-                this.expensesPosts.
-                this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
-                //    let expenses = this.monthlyExpenses
-            }
+            this.filteredByMonth = [];
 
-            else {
-                this.filteredPosts = []
+            if (month != '') {
+                
+                let monthToCheck = month.slice(0,-5);
+
+            // let filteredByMonthObject = {
+                
+            // }
+
+            for (i = 0; i < this.expensesPosts.length; i++ )
+            {
+                const d = new Date(this.expensesPosts[i].expenseDate);
+                let test = this.months[d.getMonth()];
+                
+                if(test === monthToCheck) {
+                    this.filteredByMonth.push(this.expensesPosts[i]);
+                }
             }
+            
+            // if (month != '') {
+            //     this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
+            //     //    let expenses = this.monthlyExpenses
+            // }
+
+            // else {
+            //     this.filteredPosts = []
+            // }
+
+        }
 
             this.monthlyExpenses = 0;
 
-            this.filteredPosts.forEach(element => {
+            this.filteredByMonth.forEach(element => {
 
                 this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
             });
@@ -217,7 +255,7 @@ Vue.createApp({
                 this.dropDownOptions.push(dropDownObject);
             }
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
-            this.filterByMonth(this.perMonth);
+            // this.filterByMonth(this.perMonth);
 
             // this.PerMonth = '';
         },
