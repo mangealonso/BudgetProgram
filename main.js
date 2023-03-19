@@ -21,11 +21,11 @@ Vue.createApp({
             totalExpenses: 0,
 
             months: [
-                "January", "February", "March", "April", "May", "June", 
+                "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             ],
 
-            dropDownOptions:[],
+            dropDownOptions: [],
             filteredByMonth: [],
             monthsWithExpenses: [],
 
@@ -47,15 +47,19 @@ Vue.createApp({
 
     mounted() {
         const incomePostsFromLocalStorage = JSON.parse(localStorage.getItem('incomePosts'));
+        const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
+        let dataloadedFromLocalStorage = localStorage.getItem('dataLoaded');
 
         if (incomePostsFromLocalStorage) {
             this.incomePosts = incomePostsFromLocalStorage;
         }
 
-        const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
-
         if (expensesPostsFromLocalStorage) {
             this.expensesPosts = expensesPostsFromLocalStorage;
+        }
+
+        if (dataloadedFromLocalStorage) {
+            this.dataLoaded = JSON.parse(dataloadedFromLocalStorage);
         }
 
         let savedIncomePosts = localStorage.getItem('incomePosts');
@@ -100,12 +104,13 @@ Vue.createApp({
 
         toggleExpenses() {
 
-           this.expensesHidden = !this.expensesHidden;
+            this.expensesHidden = !this.expensesHidden;
         },
 
         saveToLocalStorage() {
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
+            localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
         },
 
         // findUniqueMonths(expenseDate) 
@@ -138,33 +143,32 @@ Vue.createApp({
             this.filteredByMonth = [];
 
             if (month != '') {
-                
-                let monthToCheck = month.slice(0,-5);
 
-            // let filteredByMonthObject = {
-                
-            // }
+                let monthToCheck = month.slice(0, -5);
 
-            for (i = 0; i < this.expensesPosts.length; i++ )
-            {
-                const d = new Date(this.expensesPosts[i].expenseDate);
-                let test = this.months[d.getMonth()];
-                
-                if(test === monthToCheck) {
-                    this.filteredByMonth.push(this.expensesPosts[i]);
+                // let filteredByMonthObject = {
+
+                // }
+
+                for (i = 0; i < this.expensesPosts.length; i++) {
+                    const d = new Date(this.expensesPosts[i].expenseDate);
+                    let test = this.months[d.getMonth()];
+
+                    if (test === monthToCheck) {
+                        this.filteredByMonth.push(this.expensesPosts[i]);
+                    }
                 }
+
+                // if (month != '') {
+                //     this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
+                //     //    let expenses = this.monthlyExpenses
+                // }
+
+                // else {
+                //     this.filteredPosts = []
+                // }
+
             }
-            
-            // if (month != '') {
-            //     this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
-            //     //    let expenses = this.monthlyExpenses
-            // }
-
-            // else {
-            //     this.filteredPosts = []
-            // }
-
-        }
 
             this.monthlyExpenses = 0;
 
@@ -242,7 +246,7 @@ Vue.createApp({
 
             this.checkDropDownObject(expenseObject)
 
-            this.checkMonthsWithExpenses(expenseObject); 
+            this.checkMonthsWithExpenses(expenseObject);
 
             // const d = new Date(expenseObject.expenseDate);
 
@@ -265,7 +269,7 @@ Vue.createApp({
             // this.PerMonth = '';
         },
 
-        checkMonthsWithExpenses (object) {
+        checkMonthsWithExpenses(object) {
 
             const dd = new Date(object.expenseDate);
 
@@ -275,18 +279,18 @@ Vue.createApp({
                 label: currentExpenseMonth
             }
 
-            if (!this.monthsWithExpenses.some(option => 
+            if (!this.monthsWithExpenses.some(option =>
                 option.label === monthsWithExpenses.label)) {
                 this.monthsWithExpenses.push(monthsWithExpensesObject);
             }
-        }, 
+        },
 
-        checkDropDownObject (object) {
+        checkDropDownObject(object) {
 
             const d = new Date(object.expenseDate);
 
             let currentExpenseMonth = this.months[d.getMonth()];
-            let currentExpenseYear = d.getFullYear().toString() ;
+            let currentExpenseYear = d.getFullYear().toString();
             this.yearAndMonth = currentExpenseMonth + ' ' + currentExpenseYear;
 
             let dropDownObject = {
@@ -294,7 +298,7 @@ Vue.createApp({
                 value: this.yearAndMonth
             }
 
-            if (!this.dropDownOptions.some(option => 
+            if (!this.dropDownOptions.some(option =>
                 option.value === dropDownObject.value)) {
                 this.dropDownOptions.push(dropDownObject);
             }
@@ -348,8 +352,22 @@ Vue.createApp({
             }
             else {
                 this.totalBalance = 0;
-                this.dataLoaded = false;
             }
+
+            this.saveToLocalStorage();
+
+            this.checkDataLoaded();
+        },
+        checkDataLoaded() {
+            if (this.incomePosts.length === 0 && this.expensesPosts.length === 0 && this.dataLoaded === true) {
+                this.clearDataLoaded();
+            }
+            else {
+                return
+            }
+        },
+        clearDataLoaded() {
+            this.dataLoaded = false;
 
             this.saveToLocalStorage();
         },
@@ -369,12 +387,12 @@ Vue.createApp({
         showExpenseDeleteButton(index) {
             return this.expensesPosts[index].isChecked;
         },
-        loadFetchData(){
+        loadFetchData() {
             if (!this.dataLoaded) {
                 this.fetchData();
-              }
+            }
         },
-        fetchData() {            
+        fetchData() {
             fetch('start-data.json')
                 .then(response => response.json())
                 .then(data => {
@@ -387,11 +405,13 @@ Vue.createApp({
 
                     this.expensesPosts.forEach(expensesPost => {
                         this.checkDropDownObject(expensesPost);
-                      });
+                    });
 
                     this.dataLoaded = true;
+
+                    this.saveToLocalStorage();
                 })
-            
+
         }
     }
 }).mount('#app')
