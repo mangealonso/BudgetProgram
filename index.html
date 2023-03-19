@@ -158,9 +158,9 @@
                         <label>
                             <select v-model="perMonth" @change="filterByMonth(perMonth), showAmount">
                                 <option value="">Month</option>
-                                <!-- <option v-for="month in months" :key="month.value" :value="month.value" v-show="perMonth != month.value" >
-                        {{ month.label}}
-                    </option> -->
+                                <option v-for="option in dropDownOptions" :key="option.value" :value="option.value" v-show="perMonth != option.value" >
+                        {{ option.label}}
+                    </option>
 
                                 <!-- <option value="2023-03">Mar 2023</option>
                                 <option value="2023-02">Feb 2023</option>

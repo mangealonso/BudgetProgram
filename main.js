@@ -118,6 +118,7 @@ Vue.createApp({
 
             //betyder != "är inte" eller måste det vara typ !== (Jag tror utropstecknet ska vara före month) + Ojdå. Det här behöver jag kolla upp
             if (month != '') {
+                this.expensesPosts.
                 this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
                 //    let expenses = this.monthlyExpenses
             }
