@@ -23,10 +23,10 @@
             <form @submit.prevent="addIncomePost">
 
                 <p>Title:</p>
-                <input type="text" v-model="incomeText">
+                <input id="incomeText" type="text" v-model="incomeText">
 
                 <p>Category:</p>
-                <select v-model="incomeCategory">
+                <select id="incomeCategory" v-model="incomeCategory">
                     <option value="Pay">Pay</option>
                     <option value="Benefit">Benefit</option>
                     <option value="Gift">Gift</option>
@@ -34,10 +34,10 @@
                 </select>
 
                 <p>Amount:</p>
-                <input type="number" v-model="incomeAmount">
+                <input id="incomeAmount" type="number" v-model="incomeAmount">
 
                 <p>Date:</p>
-                <input type="date" v-model="incomeDate">
+                <input id="incomeDate" type="date" v-model="incomeDate">
                 <!--Add a variable for date inside the input and set a variable for getdate in js-->
 
                 <button type="submit">Save income</button>
