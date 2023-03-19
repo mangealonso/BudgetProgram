@@ -152,16 +152,13 @@ Vue.createApp({
                 let amount = this.expensesPosts[i].expenseAmount
 
                 if (test === month.slice(0, -5)) {
+                     
 
+                    //DET ÄR DESSA TVÅ SOM TRIGGAR INFINIT LOOP
                     // this.newFilter.push(this.expensesPosts[i]);
                     // this.someStuffExpenses = this.someStuffExpenses + this.expensesPosts[i].expenseAmount;
                 }
             }
-
-            // this.newFilter.forEach(element => {
-
-                
-            // });
 
             // this.getMonthlyExpenses(this.newFilter);
         },
@@ -234,25 +231,6 @@ Vue.createApp({
 
             this.checkMonthsWithExpenses(expenseObject);
 
-            // const d = new Date(expenseObject.expenseDate);
-
-            // let currentExpenseMonth = this.months[d.getMonth()];
-            // let currentExpenseYear = d.getFullYear().toString() ;
-            // this.yearAndMonth = currentExpenseMonth + ' ' + currentExpenseYear;
-
-            // let dropDownObject = {
-            //     label: this.yearAndMonth,
-            //     value: this.yearAndMonth
-            // }
-
-            // if (!this.dropDownOptions.some(option => 
-            //     option.value === dropDownObject.value)) {
-            //     this.dropDownOptions.push(dropDownObject);
-            // }
-            // // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
-            // this.filterByMonth(this.perMonth);
-
-            // this.PerMonth = '';
         },
 
         checkMonthsWithExpenses(object) {
