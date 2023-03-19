@@ -55,14 +55,6 @@
                     <button v-if="showIncomeDeleteButton(index)" @click="deleteIncomePost(index)">Delete</button>
                 </li>
             </ul>
-
-            <!-- <h3>Pay:</h3>
-            <ul>
-                <li v-for="income in incomeCategoryPay" :key="income.id">id: {{income.incomeId}} text:
-                    {{income.incomeText}} amount: {{income.incomeAmount}} </li>
-            </ul> -->
-
-
         </section>
 
         <section id="expenseSection">
@@ -104,13 +96,7 @@
                 </li>
             </ul>
 
-
-
-            <!-- <button type="button" @click="clearExpenses">Clear all expense posts</button> -->
-
         </section>
-
-        <!-- <button type="button" @click="clearAmounts">Clear all expense amounts</button> -->
 
         <section id="summarySection">
 
@@ -124,13 +110,6 @@
 
             <h3>Total balance:</h3>
             <p>{{totalBalance}}</p>
-
-            <!-- <p>Total expenses:</p>
-            <select v-model="selectedTotal">
-                <option value="perMonth">Per month</option>
-                <option value="perCategory">Per category</option>
-                <option value="perDay">Per day</option>
-            </select> -->
 
             <div id="monthlySummary">
                 <button @click="toggleExpenses">Show Expenses Per Month</button>
@@ -152,16 +131,16 @@
                             <li v-for="{label, value} in dropDownOptions">
                                 {{label}} {{filterByMonthForOptions(value)}} </label></li>
                         </ol>
-
                     </div>
 
                     <div v-else-if="picked !== 'Year'">
                         <label>
                             <select v-model="perMonth" @change="filterByMonth(perMonth),showAmount">
                                 <option value="">Month</option>
-                                <option v-for="option in dropDownOptions" :key="option.value" :value="option.value" v-show="perMonth != option.value" >
-                        {{ option.label}}
-                    </option>
+                                <option v-for="option in dropDownOptions" :key="option.value" :value="option.value"
+                                    v-show="perMonth != option.value">
+                                    {{ option.label}}
+                                </option>
                             </select>
                         </label>
 
@@ -169,13 +148,8 @@
                     </div>
                 </div>
             </div>
-
-
-
+        </section>
+        
     </div>
-    </section>
-    </div>
-
 </body>
-
 </html>
