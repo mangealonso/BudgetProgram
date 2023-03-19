@@ -27,7 +27,7 @@ Vue.createApp({
 
             dropDownOptions: [],
             filteredByMonth: [],
-           
+            filterMonthlyExpenses: [],
             monthsWithExpenses: [],
 
             yearAndMonth: '',
@@ -137,6 +137,33 @@ Vue.createApp({
             //    this.monthlyExpenses = expenses;
         },
 
+        filterByMonthForOptions(month) {
+            //TESTING SOME CODE HERE
+            this.filteredByMonth = [];
+
+            for (i = 0; i < this.expensesPosts.length; i++) {
+
+                const d = new Date(this.expensesPosts[i].expenseDate);
+                let test = this.months[d.getMonth()];
+
+                if (test === month) {
+
+                    this.filteredByMonth.push(this.expensesPosts[i]);
+                }
+            }
+
+            this.getMonthlyExpenses(this.filteredByMonth);
+        },
+
+        getMonthlyExpenses(arrayOfPosts) {
+
+            this.monthlyExpenses = 0;
+
+            arrayOfPosts.forEach(element => {
+
+                this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
+            });
+        },
 
         addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
@@ -227,12 +254,10 @@ Vue.createApp({
                 label: currentExpenseMonth
             }
 
-            let alreadyAdded = false; 
-            for(let i=0;i<this.monthsWithExpenses.length;i++)
-            {
-                if (monthsWithExpensesObject.label === this.monthsWithExpenses[i].label) 
-                {
-                    alreadyAdded = true; 
+            let alreadyAdded = false;
+            for (let i = 0; i < this.monthsWithExpenses.length; i++) {
+                if (monthsWithExpensesObject.label === this.monthsWithExpenses[i].label) {
+                    alreadyAdded = true;
                     break;
                 }
             }

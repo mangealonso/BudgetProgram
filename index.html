@@ -150,7 +150,7 @@
                         <p>Expenses:</p>
                         <ol>
                             <li v-for="option in dropDownOptions" key="option.value" :value="option.value">
-                                {{option.value}}: {{filterByMonth(option)}}</li>
+                                {{option.value}}: {{filterByMonthForOptions("option.value")}}</li>
                         </ol>
 
                     </div>
