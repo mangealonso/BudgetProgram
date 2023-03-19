@@ -25,6 +25,9 @@ Vue.createApp({
                 "July", "August", "September", "October", "November", "December"
             ],
 
+            dropDownOptions:[],
+            yearAndMonth: '',
+
             totalBalance: 0,
 
             perMonth: '',
@@ -198,6 +201,11 @@ Vue.createApp({
 
             let currentExpenseMonth = this.months[d.getMonth()];
             let currentExpenseYear = d.getFullYear().toString() ;
+            this.yearAndMonth = currentExpenseMonth + ' ' + currentExpenseYear;
+
+            if (!dropDownOptions.contains(yearAndMonth)) {
+                this.dropDownOptions.push(yearAndMonth);
+            }
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
             this.filterByMonth(this.perMonth);
 
