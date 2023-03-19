@@ -29,6 +29,7 @@ Vue.createApp({
             filteredByMonth: [],
             filterMonthlyExpenses: [],
             monthsWithExpenses: [],
+            newFilter:[],
 
             yearAndMonth: '',
 
@@ -37,6 +38,7 @@ Vue.createApp({
             perMonth: '',
 
             monthlyExpenses: 0,
+            someStuffExpenses: 0,
 
             dataLoaded: false,/* 
             allDataCleared: false, */
@@ -139,20 +141,29 @@ Vue.createApp({
 
         filterByMonthForOptions(month) {
             //TESTING SOME CODE HERE
-            this.filteredByMonth = [];
+            this.newFilter = []
+
+            this.someStuffExpenses = 0;
 
             for (i = 0; i < this.expensesPosts.length; i++) {
 
                 const d = new Date(this.expensesPosts[i].expenseDate);
                 let test = this.months[d.getMonth()];
+                let amount = this.expensesPosts[i].expenseAmount
 
-                if (test === month) {
+                if (test === month.slice(0, -5)) {
 
-                    this.filteredByMonth.push(this.expensesPosts[i]);
+                    // this.newFilter.push(this.expensesPosts[i]);
+                    // this.someStuffExpenses = this.someStuffExpenses + this.expensesPosts[i].expenseAmount;
                 }
             }
 
-            this.getMonthlyExpenses(this.filteredByMonth);
+            // this.newFilter.forEach(element => {
+
+                
+            // });
+
+            // this.getMonthlyExpenses(this.newFilter);
         },
 
         getMonthlyExpenses(arrayOfPosts) {

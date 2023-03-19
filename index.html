@@ -149,8 +149,8 @@
                     <div v-if="picked !== 'Month'">
                         <p>Expenses:</p>
                         <ol>
-                            <li v-for="option in dropDownOptions" key="option.value" :value="option.value">
-                                {{option.value}}: {{filterByMonthForOptions("option.value")}}</li>
+                            <li v-for="{label, value} in dropDownOptions">
+                                {{label}} {{filterByMonthForOptions(value)}} </label></li>
                         </ol>
 
                     </div>
