@@ -37,8 +37,8 @@ Vue.createApp({
 
             monthlyExpenses: 0,
 
-            dataLoaded: false,
-            allDataCleared: false,
+            dataLoaded: false,/* 
+            allDataCleared: false, */
 
             picked: 'Year',
             expensesHidden: true
@@ -70,9 +70,9 @@ Vue.createApp({
             this.calculateExpenses(this.expensesPosts);
         }
 
-        if (this.dataLoaded) {
+        /* if (this.dataLoaded) {
             this.fetchData();
-        }
+        } */
 
 
     },
@@ -347,8 +347,8 @@ Vue.createApp({
                 this.totalBalance = this.totalIncome;
             }
             else {
-                this.totalBalance = 0;/* 
-                this.allDataCleared = true; */
+                this.totalBalance = 0;
+                this.dataLoaded = false;
             }
 
             this.saveToLocalStorage();
