@@ -48,7 +48,7 @@ Vue.createApp({
     mounted() {
         const incomePostsFromLocalStorage = JSON.parse(localStorage.getItem('incomePosts'));
         const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
-        let dataloadedFromLocalStorage = localStorage.getItem('dataLoaded');
+        const dataloadedFromLocalStorage = localStorage.getItem('dataLoaded');
 
         if (incomePostsFromLocalStorage) {
             this.incomePosts = incomePostsFromLocalStorage;
@@ -62,23 +62,8 @@ Vue.createApp({
             this.dataLoaded = JSON.parse(dataloadedFromLocalStorage);
         }
 
-        let savedIncomePosts = localStorage.getItem('incomePosts');
-        if (savedIncomePosts) {
-            this.incomePosts = JSON.parse(savedIncomePosts);
-            this.calculateIncome(this.incomePosts);
-        }
-
-        let savedExpensesPosts = localStorage.getItem('expensesPosts');
-        if (savedExpensesPosts) {
-            this.expensesPosts = JSON.parse(savedExpensesPosts);
-            this.calculateExpenses(this.expensesPosts);
-        }
-
-        /* if (this.dataLoaded) {
-            this.fetchData();
-        } */
-
-
+        this.calculateIncome(this.incomePosts);
+        this.calculateExpenses(this.expensesPosts);
     },
 
     computed: {
