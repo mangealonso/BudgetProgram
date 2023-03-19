@@ -112,7 +112,7 @@
             <p>{{totalBalance}}</p>
 
             <div id="monthlySummary">
-                <button @click="toggleExpenses">Show Expenses Per Month</button>
+                <button @click="toggleExpenses">Show Expenses Summary</button>
                 <div id="expensesPerMonth" :hidden="expensesHidden">
 
                     <label><input type="radio" id="year" value="Year" v-model="picked">Year</label>
@@ -122,9 +122,9 @@
                     <!-- <label for="two">Expense</label> -->
                     <!-- @change="findUniqueMonths('expenseDate') -->
 
-                    <h4>Monthly Summary:
+                    <!-- <h4>Summary:
                         {{picked}}</h4>
-
+ -->
                     <div v-if="picked !== 'Month'">
                         <p>Expenses:</p>
                         <ol>
