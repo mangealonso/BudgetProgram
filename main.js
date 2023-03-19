@@ -27,6 +27,7 @@ Vue.createApp({
 
             dropDownOptions: [],
             filteredByMonth: [],
+           
             monthsWithExpenses: [],
 
             yearAndMonth: '',
@@ -98,31 +99,6 @@ Vue.createApp({
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
         },
 
-        // findUniqueMonths(expenseDate) 
-        // {
-        //     this.months = [...new Set(this.expensesPosts.map(item => item[expenseDate]))]
-        //     .filter(value => value !== undefined && value !== null);
-        // },
-
-        // getMonthYearArray(monthString) {
-
-        //     const d = new Date(expenseObject.expenseDate);
-
-        //     let currentExpenseMonth = this.months[d.getMonth()];
-        //     let currentExpenseYear = d.getFullYear().toString() ;
-        //     this.yearAndMonth = currentExpenseMonth + ' ' + currentExpenseYear;
-
-        //     let dropDownObject = {
-        //         label: this.yearAndMonth,
-        //         value: this.yearAndMonth
-        //     }
-
-        //     if (!this.dropDownOptions.some(option => 
-        //         option.value === dropDownObject.value)) {
-        //         this.dropDownOptions.push(dropDownObject);
-        //     }
-        // },
-
         filterByMonth(month) {
 
             this.filteredByMonth = [];
@@ -130,10 +106,6 @@ Vue.createApp({
             if (month != '') {
 
                 let monthToCheck = month.slice(0, -5);
-
-                // let filteredByMonthObject = {
-
-                // }
 
                 for (i = 0; i < this.expensesPosts.length; i++) {
                     const d = new Date(this.expensesPosts[i].expenseDate);
@@ -164,15 +136,6 @@ Vue.createApp({
 
             //    this.monthlyExpenses = expenses;
         },
-
-        // shouldDisplayOption(optionValue) {
-        //     if (optionValue === this.perMonth) {
-        //         return 'none';
-        //     }
-        //     else {
-        //         return 'block';
-        //     }
-        //     },
 
 
         addIncomePost() {
@@ -258,16 +221,29 @@ Vue.createApp({
 
             const dd = new Date(object.expenseDate);
 
-            let currentExpenseMonth = this.months[dd.getMonth()];
+            const currentExpenseMonth = this.months[dd.getMonth()];
 
             let monthsWithExpensesObject = {
                 label: currentExpenseMonth
             }
 
-            if (!this.monthsWithExpenses.some(option =>
-                option.label === monthsWithExpenses.label)) {
+            let alreadyAdded = false; 
+            for(let i=0;i<this.monthsWithExpenses.length;i++)
+            {
+                if (monthsWithExpensesObject.label === this.monthsWithExpenses[i].label) 
+                {
+                    alreadyAdded = true; 
+                    break;
+                }
+            }
+
+            if (!alreadyAdded) {
                 this.monthsWithExpenses.push(monthsWithExpensesObject);
             }
+            // if (!this.monthsWithExpenses.some(option =>
+            //     option.label === this.monthsWithExpenses.label)) {
+            //     this.monthsWithExpenses.push(monthsWithExpensesObject);
+            // }
         },
 
         checkDropDownObject(object) {
@@ -390,6 +366,7 @@ Vue.createApp({
 
                     this.expensesPosts.forEach(expensesPost => {
                         this.checkDropDownObject(expensesPost);
+                        this.checkMonthsWithExpenses(expensesPost);
                     });
 
                     this.dataLoaded = true;
