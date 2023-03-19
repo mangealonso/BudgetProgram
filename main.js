@@ -239,7 +239,32 @@ Vue.createApp({
 
             this.saveToLocalStorage();
 
-            const d = new Date(expenseObject.expenseDate);
+            this.checkDropDownObject(expenseObject)
+
+            // const d = new Date(expenseObject.expenseDate);
+
+            // let currentExpenseMonth = this.months[d.getMonth()];
+            // let currentExpenseYear = d.getFullYear().toString() ;
+            // this.yearAndMonth = currentExpenseMonth + ' ' + currentExpenseYear;
+
+            // let dropDownObject = {
+            //     label: this.yearAndMonth,
+            //     value: this.yearAndMonth
+            // }
+
+            // if (!this.dropDownOptions.some(option => 
+            //     option.value === dropDownObject.value)) {
+            //     this.dropDownOptions.push(dropDownObject);
+            // }
+            // // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
+            // this.filterByMonth(this.perMonth);
+
+            // this.PerMonth = '';
+        },
+
+        checkDropDownObject (object) {
+
+            const d = new Date(object.expenseDate);
 
             let currentExpenseMonth = this.months[d.getMonth()];
             let currentExpenseYear = d.getFullYear().toString() ;
@@ -255,10 +280,9 @@ Vue.createApp({
                 this.dropDownOptions.push(dropDownObject);
             }
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
-            // this.filterByMonth(this.perMonth);
-
-            // this.PerMonth = '';
+            this.filterByMonth(this.perMonth);
         },
+
         calculateIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
 
@@ -341,8 +365,14 @@ Vue.createApp({
                     this.expenseID = this.expensesPosts.length;
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
+
+                    this.expensesPosts.forEach(expensesPost => {
+                        this.checkDropDownObject(expensesPost);
+                      });
+
                     this.dataLoaded = true;
                 })
+            
         }
     }
 }).mount('#app')
