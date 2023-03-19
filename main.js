@@ -27,6 +27,7 @@ Vue.createApp({
 
             dropDownOptions:[],
             filteredByMonth: [],
+            monthsWithExpenses: [],
 
             yearAndMonth: '',
 
@@ -241,6 +242,8 @@ Vue.createApp({
 
             this.checkDropDownObject(expenseObject)
 
+            this.checkMonthsWithExpenses(expenseObject); 
+
             // const d = new Date(expenseObject.expenseDate);
 
             // let currentExpenseMonth = this.months[d.getMonth()];
@@ -261,6 +264,22 @@ Vue.createApp({
 
             // this.PerMonth = '';
         },
+
+        checkMonthsWithExpenses (object) {
+
+            const dd = new Date(object.expenseDate);
+
+            let currentExpenseMonth = this.months[dd.getMonth()];
+
+            let monthsWithExpensesObject = {
+                label: currentExpenseMonth
+            }
+
+            if (!this.monthsWithExpenses.some(option => 
+                option.label === monthsWithExpenses.label)) {
+                this.monthsWithExpenses.push(monthsWithExpensesObject);
+            }
+        }, 
 
         checkDropDownObject (object) {
 

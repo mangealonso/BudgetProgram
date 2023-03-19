@@ -149,7 +149,8 @@
                     <div v-if="picked !== 'Month'">
                         <p>Expenses:</p>
                         <ol>
-                            <li></li>
+                            <li v-for="option in dropDownOptions" key="option.value" :value="option.value">
+                                {{option.value}}: </li>
                         </ol>
 
                     </div>
@@ -161,20 +162,10 @@
                                 <option v-for="option in dropDownOptions" :key="option.value" :value="option.value" v-show="perMonth != option.value" >
                         {{ option.label}}
                     </option>
-
-                                <!-- <option value="2023-03">Mar 2023</option>
-                                <option value="2023-02">Feb 2023</option>
-                                <option value="2023-01">Jan 2023</option>
-                                <option value="2022-12">Dec 2022</option> -->
                             </select>
                         </label>
 
                         <p v-if="perMonth && perMonth !== ''">Expenses this month: {{monthlyExpenses}}</p>
-
-                        <!-- <ul>
-                <li v-for="post in filteredPosts" :key="post.id"> {{post.expenseText}}, {{post.expenseCategory}}
-                    , {{post.expenseAmount}}, {{post.expenseDate}} </li>
-              </ul> -->
                     </div>
                 </div>
             </div>
