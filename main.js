@@ -20,7 +20,10 @@ Vue.createApp({
             expenseAmount: '',
             totalExpenses: 0,
 
-            // months: [],
+            months: [
+                "January", "February", "March", "April", "May", "June", 
+                "July", "August", "September", "October", "November", "December"
+            ],
 
             totalBalance: 0,
 
@@ -190,6 +193,11 @@ Vue.createApp({
             this.calculateExpenses(this.expensesPosts);
 
             this.saveToLocalStorage();
+
+            const d = new Date(expenseObject.expenseDate);
+
+            let currentExpenseMonth = this.months[d.getMonth()];
+            let currentExpenseYear = d.getFullYear().toString() ;
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
             this.filterByMonth(this.perMonth);
 
