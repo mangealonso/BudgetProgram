@@ -122,21 +122,21 @@
                 <div v-for="(expense, month) in monthlyExpenses" :key="month">
                     {{ month }}: {{ expense }}
                 </div>
-                
+
                 <!-- <button @click="toggleExpenses">Show Expenses Summary</button>
                 <div id="expensesPerMonth" :hidden="expensesHidden">
 
                     <label><input type="radio" id="year" value="Year" v-model="picked">Year</label> -->
-                    <!-- <label for="one">Income</label> -->
+                <!-- <label for="one">Income</label> -->
 
-                    <!-- <label><input type="radio" id="month" value="Month" v-model="picked">Month</label> -->
-                    <!-- <label for="two">Expense</label> -->
-                    <!-- @change="findUniqueMonths('expenseDate') -->
+                <!-- <label><input type="radio" id="month" value="Month" v-model="picked">Month</label> -->
+                <!-- <label for="two">Expense</label> -->
+                <!-- @change="findUniqueMonths('expenseDate') -->
 
-                    <!-- <h4>Summary:
+                <!-- <h4>Summary:
                         {{picked}}</h4>
  -->
-                    <!-- <div v-if="picked !== 'Month'">
+                <!-- <div v-if="picked !== 'Month'">
                         <p>Expenses:</p>
                         <ol>
                             <li v-for="{label, value} in dropDownOptions">
@@ -144,7 +144,7 @@
                         </ol>
                     </div> -->
 
-                    <!-- <div v-else-if="picked !== 'Year'">
+                <!-- <div v-else-if="picked !== 'Year'">
                         <label>
                             <select v-model="perMonth" @change="filterByMonth(perMonth),showAmount">
                                 <option value="">Month</option>

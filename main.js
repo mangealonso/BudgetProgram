@@ -12,8 +12,8 @@ Vue.createApp({
             incomeDate: '',
 
             totalIncome: 0,
-            monthlyIncome: {},
-            monthlyExpenses: {},
+            /* monthlyIncome: {},
+            monthlyExpenses: {}, */
 
             expensesPosts: [],
             expenseID: 0,
@@ -223,9 +223,9 @@ Vue.createApp({
 
             this.saveToLocalStorage();
 
-            this.checkDropDownObject(expenseObject)
+            /* this.checkDropDownObject(expenseObject)
 
-            this.checkMonthsWithExpenses(expenseObject);
+            this.checkMonthsWithExpenses(expenseObject); */
 
         },
         /* checkMonthsWithExpenses(object) {
