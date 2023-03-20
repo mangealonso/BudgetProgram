@@ -45,12 +45,32 @@ test('load data', async ({ page }) => {
     //Click the Load data
     await page.getByRole('button', {name: /Load data/i}).click();
 
-    //Show 
+    //Show all Expenses from json has been loaded
     let allExpensesData = await page.locator('#expenseSection li').count();
     await expect(allExpensesData).toEqual(25);
-
 });
 
+
+test('load data remove data', async ({ page }) => {
+    await page.goto('http://127.0.0.1:5501/');
+
+    //Click the Load data
+    await page.getByRole('button', {name: /Load data/i}).click();
+
+
+    //Show all Expenses from json has been loaded
+    let LoadedExpensesDataCount = await page.locator('#expenseSection li').count();
+    await expect(LoadedExpensesDataCount).toEqual(25);
+
+     //Delete all expenses
+    await page.getByRole('button', {name: /Delete all expenses posts/i}).click();
+
+    //Show all Expenses has been removed
+    let ExpensesRemoved = await page.locator('#expenseSection li').count();
+    await expect(ExpensesRemoved).toEqual(0);
+
+
+});
 
 
 // test('add one todo item and show it on the page', async ({ page }) => {

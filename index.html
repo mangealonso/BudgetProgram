@@ -23,7 +23,7 @@
             <form @submit.prevent="addIncomePost">
 
                 <p>Title:</p>
-                <input id="incomeText" type="text" v-model="incomeText">
+                <input id="incomeTitle" type="text" v-model="incomeText">
 
                 <p>Category:</p>
                 <select id="incomeCategory" v-model="incomeCategory">
@@ -61,10 +61,10 @@
             <h2>Add an expense:</h2>
             <form @submit.prevent="addExpensePost">
                 <p>Title:</p>
-                <input type="text" v-model="expenseText">
+                <input id="expenseTitle" type="text" v-model="expenseText">
 
                 <p>Category:</p>
-                <select v-model="expenseCategory">
+                <select id="expenseCategory" v-model="expenseCategory">
                     <option value="Bills">Bills</option>
                     <option value="Groceries">Groceries</option>
                     <option value="Clothes">Clothes</option>
@@ -74,10 +74,10 @@
                 </select>
 
                 <p>Amount:</p>
-                <input type="number" v-model="expenseAmount">
+                <input id="expenseAmount" type="number" v-model="expenseAmount">
 
                 <p>Date:</p>
-                <input type="date" v-model="expenseDate">
+                <input id="expenseDate" type="date" v-model="expenseDate">
 
                 <button type="submit">Save expense</button>
             </form>
