@@ -10,7 +10,9 @@ Vue.createApp({
             incomeCategory: '',
             incomeAmount: '',
             incomeDate: '',
+
             totalIncome: 0,
+            monthlyIncome: {},
 
             expensesPosts: [],
             expenseID: 0,
@@ -29,7 +31,7 @@ Vue.createApp({
             filteredByMonth: [],
             filterMonthlyExpenses: [],
             monthsWithExpenses: [],
-            newFilter:[],
+            newFilter: [],
 
             yearAndMonth: '',
 
@@ -64,8 +66,8 @@ Vue.createApp({
             this.dataLoaded = JSON.parse(dataloadedFromLocalStorage);
         }
 
-        this.calculateTotalIncome(this.incomePosts);
-        this.calculateTotalExpenses(this.expensesPosts);
+        this.calculateIncome(this.incomePosts);
+        this.calculateExpenses(this.expensesPosts);
     },
 
     computed: {
@@ -147,7 +149,7 @@ Vue.createApp({
                 let amount = this.expensesPosts[i].expenseAmount
 
                 if (test === month.slice(0, -5)) {
-                     
+
 
                     //DET ÄR DESSA TVÅ SOM TRIGGAR INFINIT LOOP
                     // this.newFilter.push(this.expensesPosts[i]);
@@ -189,7 +191,7 @@ Vue.createApp({
                 this.incomeAmount = '',
                 this.incomeDate = ''
 
-            this.calculateTotalIncome(this.incomePosts);
+            this.calculateIncome(this.incomePosts);
 
             this.saveToLocalStorage();
         },
@@ -216,7 +218,7 @@ Vue.createApp({
                 this.expenseAmount = '',
                 this.expenseDate = ''
 
-            this.calculateTotalExpenses(this.expensesPosts);
+            this.calculateExpenses(this.expensesPosts);
 
             this.saveToLocalStorage();
 
@@ -271,27 +273,44 @@ Vue.createApp({
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
             this.filterByMonth(this.perMonth);
         },
-        calculateTotalIncome(incomePosts) {
-            this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
+        calculateIncome(incomePosts) {
+            const monthlyIncome = {};
 
+            incomePosts.forEach(post => {
+                const month = new Date(post.incomeDate).toLocaleString('default', { month: 'long', year: 'numeric' });
+                if (!monthlyIncome[month]) {
+                    monthlyIncome[month] = 0;
+                }
+                monthlyIncome[month] += parseFloat(post.incomeAmount);
+            });
+
+            this.totalIncome = Object.values(monthlyIncome).reduce((acc, income) => acc + income, 0);
+
+            //this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
+
+            this.monthlyIncome = monthlyIncome;
+            
             this.saveToLocalStorage();
 
-            this.calculateTotalBalance();
+            this.calculateBalance();
+
+            return monthlyIncome;
         },
-        calculateTotalExpenses(expensesPosts) {
+        calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
             this.saveToLocalStorage();
 
-            this.calculateTotalBalance();
+            this.calculateBalance();
         },
-        calculateTotalBalance() {
+        calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
 
             this.saveToLocalStorage();
         },
         clearIncomePosts() {
             this.incomePosts = [];
+            this.monthlyIncome = {};
             this.incomeID = 0;
             this.totalIncome = 0;
 
@@ -339,12 +358,12 @@ Vue.createApp({
         deleteExpensePost(indexToDelete) {
             this.expensesPosts.splice(indexToDelete, 1)
 
-            this.calculateTotalExpenses(this.expensesPosts)
+            this.calculateExpenses(this.expensesPosts)
         },
         deleteIncomePost(indexToDelete) {
             this.incomePosts.splice(indexToDelete, 1)
 
-            this.calculateTotalIncome(this.incomePosts)
+            this.calculateIncome(this.incomePosts)
         },
         showIncomeDeleteButton(index) {
             return this.incomePosts[index].isChecked;
@@ -365,8 +384,8 @@ Vue.createApp({
                     this.expensesPosts = [...this.expensesPosts, ...data.expensesPosts];
                     this.incomeID = this.incomePosts.length;
                     this.expenseID = this.expensesPosts.length;
-                    this.calculateTotalIncome(this.incomePosts);
-                    this.calculateTotalExpenses(this.expensesPosts);
+                    this.calculateIncome(this.incomePosts);
+                    this.calculateExpenses(this.expensesPosts);
 
                     this.expensesPosts.forEach(expensesPost => {
                         this.checkDropDownObject(expensesPost);

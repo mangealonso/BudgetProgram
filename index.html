@@ -112,6 +112,12 @@
             <p>{{totalBalance}}</p>
 
             <div id="monthlySummary">
+
+                <p>Income per month:</p>
+                <div v-for="(income, month) in monthlyIncome" :key="month">
+                    {{ month }}: {{ income }}
+                </div>
+                
                 <button @click="toggleExpenses">Show Expenses Summary</button>
                 <div id="expensesPerMonth" :hidden="expensesHidden">
 
@@ -149,7 +155,8 @@
                 </div>
             </div>
         </section>
-        
+
     </div>
 </body>
+
 </html>
