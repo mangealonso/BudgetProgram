@@ -103,23 +103,23 @@
             <h2>Summary:</h2>
 
             <h3>Total income:</h3>
-            <p>{{totalIncome}}</p>
+            <p id="totalIncomeAmount">{{totalIncome}}</p>
 
             <h3>Total expenses:</h3>
-            <p>{{totalExpenses}}</p>
+            <p id="totalExpensesAmount">{{totalExpenses}}</p>
 
             <h3>Total balance:</h3>
-            <p>{{totalBalance}}</p>
+            <p id="totalBalance">{{totalBalance}}</p>
 
             <div id="monthlySummary">
 
                 <p>Income per month:</p>
-                <div v-for="(income, month) in monthlyIncome" :key="month">
+                <div class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
                     {{ month }}: {{ income }}
                 </div>
 
                 <p>Expenses per month:</p>
-                <div v-for="(expense, month) in monthlyExpenses" :key="month">
+                <div class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
                     {{ month }}: {{ expense }}
                 </div>
 

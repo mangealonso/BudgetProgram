@@ -6,16 +6,16 @@ test('add one income item and compare title', async ({ page }) => {
 
 
     //Find and fill content
-    await page.locator('#incomeText').fill('Rent');
+    await page.locator('#incomeTitle').fill('Rent');
     await page.locator('#incomeCategory').selectOption('Pay');
     await page.locator('#incomeAmount').fill("100");
     await page.locator('#incomeDate').fill('2023-12-10');
 
     //Click the Save income-button
-    await page.getByRole('button', {name: /Save income/i}).click();
+    await page.getByRole('button', { name: /Save income/i }).click();
 
     //Show item containing 'Rent'
-    let IncomeText = await page.getByRole('listitem').filter({hasText:'Rent'});
+    let IncomeText = await page.getByRole('listitem').filter({ hasText: 'Rent' });
     await expect(IncomeText).toContainText('Rent');
 
 });
@@ -25,25 +25,27 @@ test('add one income item and compare date', async ({ page }) => {
 
 
     //Find and fill content
-    await page.locator('#incomeText').fill('Rent');
+    await page.locator('#incomeTitle').fill('Rent');
     await page.locator('#incomeCategory').selectOption('Pay');
     await page.locator('#incomeAmount').fill("100");
     await page.locator('#incomeDate').fill('2023-12-10');
 
     //Click the Save income-button
-    await page.getByRole('button', {name: /Save income/i}).click();
+    await page.getByRole('button', { name: /Save income/i }).click();
 
     //Show item containing 'Rent'
-    let IncomeText = await page.getByRole('listitem').filter({hasText:'2023-12-10'});
+    let IncomeText = await page.getByRole('listitem').filter({ hasText: '2023-12-10' });
     await expect(IncomeText).toContainText('2023-12-10');
 
 });
 
+
+//kan nog ta bort detta test egentligen? Testar ju samma sak i nästa
 test('load data', async ({ page }) => {
     await page.goto('http://127.0.0.1:5501/');
 
     //Click the Load data
-    await page.getByRole('button', {name: /Load data/i}).click();
+    await page.getByRole('button', { name: /Load data/i }).click();
 
     //Show all Expenses from json has been loaded
     let allExpensesData = await page.locator('#expenseSection li').count();
@@ -55,22 +57,71 @@ test('load data remove data', async ({ page }) => {
     await page.goto('http://127.0.0.1:5501/');
 
     //Click the Load data
-    await page.getByRole('button', {name: /Load data/i}).click();
+    await page.getByRole('button', { name: /Load data/i }).click();
 
-
-    //Show all Expenses from json has been loaded
+    //Expect all Expenses from json has been loaded
     let LoadedExpensesDataCount = await page.locator('#expenseSection li').count();
     await expect(LoadedExpensesDataCount).toEqual(25);
 
-     //Delete all expenses
-    await page.getByRole('button', {name: /Delete all expenses posts/i}).click();
+    //Delete all expenses
+    await page.getByRole('button', { name: /Delete all expenses posts/i }).click();
 
-    //Show all Expenses has been removed
+    //Expect all Expenses has been removed
     let ExpensesRemoved = await page.locator('#expenseSection li').count();
     await expect(ExpensesRemoved).toEqual(0);
+});
 
+
+test('check balance updates', async ({ page }) => {
+    await page.goto('http://127.0.0.1:5501/');
+
+    //Find and fill content in Income
+    await page.locator('#incomeTitle').fill('Present');
+    await page.locator('#incomeCategory').selectOption('Gift');
+    await page.locator('#incomeAmount').fill("1000");
+    await page.locator('#incomeDate').fill('2023-01-22');
+
+    //Click the Save income-button
+    await page.getByRole('button', { name: /Save income/i }).click();
+
+    //Find and fill content in Expense
+    await page.locator('#expenseTitle').fill('Shirt');
+    await page.locator('#expenseCategory').selectOption('Clothes');
+    await page.locator('#expenseAmount').fill("200");
+    await page.locator('#expenseDate').fill('2023-02-01');
+
+    //Click the Save expense-button
+    await page.getByRole('button', { name: /Save expense/i }).click();
+
+
+    //Expect Income, expenses and balance to be correct
+    let totalIncome = await page.locator('#totalIncomeAmount')
+    let totalIncomeText = await totalIncome.textContent();
+    await expect(totalIncomeText).toEqual("1000");
+
+
+    let totalExpenses = await page.locator('#totalExpensesAmount')
+    let totalExpensesText = await totalExpenses.textContent();
+    await expect(totalExpensesText).toEqual("200");
+
+    let totalBalance = await page.locator('#totalBalance')
+    let totalBalanceText = await totalBalance.textContent();
+    await expect(totalBalanceText).toEqual("800");
+
+
+    //Expect Income per Month to be correct
+
+    // let january = await page.locator('#monthlySummary div:has-text("January 2023")');
+    // let januaryContent = await january.textContent();
+
+    let january = await page.locator('.incomeMonth:has-text("January 2023: 1000")');
+    let januaryContent = await january.textContent();
+    await expect(januaryContent).toEqual('January 2023: 1000'); 
 
 });
+
+
+
 
 
 // test('add one todo item and show it on the page', async ({ page }) => {
@@ -123,7 +174,7 @@ test('load data remove data', async ({ page }) => {
 //     await page.keyboard.press('Enter');
 
 //     // Clicking the checkbox for one of the todo items
-//     let listItem = page.getByRole('listitem').filter({hasText:'Buy milk'}); 
+//     let listItem = page.getByRole('listitem').filter({hasText:'Buy milk'});
 //     await listItem.getByRole('checkbox').click();
 
 //     // Showing that there are two todo items left
