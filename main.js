@@ -64,8 +64,8 @@ Vue.createApp({
             this.dataLoaded = JSON.parse(dataloadedFromLocalStorage);
         }
 
-        this.calculateIncome(this.incomePosts);
-        this.calculateExpenses(this.expensesPosts);
+        this.calculateTotalIncome(this.incomePosts);
+        this.calculateTotalExpenses(this.expensesPosts);
     },
 
     computed: {
@@ -189,7 +189,7 @@ Vue.createApp({
                 this.incomeAmount = '',
                 this.incomeDate = ''
 
-            this.calculateIncome(this.incomePosts);
+            this.calculateTotalIncome(this.incomePosts);
 
             this.saveToLocalStorage();
         },
@@ -216,7 +216,7 @@ Vue.createApp({
                 this.expenseAmount = '',
                 this.expenseDate = ''
 
-            this.calculateExpenses(this.expensesPosts);
+            this.calculateTotalExpenses(this.expensesPosts);
 
             this.saveToLocalStorage();
 
@@ -271,21 +271,21 @@ Vue.createApp({
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
             this.filterByMonth(this.perMonth);
         },
-        calculateIncome(incomePosts) {
+        calculateTotalIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
 
             this.saveToLocalStorage();
 
-            this.calculateBalance();
+            this.calculateTotalBalance();
         },
-        calculateExpenses(expensesPosts) {
+        calculateTotalExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
             this.saveToLocalStorage();
 
-            this.calculateBalance();
+            this.calculateTotalBalance();
         },
-        calculateBalance() {
+        calculateTotalBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
 
             this.saveToLocalStorage();
@@ -339,12 +339,12 @@ Vue.createApp({
         deleteExpensePost(indexToDelete) {
             this.expensesPosts.splice(indexToDelete, 1)
 
-            this.calculateExpenses(this.expensesPosts)
+            this.calculateTotalExpenses(this.expensesPosts)
         },
         deleteIncomePost(indexToDelete) {
             this.incomePosts.splice(indexToDelete, 1)
 
-            this.calculateIncome(this.incomePosts)
+            this.calculateTotalIncome(this.incomePosts)
         },
         showIncomeDeleteButton(index) {
             return this.incomePosts[index].isChecked;
@@ -365,8 +365,8 @@ Vue.createApp({
                     this.expensesPosts = [...this.expensesPosts, ...data.expensesPosts];
                     this.incomeID = this.incomePosts.length;
                     this.expenseID = this.expensesPosts.length;
-                    this.calculateIncome(this.incomePosts);
-                    this.calculateExpenses(this.expensesPosts);
+                    this.calculateTotalIncome(this.incomePosts);
+                    this.calculateTotalExpenses(this.expensesPosts);
 
                     this.expensesPosts.forEach(expensesPost => {
                         this.checkDropDownObject(expensesPost);
