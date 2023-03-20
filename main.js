@@ -13,6 +13,7 @@ Vue.createApp({
 
             totalIncome: 0,
             monthlyIncome: {},
+            monthlyExpenses: {},
 
             expensesPosts: [],
             expenseID: 0,
@@ -22,7 +23,7 @@ Vue.createApp({
             expenseAmount: '',
             totalExpenses: 0,
 
-            months: [
+            /* months: [
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             ],
@@ -37,15 +38,15 @@ Vue.createApp({
 
             totalBalance: 0,
 
-            perMonth: '',
+            perMonth: '', */
 
-            monthlyExpenses: 0,
-            someStuffExpenses: 0,
+            //monthlyExpenses: 0,
+            //someStuffExpenses: 0,
 
             dataLoaded: false,
 
-            picked: 'Year',
-            expensesHidden: true
+            /* picked: 'Year',
+            expensesHidden: true */
         }
     },
 
@@ -90,16 +91,16 @@ Vue.createApp({
     },
 
     methods: {
-        toggleExpenses() {
+        /* toggleExpenses() {
 
             this.expensesHidden = !this.expensesHidden;
-        },
+        }, */
         saveToLocalStorage() {
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
         },
-        filterByMonth(month) {
+        /* filterByMonth(month) {
 
             this.filteredByMonth = [];
 
@@ -132,10 +133,10 @@ Vue.createApp({
             this.filteredByMonth.forEach(element => {
 
                 this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
-            });
+            }); */
 
-            //    this.monthlyExpenses = expenses;
-        },
+        //    this.monthlyExpenses = expenses;
+        /* },
         filterByMonthForOptions(month) {
             //TESTING SOME CODE HERE
             this.newFilter = []
@@ -158,8 +159,8 @@ Vue.createApp({
             }
 
             // this.getMonthlyExpenses(this.newFilter);
-        },
-        getMonthlyExpenses(arrayOfPosts) {
+        }, */
+        /* getMonthlyExpenses(arrayOfPosts) {
 
             this.monthlyExpenses = 0;
 
@@ -167,7 +168,7 @@ Vue.createApp({
 
                 this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
             });
-        },
+        }, */
         addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
                 || this.incomeCategory === '' || this.incomeDate === '') {
@@ -227,7 +228,7 @@ Vue.createApp({
             this.checkMonthsWithExpenses(expenseObject);
 
         },
-        checkMonthsWithExpenses(object) {
+        /* checkMonthsWithExpenses(object) {
 
             const dd = new Date(object.expenseDate);
 
@@ -252,8 +253,8 @@ Vue.createApp({
             //     option.label === this.monthsWithExpenses.label)) {
             //     this.monthsWithExpenses.push(monthsWithExpensesObject);
             // }
-        },
-        checkDropDownObject(object) {
+        }, */
+        /* checkDropDownObject(object) {
 
             const d = new Date(object.expenseDate);
 
@@ -272,7 +273,7 @@ Vue.createApp({
             }
             // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
             this.filterByMonth(this.perMonth);
-        },
+        }, */
         calculateIncome(incomePosts) {
             const monthlyIncome = {};
 
@@ -289,7 +290,7 @@ Vue.createApp({
             //this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
 
             this.monthlyIncome = monthlyIncome;
-            
+
             this.saveToLocalStorage();
 
             this.calculateBalance();
@@ -297,11 +298,27 @@ Vue.createApp({
             return monthlyIncome;
         },
         calculateExpenses(expensesPosts) {
-            this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
+            const monthlyExpenses = {};
+
+            expensesPosts.forEach(post => {
+                const month = new Date(post.expenseDate).toLocaleString('default', { month: 'long', year: 'numeric' });
+                if (!monthlyExpenses[month]) {
+                    monthlyExpenses[month] = 0;
+                }
+                monthlyExpenses[month] += parseFloat(post.expenseAmount);
+            })
+
+            this.totalExpenses = Object.values(monthlyExpenses).reduce((acc, expense) => acc + expense, 0);
+
+            this.monthlyExpenses = monthlyExpenses;
+
+            //this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
             this.saveToLocalStorage();
 
             this.calculateBalance();
+
+            return monthlyExpenses;
         },
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
@@ -320,6 +337,7 @@ Vue.createApp({
         },
         clearExpensesPosts() {
             this.expensesPosts = [];
+            this.monthlyExpenses = {};
             this.expenseID = 0;
             this.totalExpenses = 0;
 
@@ -387,10 +405,10 @@ Vue.createApp({
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
 
-                    this.expensesPosts.forEach(expensesPost => {
+                    /* this.expensesPosts.forEach(expensesPost => {
                         this.checkDropDownObject(expensesPost);
                         this.checkMonthsWithExpenses(expensesPost);
-                    });
+                    }); */
 
                     this.dataLoaded = true;
 

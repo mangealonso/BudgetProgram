@@ -117,29 +117,34 @@
                 <div v-for="(income, month) in monthlyIncome" :key="month">
                     {{ month }}: {{ income }}
                 </div>
+
+                <p>Expenses per month:</p>
+                <div v-for="(expense, month) in monthlyExpenses" :key="month">
+                    {{ month }}: {{ expense }}
+                </div>
                 
-                <button @click="toggleExpenses">Show Expenses Summary</button>
+                <!-- <button @click="toggleExpenses">Show Expenses Summary</button>
                 <div id="expensesPerMonth" :hidden="expensesHidden">
 
-                    <label><input type="radio" id="year" value="Year" v-model="picked">Year</label>
+                    <label><input type="radio" id="year" value="Year" v-model="picked">Year</label> -->
                     <!-- <label for="one">Income</label> -->
 
-                    <label><input type="radio" id="month" value="Month" v-model="picked">Month</label>
+                    <!-- <label><input type="radio" id="month" value="Month" v-model="picked">Month</label> -->
                     <!-- <label for="two">Expense</label> -->
                     <!-- @change="findUniqueMonths('expenseDate') -->
 
                     <!-- <h4>Summary:
                         {{picked}}</h4>
  -->
-                    <div v-if="picked !== 'Month'">
+                    <!-- <div v-if="picked !== 'Month'">
                         <p>Expenses:</p>
                         <ol>
                             <li v-for="{label, value} in dropDownOptions">
                                 {{label}} {{filterByMonthForOptions(value)}} </label></li>
                         </ol>
-                    </div>
+                    </div> -->
 
-                    <div v-else-if="picked !== 'Year'">
+                    <!-- <div v-else-if="picked !== 'Year'">
                         <label>
                             <select v-model="perMonth" @change="filterByMonth(perMonth),showAmount">
                                 <option value="">Month</option>
@@ -152,7 +157,7 @@
 
                         <p v-if="perMonth && perMonth !== ''">Expenses this month: {{monthlyExpenses}}</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
 
