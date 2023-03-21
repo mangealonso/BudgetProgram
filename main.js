@@ -309,13 +309,8 @@ Vue.createApp({
 
             this.saveToLocalStorage();
 
-
             //Testar en metod här
-            // this.testUpdateYearAndMonth(expenseObject, this.testMonths, this.testYears);
-
-            /* this.checkDropDownObject(expenseObject)
-
-            this.checkMonthsWithExpenses(expenseObject); */
+            this.testUpdateYearAndMonth(expenseObject, this.testMonths, this.testYears);  
 
         },
 
