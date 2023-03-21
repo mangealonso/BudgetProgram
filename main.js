@@ -23,27 +23,27 @@ Vue.createApp({
             expenseAmount: '',
             totalExpenses: 0,
 
-
-            testYear: [],
+            testSelectedYear: '',
+            testYears: [],
+            testSelectedMonth: '',
 
             //Class or not? 
             testMonths: [
-                { id: 0, label: "January", value:0, },
-                { id: 1, label: "February", value:0 },
-                { id: 2, label: "March", value:0 },
-                { id: 3, label: "April", value:0 },
-                { id: 4, label: "May", value:0 },
-                { id: 5, label: "June", value:0 },
-                { id: 6, label: "July", value:0 },
-                { id: 7, label: "August", value:0 },
-                { id: 8, label: "September", value:0 },
-                { id: 9, label: "October", value:0 },
-                { id: 10, label: "November", value:0 },
-                { id: 11, label: "December", value:0 },
-                
-                label= "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
+                { id: 0, label: "January", testMExpense: 0 },
+                { id: 1, label: "February", testMExpense: 0 },
+                { id: 2, label: "March", testMExpense: 0 },
+                { id: 3, label: "April", testMExpense: 0 },
+                { id: 4, label: "May", testMExpense: 0 },
+                { id: 5, label: "June", testMExpense: 0 },
+                { id: 6, label: "July", testMExpense: 0 },
+                { id: 7, label: "August", testMExpense: 0 },
+                { id: 8, label: "September", testMExpense: 0 },
+                { id: 9, label: "October", testMExpense: 0 },
+                { id: 10, label: "November", testMExpense: 0 },
+                { id: 11, label: "December", testMExpense: 0 }
             ],
+
+
             /*
                         dropDownOptions: [],
                         filteredByMonth: [],
@@ -100,11 +100,43 @@ Vue.createApp({
 
         hasExpensePosts() {
             return this.expensesPosts.length > 0;
-        }
+        },
 
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
         //     }
+
+        testComputeMonthlyExpenses () {
+
+            if (!this.testSelectedYear == '' && !this.testSelectedMonth == '' ) {
+            let testCurrentYear = this.testSelectedYear;
+            let testCurrentMonthString = this.testSelectedMonth;
+
+            if (testCurrentMonthString === "March")
+            {
+                testCurrentMonthString = "mars";
+            }
+            let testCurrentMonthId = this.testSelectedMonth.id;
+            
+            
+
+            this.expensesPosts.forEach(post => {
+                const testYear = new Date(post.expenseDate).toLocaleString('default', { year: 'numeric' });
+                const testMonth = new Date(post.expenseDate).toLocaleString('default', { month:'long'}).toLowerCase();
+
+                if (testYear === testCurrentYear && testMonth === testCurrentMonthString.toLowerCase()) {
+                    
+                    const testDesiredObject = this.testMonths.filter(obj => obj.label == testCurrentMonthString)[0]
+
+                    testDesiredObject.testMExpense += post.expenseAmount;
+                    
+                }
+               
+            })
+
+        }
+    }
+
     },
 
     methods: {
@@ -172,9 +204,30 @@ Vue.createApp({
 
             this.saveToLocalStorage();
 
+
+            //Testar en metod här
+            this.testUpdateYearAndMonth(expenseObject, this.testMonths, this.testYears);
+
             /* this.checkDropDownObject(expenseObject)
 
             this.checkMonthsWithExpenses(expenseObject); */
+
+        },
+
+        testUpdateYearAndMonth(expenseObject, testMonths, testYears) {
+
+            const testTemporaryMonth = new Date(expenseObject.expenseDate).toLocaleString('default', { month: 'long' });
+            const testTemporaryYear = new Date(expenseObject.expenseDate).toLocaleString('default', { year: 'numeric' });
+
+            let yearObject = {
+                label: testTemporaryYear
+            };
+
+            const yearExists = this.testYears.some((year) => year.label === testTemporaryYear);
+            if (!yearExists) {
+                this.testYears.push(yearObject)
+            }
+
 
         },
 
@@ -308,6 +361,10 @@ Vue.createApp({
                     this.expenseID = this.expensesPosts.length;
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
+
+                    this.expensesPosts.forEach(expensesPost => {
+                        this.testUpdateYearAndMonth(expensesPost)
+                    });
 
                     /* this.expensesPosts.forEach(expensesPost => {
                         this.checkDropDownObject(expensesPost);

@@ -136,12 +136,28 @@
 
                 <div id="TestExpensesSection">
                     <h4>Testexpenses Per Month:</h4>
-                    <p>
-                        <ol>
+                    <p><select v-model="testSelectedYear" @change="">
+                        <option value="">Year</option>
+                        <option v-for="year in testYears" :label="year.label">
+                            {{year.label}}
+                        </option>
+                    </select>
+
+                    <select v-model="testSelectedMonth" @change="testComputeMonthlyExpenses">
+                        <option value="">Month</option>
+                        <option v-for="month in testMonths" :key="month.id">
+                            {{ month.label }}
+                        </option>
+                        <p id="testYearDisplay"></p>
+                            <!-- v-show="testSelectedMonth != month.value"> 
+                            {{ month.label}}: {{month.value}} -->
+                       
+                    </select>
+                        <!-- <ol>
                         <li v-for="{label, value} in dropDownOptions">
-                            {{label}} {{filterByMonthForOptions(value)}} </label></li>
-                    </ol>
-                </p>
+                            {{label}} {{filterByMonthForOptions(value)}} </li>
+                    </ol> -->
+                
 
 
                 </div>
