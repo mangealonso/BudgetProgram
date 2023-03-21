@@ -148,11 +148,15 @@
                         <option v-for="month in testMonths" :key="month.id">
                             {{ month.label }}
                         </option>
-                        <p id="testYearDisplay"></p>
+                    </select>
+
+                        <div v-if="testSelectedMonth !== ''">
+                            <p>Selected year: {{testSelectedYear}} Selected month: {{testSelectedMonth}} Expenses: {{selectedMonthExpenses}}</p>
+                            
                             <!-- v-show="testSelectedMonth != month.value"> 
                             {{ month.label}}: {{month.value}} -->
                        
-                    </select>
+                   
                         <!-- <ol>
                         <li v-for="{label, value} in dropDownOptions">
                             {{label}} {{filterByMonthForOptions(value)}} </li>
