@@ -128,7 +128,7 @@
                 <div id="monthlyExpensesSection">
                     <h4>Expenses per month:</h4>
                 <ol>
-                    <li class="expenseMonth" v-for="(income, month) in monthlyIncome" :key="month">
+                    <li class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
                        <label class="expenseMonthLabel">
                         {{ month }}: {{ expense }}</label> </li>
                 </ol>

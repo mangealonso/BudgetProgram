@@ -103,7 +103,7 @@ test('check balance updates', async ({ page }) => {
     let incomeJanuaryContent = await incomeJanuary.textContent();
     await expect(incomeJanuaryContent).toEqual('January 2023: 1000'); 
 
-    let expenseFebruary = await page.locator('.expenseMonth:has-text("February 2023: 200")');
+    let expenseFebruary = await page.locator('.expenseMonthLabel:has-text("February 2023: 200")');
     let expenseFebruaryContent = await expenseFebruary.textContent();
     await expect(expenseFebruaryContent).toEqual('February 2023: 200'); 
 
