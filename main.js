@@ -210,47 +210,47 @@ Vue.createApp({
                 monthId = 0;
             }
 
-            else if (MonthString === "February") {
+            else if (MonthString === "February" || MonthString ==="februari") {
                 monthId = 1;
             }
 
-            else if (MonthString === "March") {
+            else if (MonthString === "March" || MonthString === "mars") {
                 monthId = 2;
 
             }
-            else if (MonthString === "April") {
+            else if (MonthString === "April" || MonthString === "april") {
                 monthId = 3;
 
             }
-            else if (MonthString === "May") {
+            else if (MonthString === "May" || MonthString === "maj") {
                 monthId = 4;
 
             }
-            else if (MonthString === "June") {
+            else if (MonthString === "June" || MonthString === "juni") {
                 monthId = 5;
 
             }
-            else if (MonthString === "July") {
+            else if (MonthString === "July" || MonthString === "juli") {
                 monthId = 6;
 
             }
-            else if (MonthString === "August") {
+            else if (MonthString === "August" || MonthString === "augusti") {
                 monthId = 7;
 
             }
-            else if (MonthString === "September") {
+            else if (MonthString === "September" || MonthString === "september") {
                 monthId = 8;
 
             }
-            else if (MonthString === "October") {
+            else if (MonthString === "October" || MonthString === "oktober") {
                 monthId = 9;
 
             }
-            else if (MonthString === "November") {
+            else if (MonthString === "November" || MonthString === "november") {
                 monthId = 10;
 
             }
-            else if (MonthString === "December") {
+            else if (MonthString === "December" || MonthString === "december") {
                 monthId = 11;
 
             }
@@ -319,56 +319,56 @@ Vue.createApp({
                     const testYear = new Date(post.expenseDate).toLocaleString('default', { year: 'numeric' });
                     const testExpensesMonthString = new Date(post.expenseDate).toLocaleString('default', { month: 'long' });
                     
-                    let testExpensesMonthId = this.testfindMonthIdFromMonthString();
+                    let testExpensesMonthId = this.testfindMonthIdFromMonthString(testExpensesMonthString);
 
-                    if (testExpensesMonthString === "januari") {
-                        testExpensesMonthId = 0;
+                    // if (testExpensesMonthString === "januari") {
+                    //     testExpensesMonthId = 0;
 
-                    }
-                    else if (testExpensesMonthString === "februari") {
-                        testExpensesMonthId = 1;
+                    // }
+                    // else if (testExpensesMonthString === "februari") {
+                    //     testExpensesMonthId = 1;
 
-                    }
-                    else if (testExpensesMonthString === "mars") {
-                        testExpensesMonthId = 2;
+                    // }
+                    // else if (testExpensesMonthString === "mars") {
+                    //     testExpensesMonthId = 2;
 
-                    }
-                    else if (testExpensesMonthString === "april") {
-                        testExpensesMonthId = 3;
+                    // }
+                    // else if (testExpensesMonthString === "april") {
+                    //     testExpensesMonthId = 3;
 
-                    }
-                    else if (testExpensesMonthString === "maj") {
-                        testExpensesMonthId = 4;
+                    // }
+                    // else if (testExpensesMonthString === "maj") {
+                    //     testExpensesMonthId = 4;
 
-                    }
-                    else if (testExpensesMonthString === "juni") {
-                        testExpensesMonthId = 5;
+                    // }
+                    // else if (testExpensesMonthString === "juni") {
+                    //     testExpensesMonthId = 5;
 
-                    }
-                    else if (testExpensesMonthString === "juli") {
-                        testExpensesMonthId = 6;
+                    // }
+                    // else if (testExpensesMonthString === "juli") {
+                    //     testExpensesMonthId = 6;
 
-                    }
-                    else if (testExpensesMonthString === "augusti") {
-                        testExpensesMonthId = 7;
+                    // }
+                    // else if (testExpensesMonthString === "augusti") {
+                    //     testExpensesMonthId = 7;
 
-                    }
-                    else if (testExpensesMonthString === "september") {
-                        testExpensesMonthId = 8;
+                    // }
+                    // else if (testExpensesMonthString === "september") {
+                    //     testExpensesMonthId = 8;
 
-                    }
-                    else if (testExpensesMonthString === "oktober") {
-                        testExpensesMonthId = 9;
+                    // }
+                    // else if (testExpensesMonthString === "oktober") {
+                    //     testExpensesMonthId = 9;
 
-                    }
-                    else if (testExpensesMonthString === "november") {
-                        testExpensesMonthId = 10;
+                    // }
+                    // else if (testExpensesMonthString === "november") {
+                    //     testExpensesMonthId = 10;
 
-                    }
-                    else if (testExpensesMonthString === "december") {
-                        testExpensesMonthId = 11;
+                    // }
+                    // else if (testExpensesMonthString === "december") {
+                    //     testExpensesMonthId = 11;
 
-                    }
+                    // }
 
 
                     if (testYear === testCurrentYear && testExpensesMonthId === testCurrentMonthId) {
