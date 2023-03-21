@@ -12,8 +12,8 @@ Vue.createApp({
             incomeDate: '',
 
             totalIncome: 0,
-            /* monthlyIncome: {},
-            monthlyExpenses: {}, */
+            monthlyIncome: {},
+            monthlyExpenses: {},
 
             expensesPosts: [],
             expenseID: 0,
@@ -34,11 +34,11 @@ Vue.createApp({
             monthsWithExpenses: [],
             newFilter: [],
 
-            yearAndMonth: '',
+            yearAndMonth: '',*/
 
             totalBalance: 0,
 
-            perMonth: '', */
+            /*perMonth: '', */
 
             //monthlyExpenses: 0,
             //someStuffExpenses: 0,
