@@ -134,6 +134,18 @@
                 </ol>
                 </div>
 
+                <div id="TestExpensesSection">
+                    <h4>Testexpenses Per Month:</h4>
+                    <p>
+                        <ol>
+                        <li v-for="{label, value} in dropDownOptions">
+                            {{label}} {{filterByMonthForOptions(value)}} </label></li>
+                    </ol>
+                </p>
+
+
+                </div>
+
                 <!-- <div class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
                     {{ month }}: {{ expense }}
                 </div> -->

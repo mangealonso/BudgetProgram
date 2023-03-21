@@ -23,18 +23,35 @@ Vue.createApp({
             expenseAmount: '',
             totalExpenses: 0,
 
-            /* months: [
-                "January", "February", "March", "April", "May", "June",
+
+            testYear: [],
+
+            //Class or not? 
+            testMonths: [
+                { id: 0, label: "January", value:0, },
+                { id: 1, label: "February", value:0 },
+                { id: 2, label: "March", value:0 },
+                { id: 3, label: "April", value:0 },
+                { id: 4, label: "May", value:0 },
+                { id: 5, label: "June", value:0 },
+                { id: 6, label: "July", value:0 },
+                { id: 7, label: "August", value:0 },
+                { id: 8, label: "September", value:0 },
+                { id: 9, label: "October", value:0 },
+                { id: 10, label: "November", value:0 },
+                { id: 11, label: "December", value:0 },
+                
+                label= "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             ],
-
-            dropDownOptions: [],
-            filteredByMonth: [],
-            filterMonthlyExpenses: [],
-            monthsWithExpenses: [],
-            newFilter: [],
-
-            yearAndMonth: '',*/
+            /*
+                        dropDownOptions: [],
+                        filteredByMonth: [],
+                        filterMonthlyExpenses: [],
+                        monthsWithExpenses: [],
+                        newFilter: [],
+            
+                        yearAndMonth: '',*/
 
             totalBalance: 0,
 
@@ -100,7 +117,7 @@ Vue.createApp({
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
         },
-     
+
         addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
                 || this.incomeCategory === '' || this.incomeDate === '') {
@@ -160,7 +177,7 @@ Vue.createApp({
             this.checkMonthsWithExpenses(expenseObject); */
 
         },
-        
+
         calculateIncome(incomePosts) {
             const monthlyIncome = {};
 
