@@ -187,7 +187,7 @@ Vue.createApp({
 
         },
 
-        //I så fall borde de inte behövas här nedan heller.
+        //I så fall borde this-variablerna inte behövas här nedan heller (se ovan).
 
         //Lägg till årtal i option-listan (dropdown för år)
         testUpdateYearAndMonth(expenseObject, testMonths, testYears) {
@@ -274,7 +274,7 @@ Vue.createApp({
 
             //för att den inte ska köras när man enbart hunnit välja år i dropdown - före man hinner välja månad
             if (!this.testSelectedYear == '' && !this.testSelectedMonth == '') {
-                
+
                 let testCurrentYear = this.testSelectedYear; //hämta valt år från dropdown, kanske ej behövs. borde kunna skicka in this.SelectedYear direkt
                 let testCurrentMonthString = this.testSelectedMonth; //hämta valt år från dropdown, se ovan
 
@@ -368,7 +368,7 @@ Vue.createApp({
             this.expenseID = 0;
             this.totalExpenses = 0;
 
-            //Added
+            //Added this row - LINDA
             this.testYears = [];
 
             this.saveToLocalStorage();
@@ -407,6 +407,12 @@ Vue.createApp({
             this.expensesPosts.splice(indexToDelete, 1)
 
             this.calculateExpenses(this.expensesPosts)
+
+            //HÄR är ett förslag som jag började skriva på sent inatt men jag har inte testat det. Du får gärna göra det om du vill.
+            // const expenseTestSomething = new Date(this.expensesPosts[indexToDelete].toLocaleString('default', { month: 'long' }))
+            // const expenseTestMonthId = this.testfindMonthIdFromMonthString(expenseTestSomething)
+            // this.testMonths[expenseTestMonthId].testMExpense -= this.expensesPosts[indexToDelete].expenseAmount;
+
         },
         deleteIncomePost(indexToDelete) {
             this.incomePosts.splice(indexToDelete, 1)
