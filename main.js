@@ -182,11 +182,14 @@ Vue.createApp({
 
             this.saveToLocalStorage();
 
-            //Testar en metod här
+            //Testar en metod här - Jag borde inte behöva skicka in this.-variablerna väl?
             this.testUpdateYearAndMonth(expenseObject, this.testMonths, this.testYears);
 
         },
 
+        //I så fall borde de inte behövas här nedan heller.
+
+        //Lägg till årtal i option-listan (dropdown för år)
         testUpdateYearAndMonth(expenseObject, testMonths, testYears) {
 
             const testTemporaryMonth = new Date(expenseObject.expenseDate).toLocaleString('default', { month: 'long' });
@@ -202,15 +205,17 @@ Vue.createApp({
             }
         },
 
+        //metod som hittar månadens id baserat på toLocaleString (som ibland blir på svenska och ibland i engelska)
+        //metoden anropas i metoden som följer på denna 
         testfindMonthIdFromMonthString(MonthString) {
 
             let monthId = '';
 
-            if (MonthString === "January" || MonthString ==="januari") {
+            if (MonthString === "January" || MonthString === "januari") {
                 monthId = 0;
             }
 
-            else if (MonthString === "February" || MonthString ==="februari") {
+            else if (MonthString === "February" || MonthString === "februari") {
                 monthId = 1;
             }
 
@@ -257,30 +262,38 @@ Vue.createApp({
 
             return monthId;
         },
-         
+
+        //
         testComputeMonthlyExpenses() {
 
-            if (!this.testSelectedYear == '' && !this.testSelectedMonth == '') {
-                let testCurrentYear = this.testSelectedYear;
-                let testCurrentMonthString = this.testSelectedMonth;
+            //sätt månadens utgifter till noll varje gång metoden anropas (för att den ska nollas när du byter år t.ex.)
+            this.testMonths.forEach(month => {
+                month.testMExpense = 0;
+            })
 
+
+            //för att den inte ska köras när man enbart hunnit välja år i dropdown - före man hinner välja månad
+            if (!this.testSelectedYear == '' && !this.testSelectedMonth == '') {
+                
+                let testCurrentYear = this.testSelectedYear; //hämta valt år från dropdown, kanske ej behövs. borde kunna skicka in this.SelectedYear direkt
+                let testCurrentMonthString = this.testSelectedMonth; //hämta valt år från dropdown, se ovan
+
+                // här får vi ut månadens id för den månad som är vald i optionlista
                 let testCurrentMonthId = this.testfindMonthIdFromMonthString(testCurrentMonthString);
 
+                //här hämtar vi ut årtal och månad från varje expense
                 this.expensesPosts.forEach(post => {
                     const testYear = new Date(post.expenseDate).toLocaleString('default', { year: 'numeric' });
                     const testExpensesMonthString = new Date(post.expenseDate).toLocaleString('default', { month: 'long' });
-                    
+
+                    //få ut månadsid från varje expense (så att vi sen kan jämföra den med den månaden som är vald)
                     let testExpensesMonthId = this.testfindMonthIdFromMonthString(testExpensesMonthString);
 
+                    //om årtal och månad från expensen stämmer överense med de valda i dropdowns
                     if (testYear === testCurrentYear && testExpensesMonthId === testCurrentMonthId) {
 
-                        // const testDesiredObject = 
-                        // this.testMonths.filter(obj => obj.id === testCurrentMonthId)[0].testMExpense += post.expenseAmount;
-
+                        // id och index är samma så därför funkar det att nu lägg till summan i månadens testMexpense (konstigt variabelnamn)
                         this.testMonths[testCurrentMonthId].testMExpense += post.expenseAmount;
-
-                        // testDesiredObject.testMExpense += post.expenseAmount;
-
                     }
 
                 })
