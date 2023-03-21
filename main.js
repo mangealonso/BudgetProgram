@@ -403,6 +403,9 @@ Vue.createApp({
             this.expenseID = 0;
             this.totalExpenses = 0;
 
+            //Added
+            this.testYears = [];
+
             this.saveToLocalStorage();
 
             this.clearBalance();
