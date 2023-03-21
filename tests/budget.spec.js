@@ -39,20 +39,6 @@ test('add one income item and compare date', async ({ page }) => {
 
 });
 
-
-//kan nog ta bort detta test egentligen? Testar ju samma sak i nästa
-test('load data', async ({ page }) => {
-    await page.goto('http://127.0.0.1:5501/');
-
-    //Click the Load data
-    await page.getByRole('button', { name: /Load data/i }).click();
-
-    //Show all Expenses from json has been loaded
-    let allExpensesData = await page.locator('#expenseSection li').count();
-    await expect(allExpensesData).toEqual(25);
-});
-
-
 test('load data remove data', async ({ page }) => {
     await page.goto('http://127.0.0.1:5501/');
 
