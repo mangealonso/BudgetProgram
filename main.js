@@ -228,52 +228,7 @@ Vue.createApp({
             this.checkMonthsWithExpenses(expenseObject); */
 
         },
-        /* checkMonthsWithExpenses(object) {
-
-            const dd = new Date(object.expenseDate);
-
-            const currentExpenseMonth = this.months[dd.getMonth()];
-
-            let monthsWithExpensesObject = {
-                label: currentExpenseMonth
-            }
-
-            let alreadyAdded = false;
-            for (let i = 0; i < this.monthsWithExpenses.length; i++) {
-                if (monthsWithExpensesObject.label === this.monthsWithExpenses[i].label) {
-                    alreadyAdded = true;
-                    break;
-                }
-            }
-
-            if (!alreadyAdded) {
-                this.monthsWithExpenses.push(monthsWithExpensesObject);
-            }
-            // if (!this.monthsWithExpenses.some(option =>
-            //     option.label === this.monthsWithExpenses.label)) {
-            //     this.monthsWithExpenses.push(monthsWithExpensesObject);
-            // }
-        }, */
-        /* checkDropDownObject(object) {
-
-            const d = new Date(object.expenseDate);
-
-            let currentExpenseMonth = this.months[d.getMonth()];
-            let currentExpenseYear = d.getFullYear().toString();
-            this.yearAndMonth = currentExpenseMonth + ' ' + currentExpenseYear;
-
-            let dropDownObject = {
-                label: this.yearAndMonth,
-                value: this.yearAndMonth
-            }
-
-            if (!this.dropDownOptions.some(option =>
-                option.value === dropDownObject.value)) {
-                this.dropDownOptions.push(dropDownObject);
-            }
-            // Nedan har jag algt till för att den månatliga sammanfattningen ska uppdateras i realtid. 
-            this.filterByMonth(this.perMonth);
-        }, */
+        
         calculateIncome(incomePosts) {
             const monthlyIncome = {};
 
