@@ -100,75 +100,7 @@ Vue.createApp({
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
         },
-        /* filterByMonth(month) {
-
-            this.filteredByMonth = [];
-
-            if (month != '') {
-
-                let monthToCheck = month.slice(0, -5);
-
-                for (i = 0; i < this.expensesPosts.length; i++) {
-                    const d = new Date(this.expensesPosts[i].expenseDate);
-                    let test = this.months[d.getMonth()];
-
-                    if (test === monthToCheck) {
-                        this.filteredByMonth.push(this.expensesPosts[i]);
-                    }
-                }
-
-                // if (month != '') {
-                //     this.filteredPosts = this.expensesPosts.filter(post => post.expenseDate.includes(month))
-                //     //    let expenses = this.monthlyExpenses
-                // }
-
-                // else {
-                //     this.filteredPosts = []
-                // }
-
-            }
-
-            this.monthlyExpenses = 0;
-
-            this.filteredByMonth.forEach(element => {
-
-                this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
-            }); */
-
-        //    this.monthlyExpenses = expenses;
-        /* },
-        filterByMonthForOptions(month) {
-            //TESTING SOME CODE HERE
-            this.newFilter = []
-
-            this.someStuffExpenses = 0;
-
-            for (i = 0; i < this.expensesPosts.length; i++) {
-
-                const d = new Date(this.expensesPosts[i].expenseDate);
-                let test = this.months[d.getMonth()];
-                let amount = this.expensesPosts[i].expenseAmount
-
-                if (test === month.slice(0, -5)) {
-
-
-                    //DET ÄR DESSA TVÅ SOM TRIGGAR INFINIT LOOP
-                    // this.newFilter.push(this.expensesPosts[i]);
-                    // this.someStuffExpenses = this.someStuffExpenses + this.expensesPosts[i].expenseAmount;
-                }
-            }
-
-            // this.getMonthlyExpenses(this.newFilter);
-        }, */
-        /* getMonthlyExpenses(arrayOfPosts) {
-
-            this.monthlyExpenses = 0;
-
-            arrayOfPosts.forEach(element => {
-
-                this.monthlyExpenses = this.monthlyExpenses + element.expenseAmount;
-            });
-        }, */
+     
         addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
                 || this.incomeCategory === '' || this.incomeDate === '') {
