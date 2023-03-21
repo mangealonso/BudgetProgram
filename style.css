@@ -5,7 +5,7 @@
 }
 
 html {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body {
@@ -43,8 +43,12 @@ header {
 }
 
 #monthlySummary {
- border: 2px solid black;
- padding:5px;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+#monthlyExpensesSection {
+    border-top: 1px solid black;
 }
 
 /* #monthlySummary {
@@ -60,23 +64,22 @@ li {
     margin-bottom: 2px;
 }
 
-button{
-    margin-left: 5px;    
+button {
+    margin-left: 5px;
     padding: 1px;
 }
 
-p{
+p {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-h3{
+h3 {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-h4{
+h4 {
     margin-top: 5px;
     margin-bottom: 8px;
 }
-
