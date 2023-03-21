@@ -104,6 +104,8 @@ test('check balance updates', async ({ page }) => {
     let totalExpensesText = await totalExpenses.textContent();
     await expect(totalExpensesText).toEqual("200");
 
+    // let test = await page.locator('.expenseMonth').count();
+
     let totalBalance = await page.locator('#totalBalance')
     let totalBalanceText = await totalBalance.textContent();
     await expect(totalBalanceText).toEqual("800");
@@ -111,13 +113,27 @@ test('check balance updates', async ({ page }) => {
 
     //Expect Income per Month to be correct
 
-    // let january = await page.locator('#monthlySummary div:has-text("January 2023")');
-    // let januaryContent = await january.textContent();
+    let incomeJanuary = await page.locator('.incomeMonth:has-text("January 2023: 1000")');
+    let incomeJanuaryContent = await incomeJanuary.textContent();
+    await expect(incomeJanuaryContent).toEqual('January 2023: 1000'); 
 
-    let january = await page.locator('.incomeMonth:has-text("January 2023: 1000")');
-    let januaryContent = await january.textContent();
-    await expect(januaryContent).toEqual('January 2023: 1000'); 
+    let expenseFebruary = await page.locator('.expenseMonth:has-text("February 2023: 200")');
+    let expenseFebruaryContent = await expenseFebruary.textContent();
+    await expect(expenseFebruaryContent).toEqual('February 2023: 200'); 
 
+    //Delete the expense-post
+    let expenseClassCheckbox = await page.locator('.expenseCheckbox').check();
+    let deleteExpense = await page.locator('#deleteThisExpense').click();
+    // let thisCheckbox = await expenseClassCheckbox.locator('checkbox').check();
+
+    //Expext Balance to be updated
+    let totalBalance2 = await page.locator('#totalBalance')
+    let totalBalanceText2 = await totalBalance2.textContent();
+    await expect(totalBalanceText2).toEqual("1000");
+
+    //Expect Expenses per month to be empty
+    let getExpenseMonthCount= await page.locator('.expenseMonth').count();
+    await expect(getExpenseMonthCount).toEqual(0);
 });
 
 

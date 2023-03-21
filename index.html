@@ -87,12 +87,12 @@
             <button v-if="hasExpensePosts" @click="clearExpensesPosts">Delete all expenses posts</button>
             <ul>
                 <li v-for="(expense, index) in expensesPosts" :key="expense.id">
-                    <label>
-                        <input type="checkbox" v-model="expense.isChecked">
+                    <label class="expenseLabel">
+                        <input class="expenseCheckbox" type="checkbox" v-model="expense.isChecked">
                         {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}},
                         {{expense.expenseDate}}
                     </label>
-                    <button v-if="showExpenseDeleteButton(index)" @click="deleteExpensePost(index)">Delete</button>
+                    <button id="deleteThisExpense" v-if="showExpenseDeleteButton(index)" @click="deleteExpensePost(index)">Delete</button>
                 </li>
             </ul>
 
