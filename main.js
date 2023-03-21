@@ -112,6 +112,94 @@ Vue.createApp({
                 month => month.label === this.testSelectedMonth
             );
             return selectedMonth ? selectedMonth.testMExpense : '';
+        }
+
+    },
+
+    methods: {
+        /* toggleExpenses() {
+
+            this.expensesHidden = !this.expensesHidden;
+        }, */
+        saveToLocalStorage() {
+            localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
+            localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
+            localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
+        },
+
+        addIncomePost() {
+            if (this.incomeText.trim() === '' || this.incomeAmount === ''
+                || this.incomeCategory === '' || this.incomeDate === '') {
+                return;
+            }
+
+            let incomeObject = {
+                isChecked: false,
+                incomeID: this.incomePosts.length + 1,
+                incomeText: this.incomeText,
+                incomeCategory: this.incomeCategory,
+                incomeAmount: this.incomeAmount,
+                incomeDate: this.incomeDate,
+            };
+            this.incomePosts.push(incomeObject);
+
+            this.incomeID++;
+
+            this.incomeText = '',
+                this.incomeCategory = '',
+                this.incomeAmount = '',
+                this.incomeDate = ''
+
+            this.calculateIncome(this.incomePosts);
+
+            this.saveToLocalStorage();
+        },
+
+        addExpensePost() {
+            if (this.expenseText.trim() === '' || this.expenseAmount === ''
+                || this.expenseCategory === '' || this.expenseDate === '') {
+                return;
+            }
+
+            let expenseObject = {
+                isChecked: false,
+                expenseID: this.expensesPosts.length + 1,
+                expenseText: this.expenseText,
+                expenseCategory: this.expenseCategory,
+                expenseAmount: this.expenseAmount,
+                expenseDate: this.expenseDate,
+            };
+            this.expensesPosts.push(expenseObject);
+
+            this.expenseID++;
+
+            this.expenseText = '',
+                this.expenseCategory = '',
+                this.expenseAmount = '',
+                this.expenseDate = ''
+
+            this.calculateExpenses(this.expensesPosts);
+
+            this.saveToLocalStorage();
+
+            //Testar en metod här
+            this.testUpdateYearAndMonth(expenseObject, this.testMonths, this.testYears);
+
+        },
+
+        testUpdateYearAndMonth(expenseObject, testMonths, testYears) {
+
+            const testTemporaryMonth = new Date(expenseObject.expenseDate).toLocaleString('default', { month: 'long' });
+            const testTemporaryYear = new Date(expenseObject.expenseDate).toLocaleString('default', { year: 'numeric' });
+
+            let yearObject = {
+                label: testTemporaryYear
+            };
+
+            const yearExists = this.testYears.some((year) => year.label === testTemporaryYear);
+            if (!yearExists) {
+                this.testYears.push(yearObject)
+            }
         },
 
 
@@ -240,95 +328,6 @@ Vue.createApp({
                 })
 
             }
-        }
-
-    },
-
-    methods: {
-        /* toggleExpenses() {
-
-            this.expensesHidden = !this.expensesHidden;
-        }, */
-        saveToLocalStorage() {
-            localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
-            localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
-            localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
-        },
-
-        addIncomePost() {
-            if (this.incomeText.trim() === '' || this.incomeAmount === ''
-                || this.incomeCategory === '' || this.incomeDate === '') {
-                return;
-            }
-
-            let incomeObject = {
-                isChecked: false,
-                incomeID: this.incomePosts.length + 1,
-                incomeText: this.incomeText,
-                incomeCategory: this.incomeCategory,
-                incomeAmount: this.incomeAmount,
-                incomeDate: this.incomeDate,
-            };
-            this.incomePosts.push(incomeObject);
-
-            this.incomeID++;
-
-            this.incomeText = '',
-                this.incomeCategory = '',
-                this.incomeAmount = '',
-                this.incomeDate = ''
-
-            this.calculateIncome(this.incomePosts);
-
-            this.saveToLocalStorage();
-        },
-        addExpensePost() {
-            if (this.expenseText.trim() === '' || this.expenseAmount === ''
-                || this.expenseCategory === '' || this.expenseDate === '') {
-                return;
-            }
-
-            let expenseObject = {
-                isChecked: false,
-                expenseID: this.expensesPosts.length + 1,
-                expenseText: this.expenseText,
-                expenseCategory: this.expenseCategory,
-                expenseAmount: this.expenseAmount,
-                expenseDate: this.expenseDate,
-            };
-            this.expensesPosts.push(expenseObject);
-
-            this.expenseID++;
-
-            this.expenseText = '',
-                this.expenseCategory = '',
-                this.expenseAmount = '',
-                this.expenseDate = ''
-
-            this.calculateExpenses(this.expensesPosts);
-
-            this.saveToLocalStorage();
-
-            //Testar en metod här
-            this.testUpdateYearAndMonth(expenseObject, this.testMonths, this.testYears);  
-
-        },
-
-        testUpdateYearAndMonth(expenseObject, testMonths, testYears) {
-
-            const testTemporaryMonth = new Date(expenseObject.expenseDate).toLocaleString('default', { month: 'long' });
-            const testTemporaryYear = new Date(expenseObject.expenseDate).toLocaleString('default', { year: 'numeric' });
-
-            let yearObject = {
-                label: testTemporaryYear
-            };
-
-            const yearExists = this.testYears.some((year) => year.label === testTemporaryYear);
-            if (!yearExists) {
-                this.testYears.push(yearObject)
-            }
-
-
         },
 
         calculateIncome(incomePosts) {
