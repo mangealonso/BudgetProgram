@@ -114,14 +114,25 @@
             <div id="monthlySummary">
 
                 <p>Income per month:</p>
-                <div class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
+                <ol>
+                    <li class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
+                       <label class="incomeMonthLabel">
+                        {{ month }}: {{ income }}</label> </li>
+                </ol>
+                <!-- <div class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
                     {{ month }}: {{ income }}
-                </div>
+                </div> -->
 
                 <p>Expenses per month:</p>
-                <div class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
+                <ol>
+                    <li class="expenseMonth" v-for="(income, month) in monthlyIncome" :key="month">
+                       <label class="expenseMonthLabel">
+                        {{ month }}: {{ expense }}</label> </li>
+                </ol>
+
+                <!-- <div class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
                     {{ month }}: {{ expense }}
-                </div>
+                </div> -->
 
                 <!-- <button @click="toggleExpenses">Show Expenses Summary</button>
                 <div id="expensesPerMonth" :hidden="expensesHidden">
