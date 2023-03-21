@@ -266,110 +266,11 @@ Vue.createApp({
 
                 let testCurrentMonthId = this.testfindMonthIdFromMonthString(testCurrentMonthString);
 
-                // if (testCurrentMonthString === "January") {
-                //     testCurrentMonthId = 0;
-
-                // }
-                // else if (testCurrentMonthString === "February") {
-                //     testCurrentMonthId = 1;
-
-                // }
-                // else if (testCurrentMonthString === "March") {
-                //     testCurrentMonthId = 2;
-
-                // }
-                // else if (testCurrentMonthString === "April") {
-                //     testCurrentMonthId = 3;
-
-                // }
-                // else if (testCurrentMonthString === "May") {
-                //     testCurrentMonthId = 4;
-
-                // }
-                // else if (testCurrentMonthString === "June") {
-                //     testCurrentMonthId = 5;
-
-                // }
-                // else if (testCurrentMonthString === "July") {
-                //     testCurrentMonthId = 6;
-
-                // }
-                // else if (testCurrentMonthString === "August") {
-                //     testCurrentMonthId = 7;
-
-                // }
-                // else if (testCurrentMonthString === "September") {
-                //     testCurrentMonthId = 8;
-
-                // }
-                // else if (testCurrentMonthString === "October") {
-                //     testCurrentMonthId = 9;
-
-                // }
-                // else if (testCurrentMonthString === "November") {
-                //     testCurrentMonthId = 10;
-
-                // }
-                // else if (testCurrentMonthString === "December") {
-                //     testCurrentMonthId = 11;
-
-                // }
-
                 this.expensesPosts.forEach(post => {
                     const testYear = new Date(post.expenseDate).toLocaleString('default', { year: 'numeric' });
                     const testExpensesMonthString = new Date(post.expenseDate).toLocaleString('default', { month: 'long' });
                     
                     let testExpensesMonthId = this.testfindMonthIdFromMonthString(testExpensesMonthString);
-
-                    // if (testExpensesMonthString === "januari") {
-                    //     testExpensesMonthId = 0;
-
-                    // }
-                    // else if (testExpensesMonthString === "februari") {
-                    //     testExpensesMonthId = 1;
-
-                    // }
-                    // else if (testExpensesMonthString === "mars") {
-                    //     testExpensesMonthId = 2;
-
-                    // }
-                    // else if (testExpensesMonthString === "april") {
-                    //     testExpensesMonthId = 3;
-
-                    // }
-                    // else if (testExpensesMonthString === "maj") {
-                    //     testExpensesMonthId = 4;
-
-                    // }
-                    // else if (testExpensesMonthString === "juni") {
-                    //     testExpensesMonthId = 5;
-
-                    // }
-                    // else if (testExpensesMonthString === "juli") {
-                    //     testExpensesMonthId = 6;
-
-                    // }
-                    // else if (testExpensesMonthString === "augusti") {
-                    //     testExpensesMonthId = 7;
-
-                    // }
-                    // else if (testExpensesMonthString === "september") {
-                    //     testExpensesMonthId = 8;
-
-                    // }
-                    // else if (testExpensesMonthString === "oktober") {
-                    //     testExpensesMonthId = 9;
-
-                    // }
-                    // else if (testExpensesMonthString === "november") {
-                    //     testExpensesMonthId = 10;
-
-                    // }
-                    // else if (testExpensesMonthString === "december") {
-                    //     testExpensesMonthId = 11;
-
-                    // }
-
 
                     if (testYear === testCurrentYear && testExpensesMonthId === testCurrentMonthId) {
 
