@@ -67,6 +67,7 @@ Vue.createApp({
         }
     },
 
+
     mounted() {
         const incomePostsFromLocalStorage = JSON.parse(localStorage.getItem('incomePosts'));
         const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
@@ -126,13 +127,13 @@ Vue.createApp({
             return months.sort((a, b) => new Date(b) - new Date(a));
         },
 
-        /* sortIncomePosts(){
+        sortIncomePosts() {
             this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate))
         },
 
-        sortExpensesPosts(){
+        sortExpensesPosts() {
             this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate))
-        }, */
+        },
 
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
@@ -152,7 +153,10 @@ Vue.createApp({
 
             this.expensesHidden = !this.expensesHidden;
         }, */
-        saveToLocalStorage() {
+        saveToLocalStorage() {/* 
+            this.sortIncomePosts();
+            this.sortExpensesPosts(); */
+
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
@@ -166,7 +170,7 @@ Vue.createApp({
 
             let incomeObject = {
                 isChecked: false,
-                incomeID: this.incomePosts.length + 1,
+                incomeID: this.incomeID,
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
                 incomeAmount: this.incomeAmount,
@@ -181,6 +185,7 @@ Vue.createApp({
                 this.incomeAmount = '',
                 this.incomeDate = ''
 
+            /*     this.sortIncomePosts(); */
             this.calculateIncome(this.incomePosts);
 
             this.saveToLocalStorage();
@@ -194,7 +199,7 @@ Vue.createApp({
 
             let expenseObject = {
                 isChecked: false,
-                expenseID: this.expensesPosts.length + 1,
+                expenseID: this.expenseID,
                 expenseText: this.expenseText,
                 expenseCategory: this.expenseCategory,
                 expenseAmount: this.expenseAmount,
@@ -209,6 +214,7 @@ Vue.createApp({
                 this.expenseAmount = '',
                 this.expenseDate = ''
 
+            /* this.sortExpensesPosts(); */
             this.calculateExpenses(this.expensesPosts);
 
             this.saveToLocalStorage();
@@ -465,10 +471,18 @@ Vue.createApp({
             fetch('start-data.json')
                 .then(response => response.json())
                 .then(data => {
-                    this.incomePosts = [...this.incomePosts, ...data.incomePosts];
-                    this.expensesPosts = [...this.expensesPosts, ...data.expensesPosts];
-                    this.incomeID = this.incomePosts.length;
-                    this.expenseID = this.expensesPosts.length;
+                    data.incomePosts.forEach(post => {
+                        post.isChecked = false;
+                        post.incomeID = this.incomeID++;
+                        this.incomePosts.push(post);
+                      });                
+                      
+                      data.expensesPosts.forEach(post => {
+                        post.isChecked = false;
+                        post.expenseID = this.expenseID++;
+                        this.expensesPosts.push(post);
+                      });
+
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
 
