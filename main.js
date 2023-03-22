@@ -103,6 +103,14 @@ Vue.createApp({
             return this.expensesPosts.length > 0;
         },
 
+        sortedIncomePosts(){
+            return this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate))
+        },
+
+        sortedExpensesPosts(){
+            return this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate))
+        },
+        
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
         //     }
