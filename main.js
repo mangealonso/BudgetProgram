@@ -88,6 +88,20 @@ Vue.createApp({
         this.calculateExpenses(this.expensesPosts);
 
     },
+    /* watch: {
+        incomePosts: {
+            immediate: true,
+            handler(posts) {
+                this.incomePosts = posts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate));
+            },
+        },
+        expensesPosts: {
+            immediate: true,
+            handler(posts) {
+                this.expensesPosts = posts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
+            },
+        },
+    }, */
 
     computed: {
 
@@ -103,14 +117,23 @@ Vue.createApp({
             return this.expensesPosts.length > 0;
         },
 
-        sortedIncomePosts(){
-            return this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate))
+        sortedMonthlyIncome() {
+            const months = Object.keys(this.monthlyIncome);
+            return months.sort((a, b) => new Date(b) - new Date(a));
+        },
+        sortedMonthlyExpenses() {
+            const months = Object.keys(this.monthlyExpenses);
+            return months.sort((a, b) => new Date(b) - new Date(a));
         },
 
-        sortedExpensesPosts(){
-            return this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate))
+        /* sortIncomePosts(){
+            this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate))
         },
-        
+
+        sortExpensesPosts(){
+            this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate))
+        }, */
+
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
         //     }
