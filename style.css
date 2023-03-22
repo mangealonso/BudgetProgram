@@ -14,18 +14,38 @@ body {
 }
 
 #app {
+
+    padding-left: 50px;
+    padding-right: 50px;
+
     display: grid;
     grid-template:
         "a a a"
-        "b c d" / 2fr 2fr 3fr;
+        "b c d" / 2fr 2fr 2fr;
 }
 
 header {
     text-align: center;
 }
 
-#incomeSection p, #expenseSection p {
+#allIncomePostsDiv {
+    display: grid;
+}
 
+#allExpensesPostsDiv {
+    display: grid;
+}
+
+#allExpensesPostsDiv h4, #allIncomePostsDiv h4 {
+    text-align: center;
+}
+
+#allExpensesPostsDiv li, #allIncomePostsDiv li {
+    border: solid black 1px;
+
+}
+
+#incomeSection p, #expenseSection p {
     margin-bottom: 1px;
     margin-top: 4px;
 }
@@ -70,11 +90,13 @@ li {
     list-style-type: none;
     margin-top: 2px;
     margin-bottom: 2px;
+    padding: 2px;
 }
 
 button {
-    margin-left: 5px;
+    margin-bottom: 5px;
     padding: 1px;
+    justify-self: center;
 }
 
 p {
@@ -94,4 +116,12 @@ h3 {
 h4 {
     margin-top: 5px;
     margin-bottom: 8px;
+    display: grid;
+}
+
+@media (min-width:1200px) {
+    #app {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
 }
