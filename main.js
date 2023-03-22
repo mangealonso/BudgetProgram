@@ -71,6 +71,8 @@ Vue.createApp({
     mounted() {
         const incomePostsFromLocalStorage = JSON.parse(localStorage.getItem('incomePosts'));
         const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
+        const incomeIDFromLocalStorage = JSON.parse(localStorage.getItem('incomeID'));
+        const expenseIDFromLocalStorage = JSON.parse(localStorage.getItem('expenseID'));
         const dataloadedFromLocalStorage = localStorage.getItem('dataLoaded');
 
         if (incomePostsFromLocalStorage) {
@@ -81,6 +83,14 @@ Vue.createApp({
             this.expensesPosts = expensesPostsFromLocalStorage;
         }
 
+        if (incomeIDFromLocalStorage) {
+            this.incomeID = incomeIDFromLocalStorage;
+        }
+
+        if (expenseIDFromLocalStorage) {
+            this.expenseID = expenseIDFromLocalStorage;
+        }
+
         if (dataloadedFromLocalStorage) {
             this.dataLoaded = JSON.parse(dataloadedFromLocalStorage);
         }
@@ -89,7 +99,7 @@ Vue.createApp({
         this.calculateExpenses(this.expensesPosts);
 
     },
-    /* watch: {
+    watch: {
         incomePosts: {
             immediate: true,
             handler(posts) {
@@ -102,7 +112,7 @@ Vue.createApp({
                 this.expensesPosts = posts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
             },
         },
-    }, */
+    },
 
     computed: {
 
@@ -127,13 +137,13 @@ Vue.createApp({
             return months.sort((a, b) => new Date(b) - new Date(a));
         },
 
-        sortIncomePosts() {
+        /* sortIncomePosts() {
             this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate))
         },
 
         sortExpensesPosts() {
             this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate))
-        },
+        }, */
 
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
@@ -159,6 +169,8 @@ Vue.createApp({
 
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
+            localStorage.setItem('incomeID', JSON.stringify(this.incomeID));
+            localStorage.setItem('expenseID', JSON.stringify(this.expenseID));
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
         },
 
