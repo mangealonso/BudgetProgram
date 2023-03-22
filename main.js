@@ -177,8 +177,6 @@ Vue.createApp({
                 return;
             }
 
-            this.checkDate(this.incomeDate);
-
             let incomeObject = {
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
