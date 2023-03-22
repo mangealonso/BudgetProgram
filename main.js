@@ -76,7 +76,7 @@ Vue.createApp({
         const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
         const incomeIDFromLocalStorage = JSON.parse(localStorage.getItem('incomeID'));
         const expenseIDFromLocalStorage = JSON.parse(localStorage.getItem('expenseID'));
-        const dataloadedFromLocalStorage = localStorage.getItem('dataLoaded');
+        const dataloadedFromLocalStorage = JSON.parse(localStorage.getItem('dataLoaded'));
 
         if (incomePostsFromLocalStorage) {
             this.incomePosts = incomePostsFromLocalStorage;
@@ -95,7 +95,7 @@ Vue.createApp({
         }
 
         if (dataloadedFromLocalStorage) {
-            this.dataLoaded = JSON.parse(dataloadedFromLocalStorage);
+            this.dataLoaded = dataloadedFromLocalStorage;
         }
 
         this.calculateIncome(this.incomePosts);
@@ -103,16 +103,16 @@ Vue.createApp({
 
     },
     watch: {
-        sortedMonthlyIncome: function() {
+        sortedMonthlyIncome: function () {
             this.selectedIncomeMonth = "Choose month";
             this.selectedExpensesMonth = "Choose month";
         },
-        sortedMonthlyExpenses: function() {
+        sortedMonthlyExpenses: function () {
             this.selectedIncomeMonth = "Choose month";
             this.selectedExpensesMonth = "Choose month";
         },
 
-        incomePosts: {
+        /* incomePosts: {
             immediate: true,
             handler(posts) {
                 this.incomePosts = posts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate));
@@ -123,7 +123,7 @@ Vue.createApp({
             handler(posts) {
                 this.expensesPosts = posts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
             },
-        },
+        }, */
     },
 
     computed: {
@@ -192,15 +192,17 @@ Vue.createApp({
                 return;
             }
 
-            let incomeObject = {
-                isChecked: false,
-                incomeID: this.incomeID,
+            let incomeObject = {                
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
                 incomeAmount: this.incomeAmount,
                 incomeDate: this.incomeDate,
+                isChecked: false,
+                incomeID: this.incomeID
             };
             this.incomePosts.push(incomeObject);
+
+            this.sortIncomePosts();
 
             this.incomeID++;
 
@@ -214,22 +216,26 @@ Vue.createApp({
 
             this.saveToLocalStorage();
         },
-
+        sortIncomePosts() {
+            this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate));
+        },
         addExpensePost() {
             if (this.expenseText.trim() === '' || this.expenseAmount === ''
                 || this.expenseCategory === '' || this.expenseDate === '') {
                 return;
             }
 
-            let expenseObject = {
-                isChecked: false,
-                expenseID: this.expenseID,
+            let expenseObject = {                
                 expenseText: this.expenseText,
                 expenseCategory: this.expenseCategory,
                 expenseAmount: this.expenseAmount,
                 expenseDate: this.expenseDate,
+                isChecked: false,
+                expenseID: this.expenseID
             };
             this.expensesPosts.push(expenseObject);
+
+            this.sortExpensesPosts();
 
             this.expenseID++;
 
@@ -246,6 +252,9 @@ Vue.createApp({
             //Testar en metod här - Jag borde inte behöva skicka in this.-variablerna väl?
             this.testUpdateYearAndMonth(expenseObject, this.testMonths, this.testYears);
 
+        },
+        sortExpensesPosts() {
+            this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
         },
 
         //I så fall borde this-variablerna inte behövas här nedan heller (se ovan).
@@ -499,13 +508,16 @@ Vue.createApp({
                         post.isChecked = false;
                         post.incomeID = this.incomeID++;
                         this.incomePosts.push(post);
-                      });                
-                      
-                      data.expensesPosts.forEach(post => {
+                    });
+
+                    data.expensesPosts.forEach(post => {
                         post.isChecked = false;
                         post.expenseID = this.expenseID++;
                         this.expensesPosts.push(post);
-                      });
+                    });
+
+                    this.sortIncomePosts();
+                    this.sortExpensesPosts();
 
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
