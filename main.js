@@ -100,7 +100,6 @@ Vue.createApp({
 
         this.calculateIncome(this.incomePosts);
         this.calculateExpenses(this.expensesPosts);
-
     },
     watch: {
         sortedMonthlyIncome: function () {
@@ -111,21 +110,7 @@ Vue.createApp({
             this.selectedIncomeMonth = "Choose month";
             this.selectedExpensesMonth = "Choose month";
         },
-
-        /* incomePosts: {
-            immediate: true,
-            handler(posts) {
-                this.incomePosts = posts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate));
-            },
-        },
-        expensesPosts: {
-            immediate: true,
-            handler(posts) {
-                this.expensesPosts = posts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
-            },
-        }, */
     },
-
     computed: {
 
         // hiddenPerMonth() {
@@ -149,14 +134,6 @@ Vue.createApp({
             return months.sort((a, b) => new Date(b) - new Date(a));
         },
 
-        /* sortIncomePosts() {
-            this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate))
-        },
-
-        sortExpensesPosts() {
-            this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate))
-        }, */
-
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
         //     }
@@ -175,10 +152,7 @@ Vue.createApp({
 
             this.expensesHidden = !this.expensesHidden;
         }, */
-        saveToLocalStorage() {/* 
-            this.sortIncomePosts();
-            this.sortExpensesPosts(); */
-
+        saveToLocalStorage() {
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
             localStorage.setItem('incomeID', JSON.stringify(this.incomeID));
@@ -198,7 +172,7 @@ Vue.createApp({
                 return;
             }
 
-            if (this.checkForFutureDate(this.incomeDate)){
+            if (this.checkForFutureDate(this.incomeDate)) {
                 alert("Please enter a date that is not in the future.");
                 return;
             }
@@ -224,7 +198,6 @@ Vue.createApp({
                 this.incomeAmount = '',
                 this.incomeDate = ''
 
-            /*     this.sortIncomePosts(); */
             this.calculateIncome(this.incomePosts);
 
             this.saveToLocalStorage();
@@ -238,7 +211,7 @@ Vue.createApp({
                 return;
             }
 
-            if (this.checkForFutureDate(this.expenseDate)){
+            if (this.checkForFutureDate(this.expenseDate)) {
                 alert("Please enter a date that is not in the future.");
                 return;
             }
@@ -262,7 +235,6 @@ Vue.createApp({
                 this.expenseAmount = '',
                 this.expenseDate = ''
 
-            /* this.sortExpensesPosts(); */
             this.calculateExpenses(this.expensesPosts);
 
             this.saveToLocalStorage();
