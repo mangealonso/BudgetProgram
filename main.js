@@ -185,6 +185,12 @@ Vue.createApp({
             localStorage.setItem('expenseID', JSON.stringify(this.expenseID));
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
         },
+        checkForFutureDate(date) {
+            const today = new Date().toLocaleDateString();
+            const inputDate = new Date(date).toLocaleDateString();
+
+            return inputDate > today;
+        },
 
         addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
@@ -192,7 +198,14 @@ Vue.createApp({
                 return;
             }
 
-            let incomeObject = {                
+            if (this.checkForFutureDate(this.incomeDate)){
+                alert("Please enter a date that is not in the future.");
+                return;
+            }
+
+            this.checkDate(this.incomeDate);
+
+            let incomeObject = {
                 incomeText: this.incomeText,
                 incomeCategory: this.incomeCategory,
                 incomeAmount: this.incomeAmount,
@@ -225,7 +238,12 @@ Vue.createApp({
                 return;
             }
 
-            let expenseObject = {                
+            if (this.checkForFutureDate(this.expenseDate)){
+                alert("Please enter a date that is not in the future.");
+                return;
+            }
+
+            let expenseObject = {
                 expenseText: this.expenseText,
                 expenseCategory: this.expenseCategory,
                 expenseAmount: this.expenseAmount,
