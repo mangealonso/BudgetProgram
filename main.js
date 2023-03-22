@@ -23,6 +23,9 @@ Vue.createApp({
             expenseAmount: '',
             totalExpenses: 0,
 
+            selectedIncomeMonth: "Choose month",
+            selectedExpensesMonth: "Choose month",
+
             testSelectedYear: '',
             testYears: [],
             testSelectedMonth: '',
@@ -100,6 +103,15 @@ Vue.createApp({
 
     },
     watch: {
+        sortedMonthlyIncome: function() {
+            this.selectedIncomeMonth = "Choose month";
+            this.selectedExpensesMonth = "Choose month";
+        },
+        sortedMonthlyExpenses: function() {
+            this.selectedIncomeMonth = "Choose month";
+            this.selectedExpensesMonth = "Choose month";
+        },
+
         incomePosts: {
             immediate: true,
             handler(posts) {
