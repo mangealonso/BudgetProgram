@@ -23,8 +23,8 @@ Vue.createApp({
             expenseAmount: '',
             totalExpenses: 0,
 
-            selectedIncomeMonth: "Choose month",
-            selectedExpensesMonth: "Choose month",
+            /* selectedIncomeMonth: "Choose month",
+            selectedExpensesMonth: "Choose month", */
 
             testSelectedYear: 'Year',
             testYears: [],
@@ -32,19 +32,20 @@ Vue.createApp({
 
             //Class or not? 
             testMonths: [
-                { id: 0, label: "January", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 1, label: "February", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 2, label: "March", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 3, label: "April", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 4, label: "May", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 5, label: "June", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 6, label: "July", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 7, label: "August", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 8, label: "September", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 9, label: "October", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 10, label: "November", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 },
-                { id: 11, label: "December", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome:0 }
-            ],
+                { id: 0, label: "January", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 1, label: "February", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 2, label: "March", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 3, label: "April", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 4, label: "May", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 5, label: "June", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 6, label: "July", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 7, label: "August", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 8, label: "September", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 9, label: "October", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 10, label: "November", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 },
+                { id: 11, label: "December", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 }
+            ]
+            ,
 
 
             /*
@@ -76,7 +77,9 @@ Vue.createApp({
         const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
         const incomeIDFromLocalStorage = JSON.parse(localStorage.getItem('incomeID'));
         const expenseIDFromLocalStorage = JSON.parse(localStorage.getItem('expenseID'));
-        const dataloadedFromLocalStorage = JSON.parse(localStorage.getItem('dataLoaded'));
+        /* const dataloadedFromLocalStorage = JSON.parse(localStorage.getItem('dataLoaded')); */
+        const testYearsFromLocalStorage = JSON.parse(localStorage.getItem('testYears'));
+        const testMonthsFromLocalStorage = JSON.parse(localStorage.getItem('testMonths'));
 
         if (incomePostsFromLocalStorage) {
             this.incomePosts = incomePostsFromLocalStorage;
@@ -94,27 +97,42 @@ Vue.createApp({
             this.expenseID = expenseIDFromLocalStorage;
         }
 
-        if (dataloadedFromLocalStorage) {
+        /* if (dataloadedFromLocalStorage) {
             this.dataLoaded = dataloadedFromLocalStorage;
+        } */
+
+        if (testYearsFromLocalStorage) {
+            this.testYears = testYearsFromLocalStorage;
+        }
+
+        if (testMonthsFromLocalStorage) {
+            this.testMonths = testMonthsFromLocalStorage;
         }
 
         this.calculateIncome(this.incomePosts);
         this.calculateExpenses(this.expensesPosts);
     },
-    watch: {
-        sortedMonthlyIncome: function () {
-            this.selectedIncomeMonth = "Choose month";
-            this.selectedExpensesMonth = "Choose month";
-            this.testSelectedYear = "Year";
-            this.testSelectedMonth = "Month";
-        },
-        sortedMonthlyExpenses: function () {
-            this.selectedIncomeMonth = "Choose month";
-            this.selectedExpensesMonth = "Choose month";
-            this.testSelectedYear = "Year";
-            this.testSelectedMonth = "Month";
-        },
+    /* watch: {
+
+        testMonths: {
+            handler() {
+              this.saveToLocalStorage();
+            },
+            deep: true
+          }, */
+    /* sortedMonthlyIncome: function () {
+        this.selectedIncomeMonth = "Choose month";
+        this.selectedExpensesMonth = "Choose month";
+        this.testSelectedYear = "Year";
+        this.testSelectedMonth = "Month";
     },
+    sortedMonthlyExpenses: function () {
+        this.selectedIncomeMonth = "Choose month";
+        this.selectedExpensesMonth = "Choose month";
+        this.testSelectedYear = "Year";
+        this.testSelectedMonth = "Month";
+    }, */
+    /*  }, */
     computed: {
 
         // hiddenPerMonth() {
@@ -129,14 +147,14 @@ Vue.createApp({
             return this.expensesPosts.length > 0;
         },
 
-        sortedMonthlyIncome() {
+        /* sortedMonthlyIncome() {
             const months = Object.keys(this.monthlyIncome);
             return months.sort((a, b) => new Date(b) - new Date(a));
         },
         sortedMonthlyExpenses() {
             const months = Object.keys(this.monthlyExpenses);
             return months.sort((a, b) => new Date(b) - new Date(a));
-        },
+        }, */
 
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
@@ -162,6 +180,8 @@ Vue.createApp({
             localStorage.setItem('incomeID', JSON.stringify(this.incomeID));
             localStorage.setItem('expenseID', JSON.stringify(this.expenseID));
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
+            localStorage.setItem('testYears', JSON.stringify(this.testYears));
+            /* localStorage.setItem('testMonths', JSON.stringify(this.testMonths)); */
         },
         checkForFutureDate(date) {
             const today = new Date().toLocaleDateString();
@@ -264,6 +284,8 @@ Vue.createApp({
             if (!yearExists) {
                 this.testYears.push(yearObject)
             }
+
+            this.saveToLocalStorage();
         },
 
         //metod som hittar månadens id baserat på toLocaleString (som ibland blir på svenska och ibland i engelska)
@@ -371,7 +393,7 @@ Vue.createApp({
 
                 this.testMonths.forEach(post => {
 
-                    post.monthlyBalance = post.monthlyIncome - post.monthlyExpense ;
+                    post.monthlyBalance = post.monthlyIncome - post.monthlyExpense;
                 })
             }
 
