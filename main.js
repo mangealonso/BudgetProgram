@@ -26,9 +26,9 @@ Vue.createApp({
             selectedIncomeMonth: "Choose month",
             selectedExpensesMonth: "Choose month",
 
-            testSelectedYear: '',
+            testSelectedYear: 'Year',
             testYears: [],
-            testSelectedMonth: '',
+            testSelectedMonth: 'Month',
 
             //Class or not? 
             testMonths: [
