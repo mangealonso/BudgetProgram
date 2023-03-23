@@ -53,7 +53,7 @@
                         <label>
                             <input type="checkbox" v-model="income.isChecked">
                             {{income.incomeText}}, {{income.incomeCategory}}, {{income.incomeAmount}},
-                            {{income.incomeDate}}
+                            <p>{{income.incomeDate}}</p>
                         </label>
                         <button v-if="showIncomeDeleteButton(index)" @click="deleteIncomePost(index)">Delete</button>
                     </li>
@@ -96,7 +96,7 @@
                         <label class="expenseLabel">
                             <input class="expenseCheckbox" type="checkbox" v-model="expense.isChecked">
                             {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}},
-                            {{expense.expenseDate}}
+                            <p>{{expense.expenseDate}}</p>
                         </label>
                         <button id="deleteThisExpense" v-if="showExpenseDeleteButton(index)"
                             @click="deleteExpensePost(index)">Delete</button>

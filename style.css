@@ -21,11 +21,14 @@ body {
     display: grid;
     grid-template:
         "a a a"
-        "b c d" / 2fr 2fr 2fr;
+        "b c d" / 2fr 2fr 1fr;
 }
 
 header {
     text-align: center;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    grid-area: a;
 }
 
 #allIncomePostsDiv {
@@ -41,18 +44,13 @@ header {
 }
 
 #allExpensesPostsDiv li, #allIncomePostsDiv li {
-    border: solid black 1px;
+    border-bottom: solid black 1px;
 
 }
 
 #incomeSection p, #expenseSection p {
     margin-bottom: 1px;
     margin-top: 4px;
-}
-
-header {
-    margin-top: 20px;
-    grid-area: a;
 }
 
 #incomeSection {
@@ -68,11 +66,12 @@ header {
 #summarySection {
     grid-area: d;
     padding: 10px;
-    justify-self: center;
+    /* justify-self: center; */
 }
 
 #monthlySummary {
-    border: 2px solid black;
+    
+    /* border: 2px solid black; */
     padding: 5px;
 }
 
@@ -106,7 +105,7 @@ p {
 }
 
 h1 {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 h3 {
@@ -120,9 +119,67 @@ h4 {
     display: grid;
 }
 
-@media (min-width:1200px) {
+
+@media (max-width:800px) {
+ 
     #app {
-        padding-left: 80px;
-        padding-right: 80px;
+        grid-template:
+        "a a"
+        "b c"
+        "d d"
+        
     }
+}
+
+@media (min-width:1000px) {
+
+    header {
+        margin-top: 100px;
+        margin-bottom: 40px;
+    }
+
+    #app {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+
+@media (min-width:1200px) {
+
+    header {
+        margin-top: 100px;
+        margin-bottom: 40px;
+    }
+
+    #app {
+        padding-left: 220px;
+        padding-right: 220px;
+    }
+}
+
+@media (min-width:1400px) {
+
+    header {
+        margin-top: 100px;
+        margin-bottom: 40px;
+    }
+
+    #app {
+        padding-left: 300px;
+        padding-right: 300px;
+    }
+}
+
+@media (min-width:1500px) {
+
+    header {
+        margin-top: 100px;
+        margin-bottom: 40px;
+    }
+
+    #app {
+        padding-left: 350px;
+        padding-right: 350px;
+    }
+
 }
