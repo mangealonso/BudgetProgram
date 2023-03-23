@@ -121,18 +121,18 @@
 
             <div id="monthlySummary">
 
-                <div id="monthlyIncomeSection">
+                <!-- <div id="monthlyIncomeSection">
                 <h4>Income per month:</h4>
                 <ol>
                     <li class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
                        <label class="incomeMonthLabel">
                         {{ month }}: {{ income }}</label> </li>
-                </ol>
+                </ol> -->
                 <!-- </div>
                 <div class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
                     {{ month }}: {{ income }}
                 </div> -->
-
+                <!-- 
                 <div id="monthlyExpensesSection">
                     <h4>Expenses per month:</h4>
                 <ol>
@@ -140,7 +140,7 @@
                        <label class="expenseMonthLabel">
                         {{ month }}: {{ expense }}</label> </li>
                 </ol>
-                </div>
+                </div> 
 
                 <div id="testIncomeSection">
                     <h4>Test income per month:</h4>
@@ -160,10 +160,10 @@
                             {{ month }}: {{ monthlyExpenses[month] }}
                         </option>
                     </select>
-                </div>
+                </div>-->
 
                 <div id="TestExpensesSection">
-                    <h4>Testexpenses Per Month:</h4>
+                    <h4>Testexpenses Per Year:</h4>
                     <p><select v-model="testSelectedYear" @change="testComputeMonthlyExpenses">
                             <option value="Year">Year</option>
                             <option v-for="year in testYears" :label="year.label">
@@ -171,23 +171,30 @@
                             </option>
                         </select>
 
-                        <select v-model="testSelectedMonth" @change="testComputeMonthlyExpenses">
+                        <!-- <select v-model="testSelectedMonth" @change="testComputeMonthlyExpenses">
                             <option value="Month">Month</option>
                             <option v-for="month in testMonths" :key="month.id">
                                 {{ month.label }}
                             </option>
-                        </select>
+                        </select> -->
 
-                    <div v-if="testSelectedMonth !== 'Month' && testSelectedYear !== 'Year'">
+                    <div v-if="testSelectedYear !== 'Year'">
                         <!-- Jag vet att man normalt inte vill använda <br> men vågade inte riktigt 
                             göra om dessa till <p> utan att kolla med dig -->
+
+                        <ol>
+                            <li v-for="month in testMonths" key:month.id>
+                                {{month.label}}: {{month.testMExpenses }} 
+                            </li>
+                        </ol>
+
                         <p>Selected year: {{testSelectedYear}} <br> Selected month: {{testSelectedMonth}} <br>
                             Expenses: {{selectedMonthExpenses}}</p>
 
-                            <!-- v-show="testSelectedMonth != month.value"> 
+                        <!-- v-show="testSelectedMonth != month.value"> 
                             {{ month.label}}: {{month.value}} -->
 
-                            <!-- <ol>
+                        <!-- <ol>
                             <li v-for="{label, value} in dropDownOptions">
                             {{label}} {{filterByMonthForOptions(value)}} </li>
                             </ol> -->

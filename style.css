@@ -21,7 +21,7 @@ body {
     display: grid;
     grid-template:
         "a a a"
-        "b c d" / 2fr 2fr 1fr;
+        "b c d" / 2fr 2fr 2fr;
 }
 
 header {
