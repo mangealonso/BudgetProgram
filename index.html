@@ -164,7 +164,7 @@
                 </div>-->
 
                 <div id="TestExpensesSection">
-                    <h4>Expenses By Year:</h4>
+                    <h4>By year and month:</h4>
                     <p><select v-model="testSelectedYear" @change="testComputeMonthlyExpenses">
                             <option value="Year">Year</option>
                             <option v-for="year in testYears" :label="year.label">
