@@ -53,9 +53,9 @@
                         <label>
                             <input type="checkbox" v-model="income.isChecked">
                             {{income.incomeText}}, {{income.incomeCategory}}, {{income.incomeAmount}},
-                            <p>{{income.incomeDate}}</p>
+                            {{income.incomeDate}}
                         </label>
-                        <button v-if="showIncomeDeleteButton(index)" @click="deleteIncomePost(index)">Delete</button>
+                        <button id="deleteThisIncome" v-if="showIncomeDeleteButton(index)" @click="deleteIncomePost(index)">Delete</button>
                     </li>
                 </ul>
             </div>
@@ -96,7 +96,7 @@
                         <label class="expenseLabel">
                             <input class="expenseCheckbox" type="checkbox" v-model="expense.isChecked">
                             {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}},
-                            <p>{{expense.expenseDate}}</p>
+                            {{expense.expenseDate}}
                         </label>
                         <button id="deleteThisExpense" v-if="showExpenseDeleteButton(index)"
                             @click="deleteExpensePost(index)">Delete</button>
@@ -163,7 +163,7 @@
                 </div>-->
 
                 <div id="TestExpensesSection">
-                    <h4>Testexpenses Per Year:</h4>
+                    <h4>Expenses By Year:</h4>
                     <p><select v-model="testSelectedYear" @change="testComputeMonthlyExpenses">
                             <option value="Year">Year</option>
                             <option v-for="year in testYears" :label="year.label">
@@ -183,13 +183,14 @@
                             göra om dessa till <p> utan att kolla med dig -->
 
                         <ol>
-                            <li v-for="month in testMonths" key:month.id>
-                                {{month.label}}: {{month.testMExpenses }} 
+                            <li v-for="month in testMonths" key:month.id >
+                                <p>{{month.label}}:</p> 
+                                <p>Income: {{month.monthlyIncome}}, Expenses: {{month.monthlyExpense}}, Balance: {{month.monthlyBalance}}</p>
                             </li>
                         </ol>
 
-                        <p>Selected year: {{testSelectedYear}} <br> Selected month: {{testSelectedMonth}} <br>
-                            Expenses: {{selectedMonthExpenses}}</p>
+                        <!-- <p>Selected year: {{testSelectedYear}} <br> Selected month: {{testSelectedMonth}} <br>
+                            Expenses: {{selectedMonthExpenses}}</p> -->
 
                         <!-- v-show="testSelectedMonth != month.value"> 
                             {{ month.label}}: {{month.value}} -->
