@@ -105,10 +105,14 @@ Vue.createApp({
         sortedMonthlyIncome: function () {
             this.selectedIncomeMonth = "Choose month";
             this.selectedExpensesMonth = "Choose month";
+            this.testSelectedYear = "Year";
+            this.testSelectedMonth = "Month";
         },
         sortedMonthlyExpenses: function () {
             this.selectedIncomeMonth = "Choose month";
             this.selectedExpensesMonth = "Choose month";
+            this.testSelectedYear = "Year";
+            this.testSelectedMonth = "Month";
         },
     },
     computed: {
