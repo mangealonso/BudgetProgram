@@ -55,7 +55,8 @@
                             {{income.incomeText}}, {{income.incomeCategory}}, {{income.incomeAmount}},
                             {{income.incomeDate}}
                         </label>
-                        <button id="deleteThisIncome" v-if="showIncomeDeleteButton(index)" @click="deleteIncomePost(index)">Delete</button>
+                        <button id="deleteThisIncome" v-if="showIncomeDeleteButton(index)"
+                            @click="deleteIncomePost(index)">Delete</button>
                     </li>
                 </ul>
             </div>
@@ -183,9 +184,10 @@
                             göra om dessa till <p> utan att kolla med dig -->
 
                         <ol>
-                            <li v-for="month in testMonths" key:month.id >
-                                <p>{{month.label}}:</p> 
-                                <p>Income: {{month.monthlyIncome}}, Expenses: {{month.monthlyExpense}}, Balance: {{month.monthlyBalance}}</p>
+                            <li v-for="month in testMonths" key:month.id>
+                                <p>{{month.label}}:</p>
+                                <p>Income: {{month.monthlyIncome}}, Expenses: {{month.monthlyExpense}}, Balance:
+                                    {{month.monthlyBalance}}</p>
                             </li>
                         </ol>
 

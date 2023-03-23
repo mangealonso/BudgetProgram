@@ -47,7 +47,6 @@ Vue.createApp({
             ]
             ,
 
-
             /*
                         dropDownOptions: [],
                         filteredByMonth: [],
@@ -77,9 +76,9 @@ Vue.createApp({
         const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
         const incomeIDFromLocalStorage = JSON.parse(localStorage.getItem('incomeID'));
         const expenseIDFromLocalStorage = JSON.parse(localStorage.getItem('expenseID'));
-        /* const dataloadedFromLocalStorage = JSON.parse(localStorage.getItem('dataLoaded')); */
+        const dataloadedFromLocalStorage = JSON.parse(localStorage.getItem('dataLoaded'));
         const testYearsFromLocalStorage = JSON.parse(localStorage.getItem('testYears'));
-        const testMonthsFromLocalStorage = JSON.parse(localStorage.getItem('testMonths'));
+        /* const testMonthsFromLocalStorage = JSON.parse(localStorage.getItem('testMonths')); */
 
         if (incomePostsFromLocalStorage) {
             this.incomePosts = incomePostsFromLocalStorage;
@@ -97,30 +96,30 @@ Vue.createApp({
             this.expenseID = expenseIDFromLocalStorage;
         }
 
-        /* if (dataloadedFromLocalStorage) {
+        if (dataloadedFromLocalStorage) {
             this.dataLoaded = dataloadedFromLocalStorage;
-        } */
+        }
 
         if (testYearsFromLocalStorage) {
             this.testYears = testYearsFromLocalStorage;
         }
 
-        if (testMonthsFromLocalStorage) {
+        /* if (testMonthsFromLocalStorage) {
             this.testMonths = testMonthsFromLocalStorage;
-        }
+        } */
 
         this.calculateIncome(this.incomePosts);
         this.calculateExpenses(this.expensesPosts);
-    },
-    /* watch: {
+    },/* 
+    watch: {
 
         testMonths: {
             handler() {
               this.saveToLocalStorage();
             },
             deep: true
-          }, */
-    /* sortedMonthlyIncome: function () {
+          },
+    sortedMonthlyIncome: function () {
         this.selectedIncomeMonth = "Choose month";
         this.selectedExpensesMonth = "Choose month";
         this.testSelectedYear = "Year";
@@ -131,8 +130,8 @@ Vue.createApp({
         this.selectedExpensesMonth = "Choose month";
         this.testSelectedYear = "Year";
         this.testSelectedMonth = "Month";
-    }, */
-    /*  }, */
+    },
+     }, */
     computed: {
 
         // hiddenPerMonth() {
@@ -524,7 +523,7 @@ Vue.createApp({
             this.totalExpenses = 0;
 
             //Added this row - LINDA
-            this.testYears = [];
+            /* this.testYears = []; */
 
             this.saveToLocalStorage();
 
@@ -545,6 +544,12 @@ Vue.createApp({
 
             this.checkDataLoaded();
         },
+        clearTestYears() {
+            this.testYears = [];
+            this.testSelectedYear = 'Year';
+
+            this.saveToLocalStorage();
+        },
         checkDataLoaded() {
             if (this.incomePosts.length === 0 && this.expensesPosts.length === 0 && this.dataLoaded === true) {
                 this.clearDataLoaded();
@@ -555,6 +560,8 @@ Vue.createApp({
         },
         clearDataLoaded() {
             this.dataLoaded = false;
+
+            this.clearTestYears();
 
             this.saveToLocalStorage();
         },

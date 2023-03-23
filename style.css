@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background-color: rgb(55,56,78);
+    background-color: rgb(55, 56, 78);
     color: darkgray;
 }
 
@@ -39,26 +39,30 @@ header {
     display: grid;
 }
 
-#allExpensesPostsDiv h4, #allIncomePostsDiv h4 {
+#allExpensesPostsDiv h4,
+#allIncomePostsDiv h4 {
     text-align: center;
 }
 
-#allExpensesPostsDiv li, #allIncomePostsDiv li {
+#allExpensesPostsDiv li,
+#allIncomePostsDiv li {
     border-bottom: solid black 1px;
     font-size: 12px;
 
 }
 
-#deleteThisExpense, #deleteThisIncome {
-font-size: 12px;
+#deleteThisExpense,
+#deleteThisIncome {
+    font-size: 12px;
 }
 
 
 #TestExpensesSection li p {
-    margin:0px;
+    margin: 0px;
 }
 
-#incomeSection p, #expenseSection p {
+#incomeSection p,
+#expenseSection p {
     margin-bottom: 1px;
     margin-top: 4px;
 }
@@ -80,7 +84,7 @@ font-size: 12px;
 }
 
 #monthlySummary {
-    
+
     /* border: 2px solid black; */
     padding: 5px;
 }
@@ -97,7 +101,7 @@ font-size: 12px;
 } */
 
 li {
-    font-size:14px;
+    font-size: 14px;
     list-style-type: none;
     margin-top: 2px;
     margin-bottom: 2px;
@@ -132,13 +136,13 @@ h4 {
 
 
 @media (max-width:800px) {
- 
+
     #app {
         grid-template:
-        "a a"
-        "b c"
-        "d d"
-        
+            "a a"
+            "b c"
+            "d d"
+
     }
 }
 
