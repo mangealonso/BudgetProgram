@@ -239,8 +239,8 @@ Vue.createApp({
 
             //Testar en metod här - Jag borde inte behöva skicka in this.-variablerna väl?
             this.testUpdateYearAndMonth(expenseObject, this.testMonths, this.testYears);
-
         },
+
         sortExpensesPosts() {
             this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
         },
@@ -462,6 +462,10 @@ Vue.createApp({
             this.saveToLocalStorage();
         },
         deleteExpensePost(indexToDelete) {
+
+            let thisPost = this.expensesPosts[indexToDelete];
+            const expenseTestYear= new Date(thisPost.expenseDate).toLocaleString('default', { year: 'numeric' });
+
             this.expensesPosts.splice(indexToDelete, 1)
 
             this.calculateExpenses(this.expensesPosts)
@@ -470,6 +474,26 @@ Vue.createApp({
             // const expenseTestSomething = new Date(this.expensesPosts[indexToDelete].toLocaleString('default', { month: 'long' }))
             // const expenseTestMonthId = this.testfindMonthIdFromMonthString(expenseTestSomething)
             // this.testMonths[expenseTestMonthId].testMExpense -= this.expensesPosts[indexToDelete].expenseAmount;
+
+            // const expenseTestYear= new Date(this.expensesPosts[indexToDelete]).toLocaleString('default', { year: 'numeric' });
+            
+            let counter = 0
+            this.expensesPosts.forEach(post => 
+                {
+                    const year = new Date(post.expenseDate).toLocaleString('default', {year: 'numeric' });
+
+                    if (year === expenseTestYear) {
+                        
+                        counter++;
+                    }
+
+                }) 
+
+                
+                if (counter === 0) {
+
+                    this.testYears = this.testYears.filter(obj => obj.label !== expenseTestYear);
+                }
 
         },
         deleteIncomePost(indexToDelete) {
