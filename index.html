@@ -62,29 +62,31 @@
         </section>
 
         <section id="addExpensePostSection">
-            <h2>Add an expense:</h2>
-            <form @submit.prevent="addExpensePost">
-                <p>Title:</p>
-                <input id="expenseTitle" type="text" v-model="expenseText">
+            <div id="addExpense">
+                <h2>Add an expense:</h2>
+                <form @submit.prevent="addExpensePost">
+                    <p>Title:</p>
+                    <input id="expenseTitle" type="text" v-model="expenseText">
 
-                <p>Category:</p>
-                <select id="expenseCategory" v-model="expenseCategory">
-                    <option value="Bills">Bills</option>
-                    <option value="Groceries">Groceries</option>
-                    <option value="Clothes">Clothes</option>
-                    <option value="Eating out">Eating out</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Public transport">Public transport</option>
-                </select>
+                    <p>Category:</p>
+                    <select id="expenseCategory" v-model="expenseCategory">
+                        <option value="Bills">Bills</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Eating out">Eating out</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Public transport">Public transport</option>
+                    </select>
 
-                <p>Amount:</p>
-                <input id="expenseAmount" type="number" v-model="expenseAmount">
+                    <p>Amount:</p>
+                    <input id="expenseAmount" type="number" v-model="expenseAmount">
 
-                <p>Date:</p>
-                <input id="expenseDate" type="date" v-model="expenseDate">
+                    <p>Date:</p>
+                    <input id="expenseDate" type="date" v-model="expenseDate">
 
-                <button type="submit">Save expense</button>
-            </form>
+                    <button type="submit">Save expense</button>
+                </form>
+            </div>
 
             <div id="allExpensesPostsDiv">
                 <h3 v-if="hasExpensePosts">All expense posts:</h3>

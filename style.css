@@ -41,7 +41,8 @@ header {
 
 #allExpensesPostsDiv h4,
 #allIncomePostsDiv h4 {
-    text-align: center;
+    /* text-align: center; */
+    font-size: 12px;
 }
 
 #allExpensesPostsDiv li,
@@ -56,13 +57,17 @@ header {
     font-size: 12px;
 }
 
+form {
+    display: grid;
+    justify-content:center;
+}
 
 #yearAndMonth li p {
     margin: 0px;
 }
 
 #addIncomePostSection p,
-#addExpenseSection p {
+#addExpensePostSection p {
     margin-bottom: 1px;
     margin-top: 4px;
 }
@@ -70,12 +75,14 @@ header {
 #addIncomePostSection {
     grid-area: b;
     padding: 10px;
+    
 }
 
 #addExpensePostSection {
     grid-area: c;
     padding: 10px;
 }
+
 
 #summarySection {
     grid-area: d;
@@ -114,6 +121,7 @@ button {
     justify-self: center;
 }
 
+
 p {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -123,9 +131,21 @@ h1 {
     margin-bottom: 15px;
 }
 
+h2 {
+    text-align: center;
+}
+
+#allExpensesPostsDiv h3, #allIncomePostsDiv h3 {
+    text-align: center;
+}
+
 h3 {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+#summarySection h2 {
+    text-align: start;
 }
 
 h4 {
@@ -139,11 +159,22 @@ h4 {
 
     #app {
         grid-template:
-            "a a"
-            "b c"
-            "d d"
+            "a"
+            "b"
+            "c" 
+            "d";
 
     }
+
+    #addIncomePostSection {
+display: grid;
+        
+    }
+
+    #addExpensePostSection {
+        display: grid;
+    }
+
 }
 
 @media (min-width:1200px) {
