@@ -315,7 +315,7 @@ Vue.createApp({
             }
         },
         calculateIncome(incomePosts) {
-            const monthlyIncome = {};
+            /* const monthlyIncome = {};
 
             incomePosts.forEach(post => {
                 const month = new Date(post.incomeDate).toLocaleString('default', { month: 'long', year: 'numeric' });
@@ -323,19 +323,21 @@ Vue.createApp({
                     monthlyIncome[month] = 0;
                 }
                 monthlyIncome[month] += parseFloat(post.incomeAmount);
-            });
+            }); */
 
-            this.totalIncome = Object.values(monthlyIncome).reduce((acc, income) => acc + income, 0);
+            this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
 
-            this.monthlyIncome = monthlyIncome;
+            /* this.totalIncome = Object.values(monthlyIncome).reduce((acc, income) => acc + income, 0);
+
+            this.monthlyIncome = monthlyIncome; */
 
             this.saveToLocalStorage();
             this.calculateBalance();
 
-            return monthlyIncome;
+            /* return monthlyIncome; */
         },
         calculateExpenses(expensesPosts) {
-            const monthlyExpenses = {};
+            /* const monthlyExpenses = {};
 
             expensesPosts.forEach(post => {
                 const month = new Date(post.expenseDate).toLocaleString('default', { month: 'long', year: 'numeric' });
@@ -347,12 +349,14 @@ Vue.createApp({
 
             this.totalExpenses = Object.values(monthlyExpenses).reduce((acc, expense) => acc + expense, 0);
 
-            this.monthlyExpenses = monthlyExpenses;
+            this.monthlyExpenses = monthlyExpenses; */
+
+            this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
             this.saveToLocalStorage();
             this.calculateBalance();
-
-            return monthlyExpenses;
+/* 
+            return monthlyExpenses; */
         },
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
@@ -361,7 +365,7 @@ Vue.createApp({
         },
         clearIncomePosts() {
             this.incomePosts = [];
-            this.monthlyIncome = {};
+            /* this.monthlyIncome = {}; */
             this.incomeID = 0;
             this.totalIncome = 0;
 
@@ -370,7 +374,7 @@ Vue.createApp({
         },
         clearExpensesPosts() {
             this.expensesPosts = [];
-            this.monthlyExpenses = {};
+            /* this.monthlyExpenses = {}; */
             this.expenseID = 0;
             this.totalExpenses = 0;
 
@@ -386,16 +390,11 @@ Vue.createApp({
             }
             else {
                 this.totalBalance = 0;
+                clearTestYears();
             }
 
             this.saveToLocalStorage();
             this.checkDataLoaded();
-        },
-        clearTestYears() {
-            this.testYears = [];
-            this.testSelectedYear = 'Year';
-
-            this.saveToLocalStorage();
         },
         checkDataLoaded() {
             if (this.incomePosts.length === 0 && this.expensesPosts.length === 0 && this.dataLoaded === true) {
@@ -407,6 +406,12 @@ Vue.createApp({
             else {
                 return
             }
+        },        
+        clearTestYears() {
+            this.testYears = [];
+            this.testSelectedYear = 'Year';
+
+            this.saveToLocalStorage();
         },
         /* clearDataLoaded() { */
         /* this.dataLoaded = false; */
