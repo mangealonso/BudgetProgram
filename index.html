@@ -18,7 +18,7 @@
             <button @click="loadFetchData">Load data</button>
         </header>
 
-        <section id="incomeSection">
+        <section id="addIncomePostSection">
             <h2>Add an income:</h2>
             <form @submit.prevent="addIncomePost">
 
@@ -61,7 +61,7 @@
             </div>
         </section>
 
-        <section id="expenseSection">
+        <section id="addExpensePostSection">
             <h2>Add an expense:</h2>
             <form @submit.prevent="addExpensePost">
                 <p>Title:</p>
@@ -162,11 +162,11 @@
                     </select>
                 </div>-->
 
-                <div id="TestExpensesSection">
+                <div id="yearAndMonthSummarySection">
                     <h4>By year and month:</h4>
-                    <p><select v-model="testSelectedYear" @change="testComputeMonthlyExpenses">
+                    <p><select v-model="selectedYear" @change="computeMonthlySummary">
                             <option value="Year">Year</option>
-                            <option v-for="year in testYears" :label="year.label">
+                            <option v-for="year in years" :label="year.label">
                                 {{year.label}}
                             </option>
                         </select>
@@ -178,12 +178,12 @@
                             </option>
                         </select> -->
 
-                    <div v-if="testSelectedYear !== 'Year'">
+                    <div v-if="selectedYear !== 'Year'">
                         <!-- Jag vet att man normalt inte vill använda <br> men vågade inte riktigt 
                             göra om dessa till <p> utan att kolla med dig -->
 
                         <ol>
-                            <li v-for="month in testMonths" key:month.id>
+                            <li v-for="month in months" key:month.id>
                                 <p>{{month.label}}:</p>
                                 <p>Income: {{month.monthlyIncome}}, Expenses: {{month.monthlyExpense}}, Balance:
                                     {{month.monthlyBalance}}</p>

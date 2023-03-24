@@ -57,22 +57,22 @@ header {
 }
 
 
-#TestExpensesSection li p {
+#yearAndMonthSection li p {
     margin: 0px;
 }
 
-#incomeSection p,
-#expenseSection p {
+#addIncomePostSection p,
+#addExpenseSection p {
     margin-bottom: 1px;
     margin-top: 4px;
 }
 
-#incomeSection {
+#addIncomePostSection {
     grid-area: b;
     padding: 10px;
 }
 
-#expenseSection {
+#addExpensePostSection {
     grid-area: c;
     padding: 10px;
 }
@@ -89,7 +89,7 @@ header {
     padding: 5px;
 }
 
-#monthlyExpensesSection {
+#yearAndMonthSummarySection {
     border-top: 1px solid black;
 }
 
