@@ -147,7 +147,7 @@ Vue.createApp({
                 this.incomeAmount = '',
                 this.incomeDate = ''
 
-            this.calculateIncome(this.incomePosts);            
+            this.calculateIncome(this.incomePosts);
             this.updateMonthlyData();
             this.saveToLocalStorage();
 
@@ -378,7 +378,6 @@ Vue.createApp({
         clearIncomePosts() {
 
             this.incomePosts = [];
-            /* this.monthlyIncome = {}; */
             this.incomeID = 0;
             this.totalIncome = 0;
 
@@ -394,10 +393,11 @@ Vue.createApp({
                 }
             });
 
+
+            this.updateAllMonthlyData();
         },
         clearExpensesPosts() {
             this.expensesPosts = [];
-            /* this.monthlyExpenses = {}; */
             this.expenseID = 0;
             this.totalExpenses = 0;
 
@@ -412,6 +412,8 @@ Vue.createApp({
                     this.testYears.splice(index, 1);
                 }
             });
+
+            this.updateAllMonthlyData();
         },
         clearBalance() {
             if (this.incomePosts.length === 0) {
@@ -462,10 +464,8 @@ Vue.createApp({
             this.calculateExpenses(this.expensesPosts);
 
             this.checkRemoveYear(currentTestYear);
-            
+
             this.updateMonthlyData();
-
-
         },
         //Kopiera över motsvarande kod från deleteExpensesPost
         deleteIncomePost(indexToDelete) {
@@ -477,11 +477,9 @@ Vue.createApp({
             this.calculateIncome(this.incomePosts);
 
             this.checkRemoveYear(currentTestYear);
-            
+
             this.updateMonthlyData();
-
         },
-
         checkRemoveYear(currentTestYear) {
 
             let counter = 0
@@ -514,6 +512,11 @@ Vue.createApp({
             }
         },
         updateMonthlyData() {
+            this.testComputeMonthlyExpenses();
+            this.filteredPosts = this.testSelectedMonth === 'Month' ? [] : this.getFilteredPosts();
+        },
+        updateAllMonthlyData() {
+            /* this.testComputeMonthlyIncome(); */
             this.testComputeMonthlyExpenses();
             this.filteredPosts = this.testSelectedMonth === 'Month' ? [] : this.getFilteredPosts();
         },
