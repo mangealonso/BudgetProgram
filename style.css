@@ -21,7 +21,7 @@ body {
     display: grid;
     grid-template:
         "a a a"
-        "b c d" / 3fr 3fr 4fr;
+        "b c d" / 3fr 3fr 3fr;
 }
 
 header {
@@ -57,7 +57,7 @@ header {
 }
 
 
-#yearAndMonthSection li p {
+#yearAndMonth li p {
     margin: 0px;
 }
 
@@ -89,7 +89,7 @@ header {
     padding: 5px;
 }
 
-#yearAndMonthSummarySection {
+#yearAndMonth{
     border-top: 1px solid black;
 }
 
@@ -135,7 +135,7 @@ h4 {
 }
 
 
-@media (max-width:800px) {
+@media (max-width:900px) {
 
     #app {
         grid-template:
@@ -143,19 +143,6 @@ h4 {
             "b c"
             "d d"
 
-    }
-}
-
-@media (min-width:1000px) {
-
-    header {
-        margin-top: 100px;
-        margin-bottom: 40px;
-    }
-
-    #app {
-        padding-left: 100px;
-        padding-right: 100px;
     }
 }
 
@@ -172,19 +159,15 @@ h4 {
     }
 }
 
-@media (min-width:1400px) {
 
-    header {
-        margin-top: 100px;
-        margin-bottom: 40px;
-    }
+@media (min-width:1400px) {
 
     #app {
         padding-left: 300px;
         padding-right: 300px;
     }
 }
-
+ /*
 @media (min-width:1500px) {
 
     header {
@@ -195,6 +178,6 @@ h4 {
     #app {
         padding-left: 350px;
         padding-right: 350px;
-    }
+    } */
 
 }
