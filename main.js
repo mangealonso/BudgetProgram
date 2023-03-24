@@ -1,9 +1,6 @@
 Vue.createApp({
     data() {
         return {
-
-            filteredPosts: [],
-
             incomePosts: [],
             incomeID: 0,
             incomeText: '',
@@ -11,20 +8,21 @@ Vue.createApp({
             incomeAmount: '',
             incomeDate: '',
 
-            totalIncome: 0,
-            monthlyIncome: {},
-            monthlyExpenses: {},
-
             expensesPosts: [],
             expenseID: 0,
             expenseText: '',
             expenseCategory: '',
             expenseDate: '',
             expenseAmount: '',
-            totalExpenses: 0,
 
-            /* selectedIncomeMonth: "Choose month",
-            selectedExpensesMonth: "Choose month", */
+            filteredPosts: [],
+
+            totalIncome: 0,
+            totalExpenses: 0,
+            totalBalance: 0,
+
+            monthlyIncome: {},
+            monthlyExpenses: {},
 
             testSelectedYear: 'Year',
             testYears: [],
@@ -47,6 +45,13 @@ Vue.createApp({
             ]
             ,
 
+            dataLoaded: false,
+
+            //Kan vi bara ta bort nedanstående kod?
+
+            /* selectedIncomeMonth: "Choose month",
+            selectedExpensesMonth: "Choose month", */
+
             /*
                         dropDownOptions: [],
                         filteredByMonth: [],
@@ -56,21 +61,16 @@ Vue.createApp({
             
                         yearAndMonth: '',*/
 
-            totalBalance: 0,
 
             /*perMonth: '', */
 
             //monthlyExpenses: 0,
-            //someStuffExpenses: 0,
-
-            dataLoaded: false,
+            //someStuffExpenses: 0,            
 
             /* picked: 'Year',
             expensesHidden: true */
         }
     },
-
-
     mounted() {
         const incomePostsFromLocalStorage = JSON.parse(localStorage.getItem('incomePosts'));
         const expensesPostsFromLocalStorage = JSON.parse(localStorage.getItem('expensesPosts'));
@@ -133,18 +133,23 @@ Vue.createApp({
     },
      }, */
     computed: {
+        hasIncomePosts() {
+            return this.incomePosts.length > 0;
+        },
+        hasExpensePosts() {
+            return this.expensesPosts.length > 0;
+        },
+        selectedMonthExpenses() {
+            const selectedMonth = this.testMonths.find(
+                month => month.label === this.testSelectedMonth
+            );
+            return selectedMonth ? selectedMonth.monthlyExpense : '';
+        }
+
 
         // hiddenPerMonth() {
         //   return this.perMonth ? '' : 'hidden';
         // },
-
-        hasIncomePosts() {
-            return this.incomePosts.length > 0;
-        },
-
-        hasExpensePosts() {
-            return this.expensesPosts.length > 0;
-        },
 
         /* sortedMonthlyIncome() {
             const months = Object.keys(this.monthlyIncome);
@@ -157,22 +162,10 @@ Vue.createApp({
 
         //     incomeCategoryPay() {
         //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
-        //     }
-
-        selectedMonthExpenses() {
-            const selectedMonth = this.testMonths.find(
-                month => month.label === this.testSelectedMonth
-            );
-            return selectedMonth ? selectedMonth.monthlyExpense : '';
-        }
-
+        //     }        
     },
 
     methods: {
-        /* toggleExpenses() {
-
-            this.expensesHidden = !this.expensesHidden;
-        }, */
         saveToLocalStorage() {
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
             localStorage.setItem('expensesPosts', JSON.stringify(this.expensesPosts));
@@ -188,7 +181,6 @@ Vue.createApp({
 
             return inputDate > today;
         },
-
         addIncomePost() {
             if (this.incomeText.trim() === '' || this.incomeAmount === ''
                 || this.incomeCategory === '' || this.incomeDate === '') {
@@ -263,11 +255,9 @@ Vue.createApp({
             //Testar en metod här - Jag borde inte behöva skicka in this.-variablerna väl?
             this.testUpdateYear(expenseObject, this.testMonths, this.testYears);
         },
-
         sortExpensesPosts() {
             this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
         },
-
         //I så fall borde this-variablerna inte behövas här nedan heller (se ovan).
 
         //Lägg till årtal i option-listan (dropdown för år)
@@ -286,7 +276,6 @@ Vue.createApp({
 
             this.saveToLocalStorage();
         },
-
         //metod som hittar månadens id baserat på toLocaleString (som ibland blir på svenska och ibland i engelska)
         //metoden anropas i metoden som följer på denna 
         testfindMonthIdFromMonthString(MonthString) {
@@ -453,6 +442,11 @@ Vue.createApp({
         //     }
         // },
 
+        /* toggleExpenses() {
+
+            this.expensesHidden = !this.expensesHidden;
+        }, */
+
         calculateIncome(incomePosts) {
             const monthlyIncome = {};
 
@@ -591,13 +585,10 @@ Vue.createApp({
                 }
 
             })
-
-
             if (counter === 0) {
 
                 this.testYears = this.testYears.filter(obj => obj.label !== expenseTestYear);
             }
-
         },
         deleteIncomePost(indexToDelete) {
             this.incomePosts.splice(indexToDelete, 1)
