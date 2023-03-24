@@ -6,7 +6,7 @@ Vue.createApp({
             incomeText: '',
             incomeCategory: '',
             incomeDate: '',
-            incomeAmount: '',            
+            incomeAmount: '',
 
             expensesPosts: [],
             expenseID: 0,
@@ -21,12 +21,9 @@ Vue.createApp({
             totalExpenses: 0,
             totalBalance: 0,
 
-            testYears: [],            
-            testSelectedYear: 'Year',            
+            testYears: [],
+            testSelectedYear: 'Year',
             testSelectedMonth: 'Month',
-
-            /* monthlyIncome: {},
-            monthlyExpenses: {}, */
 
             //Class or not? 
             testMonths: [
@@ -44,7 +41,6 @@ Vue.createApp({
                 { id: 11, label: "December", monthlyExpense: 0, monthlyBalance: 0, monthlyIncome: 0 }
             ]
             ,
-
             dataLoaded: false,
         }
     },
@@ -55,7 +51,6 @@ Vue.createApp({
         const expenseIDFromLocalStorage = JSON.parse(localStorage.getItem('expenseID'));
         const dataloadedFromLocalStorage = JSON.parse(localStorage.getItem('dataLoaded'));
         const testYearsFromLocalStorage = JSON.parse(localStorage.getItem('testYears'));
-        /* const testMonthsFromLocalStorage = JSON.parse(localStorage.getItem('testMonths')); */
 
         if (incomePostsFromLocalStorage) {
             this.incomePosts = incomePostsFromLocalStorage;
@@ -81,10 +76,6 @@ Vue.createApp({
             this.testYears = testYearsFromLocalStorage;
         }
 
-        /* if (testMonthsFromLocalStorage) {
-            this.testMonths = testMonthsFromLocalStorage;
-        } */
-
         this.calculateIncome(this.incomePosts);
         this.calculateExpenses(this.expensesPosts);
     },/* 
@@ -109,7 +100,7 @@ Vue.createApp({
                 month => month.label === this.testSelectedMonth
             );
             return selectedMonth ? selectedMonth.monthlyExpense : '';
-        }       
+        }
     },
     methods: {
         saveToLocalStorage() {
@@ -119,7 +110,6 @@ Vue.createApp({
             localStorage.setItem('expenseID', JSON.stringify(this.expenseID));
             localStorage.setItem('dataLoaded', JSON.stringify(this.dataLoaded));
             localStorage.setItem('testYears', JSON.stringify(this.testYears));
-            /* localStorage.setItem('testMonths', JSON.stringify(this.testMonths)); */
         },
         checkForFutureDate(date) {
             const today = new Date().toLocaleDateString();
@@ -274,7 +264,7 @@ Vue.createApp({
 
             }
             return monthId;
-        },        
+        },
         testComputeMonthlyExpenses() {
 
             //sätt månadens utgifter till noll varje gång metoden anropas (för att den ska nollas när du byter år t.ex.)
@@ -412,18 +402,18 @@ Vue.createApp({
                 this.dataLoaded = false; /* this.clearDataLoaded(); */
                 this.clearTestYears();
 
-            this.saveToLocalStorage();
+                this.saveToLocalStorage();
             }
             else {
                 return
             }
         },
         /* clearDataLoaded() { */
-            /* this.dataLoaded = false; */
+        /* this.dataLoaded = false; */
 
-            /* this.clearTestYears();
+        /* this.clearTestYears();
 
-            this.saveToLocalStorage(); */
+        this.saveToLocalStorage(); */
         /* }, */
         deleteExpensePost(indexToDelete) {
 
