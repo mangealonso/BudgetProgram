@@ -186,7 +186,8 @@ Vue.createApp({
         sortExpensesPosts() {
             this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
         },
-        //Lägg till årtal i option-listan (dropdown för år)
+
+        //Add year to option-list (year-dropdown)
         updateYear(incomeObject = {}, expenseObject = {}) {
 
             let temporaryYear = '';
@@ -209,8 +210,8 @@ Vue.createApp({
 
             this.saveToLocalStorage();
         },
-        //metod som hittar månadens id baserat på toLocaleString (som ibland blir på svenska och ibland i engelska)
-        //metoden anropas i metoden som följer på denna 
+
+        //find the id of the month based on to toLocaleString()
         findMonthIdFromMonthString(MonthString) {
 
             let monthId = '';
@@ -253,10 +254,11 @@ Vue.createApp({
             }
             return monthId;
         },
-        computeMonthlySummary() {
 
-            //sätt månadens utgifter till noll varje gång metoden anropas (för att den ska nollas när du byter år t.ex.)
+        //is called each time you switch year in year-dropdown
+        computeMonthlySummary() { 
 
+            //set all of the actual months expenses to 0 each time method is called
             if (this.selectedYear !== 'Year') {
                 this.months.forEach(month => {
                     month.monthlyExpense = 0;
@@ -268,14 +270,14 @@ Vue.createApp({
                 let year = '';
 
                 let expensesMonthId = '';
-                //här hämtar vi ut årtal och månad från varje expense
+                // get year and month from each expense and add to the actual months expenses
                 this.expensesPosts.forEach(post => {
                     year = new Date(post.expenseDate).toLocaleString('default', { year: 'numeric' });
 
                     if (year === currentYear) {
                         const expensesMonthString = new Date(post.expenseDate).toLocaleString('default', { month: 'long' });
 
-                        //få ut månadsid från varje expense
+                        //get the month-id from the actual expense
                         expensesMonthId = this.findMonthIdFromMonthString(expensesMonthString);
 
                         this.months[expensesMonthId].monthlyExpense += post.expenseAmount;
@@ -283,42 +285,51 @@ Vue.createApp({
                 })
 
                 let incomeMonthId = '';
-
+                //  get year and month from each income and add to the actual months income
                 this.incomePosts.forEach(post => {
                     year = new Date(post.incomeDate).toLocaleString('default', { year: 'numeric' });
 
                     if (year === currentYear) {
                         const incomeMonthString = new Date(post.incomeDate).toLocaleString('default', { month: 'long' });
 
-                        //få ut månadsid från varje expense
+                        //get the month-id from the actual income
                         incomeMonthId = this.findMonthIdFromMonthString(incomeMonthString);
 
                         this.months[incomeMonthId].monthlyIncome += post.incomeAmount;
                     }
                 })
 
+                //calculate balance for each month
                 this.months.forEach(post => {
                     post.monthlyBalance = post.monthlyIncome - post.monthlyExpense;
                 })
             }
         },
+
+        //calculate total income
         calculateIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
 
             this.saveToLocalStorage();
             this.calculateBalance();
         },
+
+        //calculate total expenses
         calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
             this.saveToLocalStorage();
             this.calculateBalance();
         },
+
+        //calculate the total balance
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
 
             this.saveToLocalStorage();
         },
+
+        //will run when "delete all income posts" is clicked
         clearIncomePosts() {
             this.incomePosts = [];
             this.incomeID = 0;
@@ -338,6 +349,8 @@ Vue.createApp({
 
             this.updateAllMonthlyData();
         },
+
+        //will run when "delete all expense posts" is clicked
         clearExpensesPosts() {
             this.expensesPosts = [];
             this.expenseID = 0;
@@ -389,6 +402,7 @@ Vue.createApp({
 
             this.saveToLocalStorage();
         },
+
         deleteExpensePost(indexToDelete) {
 
             let thisPost = this.expensesPosts[indexToDelete];
@@ -428,6 +442,8 @@ Vue.createApp({
                 return
             }
         },
+
+        //check if year needs to be removed from dropdown when you delete a single post
         checkRemoveYear(currentYear) {
             let counter = 0
 
@@ -454,7 +470,6 @@ Vue.createApp({
             }
 
             if (counter === 0) {
-
                 this.years = this.years.filter(obj => obj.label !== currentYear);
             }
         },
