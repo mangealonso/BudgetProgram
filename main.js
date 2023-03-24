@@ -373,6 +373,7 @@ Vue.createApp({
             this.saveToLocalStorage();
         },
         clearIncomePosts() {
+
             this.incomePosts = [];
             /* this.monthlyIncome = {}; */
             this.incomeID = 0;
@@ -380,6 +381,16 @@ Vue.createApp({
 
             this.saveToLocalStorage();
             this.clearBalance();
+
+            this.testYears.forEach((year, index) => {
+                const matchFound = this.expensesPosts.some(post => post.expenseDate.slice(0, 4) === year.label);
+
+                if (!matchFound) {
+                    // If no match found, remove the object from testYears
+                    this.testYears.splice(index, 1);
+                } 
+            });
+
         },
         clearExpensesPosts() {
             this.expensesPosts = [];
@@ -389,6 +400,15 @@ Vue.createApp({
 
             this.saveToLocalStorage();
             this.clearBalance();
+
+            this.testYears.forEach((year, index) => {
+                const matchFound = this.incomePosts.some(post => post.incomeDate.slice(0, 4) === year.label);
+
+                if (!matchFound) {
+                    // If no match found, remove the object from testYears
+                    this.testYears.splice(index, 1);
+                } 
+            });
         },
         clearBalance() {
             if (this.incomePosts.length === 0) {
