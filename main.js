@@ -335,7 +335,6 @@ Vue.createApp({
             this.saveToLocalStorage();
         },
         clearIncomePosts() {
-
             this.incomePosts = [];
             this.incomeID = 0;
             this.totalIncome = 0;
@@ -424,6 +423,13 @@ Vue.createApp({
             this.checkRemoveYear(currentTestYear);
 
             this.updateMonthlyData();
+
+            if(this.incomePosts.length === 0 && this.expensesPosts.length === 0){
+                this.clearTestYears();
+            }            
+            else {
+                return
+            }
         },        
         deleteIncomePost(indexToDelete) {
             let thisPost = this.incomePosts[indexToDelete];
@@ -436,6 +442,13 @@ Vue.createApp({
             this.checkRemoveYear(currentTestYear);
 
             this.updateMonthlyData();
+
+            if(this.incomePosts.length === 0 && this.expensesPosts.length === 0){
+                this.clearTestYears();
+            }            
+            else {
+                return
+            }
         },
         checkRemoveYear(currentTestYear) {
 
