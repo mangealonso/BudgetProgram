@@ -202,12 +202,12 @@ Vue.createApp({
 
             let testTemporaryYear = '';
 
-            if ("incomeDate" in incomeObject ) {
+            if ("incomeDate" in incomeObject) {
                 testTemporaryYear = new Date(incomeObject.incomeDate).toLocaleString('default', { year: 'numeric' });
             }
-             else if ("expenseDate" in expenseObject) {
-            testTemporaryYear = new Date(expenseObject.expenseDate).toLocaleString('default', { year: 'numeric' });
-             }
+            else if ("expenseDate" in expenseObject) {
+                testTemporaryYear = new Date(expenseObject.expenseDate).toLocaleString('default', { year: 'numeric' });
+            }
 
             let yearObject = {
                 label: testTemporaryYear
@@ -364,8 +364,8 @@ Vue.createApp({
 
             this.saveToLocalStorage();
             this.calculateBalance();
-/* 
-            return monthlyExpenses; */
+            /* 
+                        return monthlyExpenses; */
         },
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
@@ -415,7 +415,7 @@ Vue.createApp({
             else {
                 return
             }
-        },        
+        },
         clearTestYears() {
             this.testYears = [];
             this.testSelectedYear = 'Year';
@@ -432,58 +432,62 @@ Vue.createApp({
         deleteExpensePost(indexToDelete) {
 
             let thisPost = this.expensesPosts[indexToDelete];
-            const expenseTestYear = new Date(thisPost.expenseDate).toLocaleString('default', { year: 'numeric' });
+            const currentTestYear = new Date(thisPost.expenseDate).toLocaleString('default', { year: 'numeric' });
 
-            this.expensesPosts.splice(indexToDelete, 1)
+            this.expensesPosts.splice(indexToDelete, 1);
 
-            this.calculateExpenses(this.expensesPosts)
+            this.calculateExpenses(this.expensesPosts);
 
-            //HÄR är ett förslag som jag började skriva på sent inatt men jag har inte testat det. Du får gärna göra det om du vill.
-            // const expenseTestSomething = new Date(this.expensesPosts[indexToDelete].toLocaleString('default', { month: 'long' }))
-            // const expenseTestMonthId = this.testfindMonthIdFromMonthString(expenseTestSomething)
-            // this.testMonths[expenseTestMonthId].monthlyExpense -= this.expensesPosts[indexToDelete].expenseAmount;
+            this.checkRemoveYear(currentTestYear);
 
-            // const expenseTestYear= new Date(this.expensesPosts[indexToDelete]).toLocaleString('default', { year: 'numeric' });
 
-            let counter = 0
-            this.expensesPosts.forEach(post => {
-                const year = new Date(post.expenseDate).toLocaleString('default', { year: 'numeric' });
-
-                if (year === expenseTestYear) {
-
-                    counter++;
-                }
-            })
-            if (counter === 0) {
-
-                this.testYears = this.testYears.filter(obj => obj.label !== expenseTestYear);
-            }
         },
         //Kopiera över motsvarande kod från deleteExpensesPost
         deleteIncomePost(indexToDelete) {
             let thisPost = this.incomePosts[indexToDelete];
-            const incomeTestYear = new Date(thisPost.incomeDate).toLocaleString('default', { year: 'numeric' });
+            const currentTestYear = new Date(thisPost.incomeDate).toLocaleString('default', { year: 'numeric' });
 
-            this.incomePosts.splice(indexToDelete, 1)
+            this.incomePosts.splice(indexToDelete, 1);
 
-            this.calculateIncome(this.incomePosts)
+            this.calculateIncome(this.incomePosts);
 
-            let counter = 0
-            this.incomePosts.forEach(post => {
-                const year = new Date(post.incomeDate).toLocaleString('default', { year: 'numeric' });
-
-                if (year === incomeTestYear) {
-
-                    counter++;
-                }
-            })
-            if (counter === 0) {
-
-                this.testYears = this.testYears.filter(obj => obj.label !== incomeTestYear);
-            }
-
+            this.checkRemoveYear(currentTestYear);
 
         },
+
+        checkRemoveYear(currentTestYear) {
+
+            let counter = 0
+
+            if (this.expensesPosts.length !== 0) {
+                this.expensesPosts.forEach(post => {
+                    const year = new Date(post.expenseDate).toLocaleString('default', { year: 'numeric' });
+
+                    if (year === currentTestYear) {
+
+                        counter++;
+                    }
+                })
+            }
+
+            if (this.incomePosts.length !== 0) {
+                this.incomePosts.forEach(post => {
+                    const year = new Date(post.incomeDate).toLocaleString('default', { year: 'numeric' });
+
+                    if (year === currentTestYear) {
+
+                        counter++;
+                    }
+                })
+            }
+
+            if (counter === 0) {
+
+                this.testYears = this.testYears.filter(obj => obj.label !== currentTestYear);
+            }
+        },
+
+
         showIncomeDeleteButton(index) {
             return this.incomePosts[index].isChecked;
         },
