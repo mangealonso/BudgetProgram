@@ -78,16 +78,7 @@ Vue.createApp({
 
         this.calculateIncome(this.incomePosts);
         this.calculateExpenses(this.expensesPosts);
-    },/* 
-    watch: {
-
-        testMonths: {
-            handler() {
-              this.saveToLocalStorage();
-            },
-            deep: true
-          },
-     }, */
+    },
     computed: {
         hasIncomePosts() {
             return this.incomePosts.length > 0;
@@ -327,48 +318,16 @@ Vue.createApp({
             }
         },
         calculateIncome(incomePosts) {
-            /* const monthlyIncome = {};
-
-            incomePosts.forEach(post => {
-                const month = new Date(post.incomeDate).toLocaleString('default', { month: 'long', year: 'numeric' });
-                if (!monthlyIncome[month]) {
-                    monthlyIncome[month] = 0;
-                }
-                monthlyIncome[month] += parseFloat(post.incomeAmount);
-            }); */
-
-            this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
-
-            /* this.totalIncome = Object.values(monthlyIncome).reduce((acc, income) => acc + income, 0);
-
-            this.monthlyIncome = monthlyIncome; */
+            this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);            
 
             this.saveToLocalStorage();
             this.calculateBalance();
-
-            /* return monthlyIncome; */
         },
         calculateExpenses(expensesPosts) {
-            /* const monthlyExpenses = {};
-
-            expensesPosts.forEach(post => {
-                const month = new Date(post.expenseDate).toLocaleString('default', { month: 'long', year: 'numeric' });
-                if (!monthlyExpenses[month]) {
-                    monthlyExpenses[month] = 0;
-                }
-                monthlyExpenses[month] += parseFloat(post.expenseAmount);
-            })
-
-            this.totalExpenses = Object.values(monthlyExpenses).reduce((acc, expense) => acc + expense, 0);
-
-            this.monthlyExpenses = monthlyExpenses; */
-
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
             this.saveToLocalStorage();
             this.calculateBalance();
-            /* 
-                        return monthlyExpenses; */
         },
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
@@ -392,7 +351,6 @@ Vue.createApp({
                     this.testYears.splice(index, 1);
                 }
             });
-
 
             this.updateAllMonthlyData();
         },
@@ -466,8 +424,7 @@ Vue.createApp({
             this.checkRemoveYear(currentTestYear);
 
             this.updateMonthlyData();
-        },
-        //Kopiera över motsvarande kod från deleteExpensesPost
+        },        
         deleteIncomePost(indexToDelete) {
             let thisPost = this.incomePosts[indexToDelete];
             const currentTestYear = new Date(thisPost.incomeDate).toLocaleString('default', { year: 'numeric' });
@@ -515,8 +472,7 @@ Vue.createApp({
             this.testComputeMonthlyExpenses();
             this.filteredPosts = this.testSelectedMonth === 'Month' ? [] : this.getFilteredPosts();
         },
-        updateAllMonthlyData() {
-            /* this.testComputeMonthlyIncome(); */
+        updateAllMonthlyData() {            
             this.testComputeMonthlyExpenses();
             this.filteredPosts = this.testSelectedMonth === 'Month' ? [] : this.getFilteredPosts();
         },
@@ -552,8 +508,7 @@ Vue.createApp({
 
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
-
-                    //Ska motsvarande kod för incomePosts läggas in här?!
+                    
                     this.incomePosts.forEach(incomePost => {
                         this.testUpdateYear(incomePost, undefined)
                     });
@@ -561,11 +516,6 @@ Vue.createApp({
                     this.expensesPosts.forEach(expensesPost => {
                         this.testUpdateYear(undefined, expensesPost)
                     });
-
-                    /* this.expensesPosts.forEach(expensesPost => {
-                        this.checkDropDownObject(expensesPost);
-                        this.checkMonthsWithExpenses(expensesPost);
-                    }); */
 
                     this.dataLoaded = true;
 
