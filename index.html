@@ -19,6 +19,7 @@
         </header>
 
         <section id="addIncomePostSection">
+            <div id="addIncome">
             <h2>Add an income:</h2>
             <form @submit.prevent="addIncomePost">
 
@@ -41,6 +42,8 @@
 
                 <button type="submit">Save income</button>
             </form>
+        </div>
+        </section>
 
             <div id="allIncomePostsDiv">
                 <h3 v-if="hasIncomePosts">All income posts:</h3>
@@ -59,7 +62,7 @@
                     </li>
                 </ul>
             </div>
-        </section>
+       
 
         <section id="addExpensePostSection">
             <div id="addExpense">
@@ -87,6 +90,7 @@
                     <button type="submit">Save expense</button>
                 </form>
             </div>
+        </section>
 
             <div id="allExpensesPostsDiv">
                 <h3 v-if="hasExpensePosts">All expense posts:</h3>
@@ -106,7 +110,7 @@
                 </ul>
             </div>
 
-        </section>
+   
 
         <section id="summarySection">
             <div id="summaryTotals">
@@ -121,7 +125,7 @@
                 <h3>Total balance:</h3>
                 <p id="totalBalance">{{totalBalance}}</p>
             </div>
-
+        </section>
 
 
             <!-- <div id="monthlyIncomeSection">
@@ -247,7 +251,7 @@
                 </div> -->
             </div>
 
-        </section>
+        
 
     </div>
 </body>

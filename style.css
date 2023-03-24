@@ -21,7 +21,8 @@ body {
     display: grid;
     grid-template:
         "a a a"
-        "b c d" / 3fr 3fr 3fr;
+        "b c d" 
+        "e g ."/ 3fr 3fr 3fr;
 }
 
 header {
@@ -31,24 +32,28 @@ header {
     grid-area: a;
 }
 
-#allIncomePostsDiv {
+/* #allIncomePostsDiv {
     display: grid;
 }
 
 #allExpensesPostsDiv {
     display: grid;
+}  */
+
+#allExpensesPostsDiv button, #allIncomePostsDiv button {
+ margin-left: 6px;
 }
 
-#allExpensesPostsDiv h4,
-#allIncomePostsDiv h4 {
+#allExpensesPostsDiv h4, #allIncomePostsDiv h4 {
     /* text-align: center; */
     font-size: 12px;
+    margin-left: 6px;;
 }
 
-#allExpensesPostsDiv li,
-#allIncomePostsDiv li {
+#allExpensesPostsDiv li, #allIncomePostsDiv li {
     border-bottom: solid black 1px;
     font-size: 12px;
+    margin-left: 6px;;
 
 }
 
@@ -66,8 +71,7 @@ form {
     margin: 0px;
 }
 
-#addIncomePostSection p,
-#addExpensePostSection p {
+#addIncomePostSection p, #addExpensePostSection p {
     margin-bottom: 1px;
     margin-top: 4px;
 }
@@ -83,11 +87,20 @@ form {
     padding: 10px;
 }
 
-
 #summarySection {
     grid-area: d;
     padding: 10px;
     /* justify-self: center; */
+}
+
+#allIncomePostsDiv {
+    
+    grid-area: "e";
+}
+
+#allExpensesPostsDiv {
+   
+    grid-area: "f";
 }
 
 #monthlySummary {
@@ -155,25 +168,39 @@ h4 {
 }
 
 
-@media (max-width:900px) {
+@media (min-width:700px) and (max-width:900px) {
 
     #app {
+        display:grid;
         grid-template:
-            "a"
-            "b"
-            "c" 
-            "d";
+            "a a"
+            "b c"
+            "d d"
+            "e f" /1fr 1fr ;
 
     }
 
-    #addIncomePostSection {
-display: grid;
-        
+    #summarySection {
+        justify-self: center;
     }
 
+/*     
     #addExpensePostSection {
-        display: grid;
+        
+        grid-area: "g";
     }
+
+    #allIncomePostsDiv {
+        
+        grid-area: "e";
+    }
+
+    #allExpensesPostsDiv {
+       
+        grid-area: "g";
+    } */
+
+   
 
 }
 
@@ -209,6 +236,6 @@ display: grid;
     #app {
         padding-left: 350px;
         padding-right: 350px;
-    } */
+    } 
 
-}
+} 
