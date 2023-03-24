@@ -149,6 +149,8 @@ Vue.createApp({
 
             this.calculateIncome(this.incomePosts);
             this.saveToLocalStorage();
+
+            this.testUpdateYear(incomeObject, undefined)
         },
         sortIncomePosts() {
             this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate));
@@ -187,7 +189,7 @@ Vue.createApp({
             this.saveToLocalStorage();
 
             //Testar en metod här - Jag borde inte behöva skicka in this.-variablerna väl?
-            this.testUpdateYear(expenseObject, this.testMonths, this.testYears);
+            this.testUpdateYear(undefined, expenseObject);
         },
         sortExpensesPosts() {
             this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
@@ -195,10 +197,18 @@ Vue.createApp({
         //I så fall borde this-variablerna inte behövas här nedan heller (se ovan).
 
         //Lägg till årtal i option-listan (dropdown för år)
-        //Uppdatera parametrar och lägg till i addIncomePosts
-        testUpdateYear(expenseObject) {
 
-            const testTemporaryYear = new Date(expenseObject.expenseDate).toLocaleString('default', { year: 'numeric' });
+        //Uppdatera parametrar och lägg till i addIncomePosts
+        testUpdateYear(incomeObject = {}, expenseObject = {}) {
+
+            let testTemporaryYear = '';
+
+            if ("incomeDate" in incomeObject ) {
+                testTemporaryYear = new Date(incomeObject.incomeDate).toLocaleString('default', { year: 'numeric' });
+            }
+             else if ("expenseDate" in expenseObject) {
+            testTemporaryYear = new Date(expenseObject.expenseDate).toLocaleString('default', { year: 'numeric' });
+             }
 
             let yearObject = {
                 label: testTemporaryYear
@@ -490,8 +500,12 @@ Vue.createApp({
                     this.calculateExpenses(this.expensesPosts);
 
                     //Ska motsvarande kod för incomePosts läggas in här?!
+                    this.incomePosts.forEach(incomePost => {
+                        this.testUpdateYear(incomePost, undefined)
+                    });
+
                     this.expensesPosts.forEach(expensesPost => {
-                        this.testUpdateYear(expensesPost)
+                        this.testUpdateYear(undefined, expensesPost)
                     });
 
                     /* this.expensesPosts.forEach(expensesPost => {
