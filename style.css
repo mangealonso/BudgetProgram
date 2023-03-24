@@ -22,7 +22,7 @@ body {
     grid-template:
         "a a a"
         "b c d" 
-        "e g ."/ 3fr 3fr 3fr;
+        "e f g"/ 3fr 3fr 3fr;
 }
 
 header {
@@ -95,12 +95,12 @@ form {
 
 #allIncomePostsDiv {
     
-    grid-area: "e";
+    grid-area: e;
 }
 
 #allExpensesPostsDiv {
    
-    grid-area: "f";
+    grid-area: f;
 }
 
 #monthlySummary {
@@ -111,6 +111,7 @@ form {
 
 #yearAndMonth{
     border-top: 1px solid black;
+    grid-area: "g";
 }
 
 /* #monthlySummary {
@@ -175,31 +176,19 @@ h4 {
         grid-template:
             "a a"
             "b c"
-            "d d"
+            "d g"
             "e f" /1fr 1fr ;
 
     }
 
     #summarySection {
         justify-self: center;
+        align-self: center;
     }
 
-/*     
-    #addExpensePostSection {
-        
-        grid-area: "g";
+    #yearAndMonth {
+        align-self: center;
     }
-
-    #allIncomePostsDiv {
-        
-        grid-area: "e";
-    }
-
-    #allExpensesPostsDiv {
-       
-        grid-area: "g";
-    } */
-
    
 
 }
