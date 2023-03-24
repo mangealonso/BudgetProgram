@@ -147,10 +147,12 @@ Vue.createApp({
                 this.incomeAmount = '',
                 this.incomeDate = ''
 
-            this.calculateIncome(this.incomePosts);
+            this.calculateIncome(this.incomePosts);            
+            this.updateMonthlyData();
             this.saveToLocalStorage();
 
             this.testUpdateYear(incomeObject, undefined)
+            this.updateMonthlyData();
         },
         sortIncomePosts() {
             this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate));
@@ -190,6 +192,7 @@ Vue.createApp({
 
             //Testar en metod här - Jag borde inte behöva skicka in this.-variablerna väl?
             this.testUpdateYear(undefined, expenseObject);
+            this.updateMonthlyData();
         },
         sortExpensesPosts() {
             this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
@@ -388,7 +391,7 @@ Vue.createApp({
                 if (!matchFound) {
                     // If no match found, remove the object from testYears
                     this.testYears.splice(index, 1);
-                } 
+                }
             });
 
         },
@@ -407,7 +410,7 @@ Vue.createApp({
                 if (!matchFound) {
                     // If no match found, remove the object from testYears
                     this.testYears.splice(index, 1);
-                } 
+                }
             });
         },
         clearBalance() {
@@ -459,6 +462,8 @@ Vue.createApp({
             this.calculateExpenses(this.expensesPosts);
 
             this.checkRemoveYear(currentTestYear);
+            
+            this.updateMonthlyData();
 
 
         },
@@ -472,6 +477,8 @@ Vue.createApp({
             this.calculateIncome(this.incomePosts);
 
             this.checkRemoveYear(currentTestYear);
+            
+            this.updateMonthlyData();
 
         },
 
@@ -506,8 +513,10 @@ Vue.createApp({
                 this.testYears = this.testYears.filter(obj => obj.label !== currentTestYear);
             }
         },
-
-
+        updateMonthlyData() {
+            this.testComputeMonthlyExpenses();
+            this.filteredPosts = this.testSelectedMonth === 'Month' ? [] : this.getFilteredPosts();
+        },
         showIncomeDeleteButton(index) {
             return this.incomePosts[index].isChecked;
         },
