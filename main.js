@@ -5,8 +5,8 @@ Vue.createApp({
             incomeID: 0,
             incomeText: '',
             incomeCategory: '',
-            incomeAmount: '',
             incomeDate: '',
+            incomeAmount: '',            
 
             expensesPosts: [],
             expenseID: 0,
@@ -21,12 +21,12 @@ Vue.createApp({
             totalExpenses: 0,
             totalBalance: 0,
 
-            monthlyIncome: {},
-            monthlyExpenses: {},
-
-            testSelectedYear: 'Year',
-            testYears: [],
+            testYears: [],            
+            testSelectedYear: 'Year',            
             testSelectedMonth: 'Month',
+
+            /* monthlyIncome: {},
+            monthlyExpenses: {}, */
 
             //Class or not? 
             testMonths: [
@@ -261,6 +261,7 @@ Vue.createApp({
         //I så fall borde this-variablerna inte behövas här nedan heller (se ovan).
 
         //Lägg till årtal i option-listan (dropdown för år)
+        //Uppdatera parametrar och lägg till i addIncomePosts
         testUpdateYear(expenseObject) {
 
             const testTemporaryYear = new Date(expenseObject.expenseDate).toLocaleString('default', { year: 'numeric' });
@@ -285,11 +286,9 @@ Vue.createApp({
             if (MonthString === "January" || MonthString === "januari") {
                 monthId = 0;
             }
-
             else if (MonthString === "February" || MonthString === "februari") {
                 monthId = 1;
             }
-
             else if (MonthString === "March" || MonthString === "mars") {
                 monthId = 2;
 
@@ -330,11 +329,8 @@ Vue.createApp({
                 monthId = 11;
 
             }
-
             return monthId;
-        },
-
-
+        },        
         testComputeMonthlyExpenses() {
 
             //sätt månadens utgifter till noll varje gång metoden anropas (för att den ska nollas när du byter år t.ex.)
@@ -380,73 +376,10 @@ Vue.createApp({
                 })
 
                 this.testMonths.forEach(post => {
-
                     post.monthlyBalance = post.monthlyIncome - post.monthlyExpense;
                 })
             }
-
-            // //för att den inte ska köras när man enbart hunnit välja år i dropdown - före man hinner välja månad
-            // if (!this.testSelectedYear == '') {
-
-            //     this.testMonths.forEach(post => {
-
-            //         let testCurrentMonthId = post.id;
-
-            //         //om årtal och månad från expensen stämmer överense med de valda i dropdowns
-            //         if (testYear === testCurrentYear && testExpensesMonthId === testCurrentMonthId) {
-            //             // id och index är samma så därför funkar det att nu lägg till summan i månadens testMexpense (konstigt variabelnamn)
-            //             this.testMonths[testCurrentMonthId].monthlyExpense += post.expenseAmount;
-            //         }
-
-
-            //     })
-
-            // }
         },
-
-        //
-        // testComputeMonthlyExpenses() {
-
-        //     //sätt månadens utgifter till noll varje gång metoden anropas (för att den ska nollas när du byter år t.ex.)
-        //     this.testMonths.forEach(month => {
-        //         month.monthlyExpense = 0;
-        //     })
-
-
-        //     //för att den inte ska köras när man enbart hunnit välja år i dropdown - före man hinner välja månad
-        //     if (!this.testSelectedYear == '' && !this.testSelectedMonth == '') {
-
-        //         let testCurrentYear = this.testSelectedYear; //hämta valt år från dropdown, kanske ej behövs. borde kunna skicka in this.SelectedYear direkt
-        //         let testCurrentMonthString = this.testSelectedMonth; //hämta valt år från dropdown, se ovan
-
-        //         // här får vi ut månadens id för den månad som är vald i optionlista
-        //         let testCurrentMonthId = this.testfindMonthIdFromMonthString(testCurrentMonthString);
-
-        //         //här hämtar vi ut årtal och månad från varje expense
-        //         this.expensesPosts.forEach(post => {
-        //             const testYear = new Date(post.expenseDate).toLocaleString('default', { year: 'numeric' });
-        //             const testExpensesMonthString = new Date(post.expenseDate).toLocaleString('default', { month: 'long' });
-
-        //             //få ut månadsid från varje expense (så att vi sen kan jämföra den med den månaden som är vald)
-        //             let testExpensesMonthId = this.testfindMonthIdFromMonthString(testExpensesMonthString);
-
-        //             //om årtal och månad från expensen stämmer överense med de valda i dropdowns
-        //             if (testYear === testCurrentYear && testExpensesMonthId === testCurrentMonthId) {
-
-        //                 // id och index är samma så därför funkar det att nu lägg till summan i månadens testMexpense (konstigt variabelnamn)
-        //                 this.testMonths[testCurrentMonthId].monthlyExpense += post.expenseAmount;
-        //             }
-
-        //         })
-
-        //     }
-        // },
-
-        /* toggleExpenses() {
-
-            this.expensesHidden = !this.expensesHidden;
-        }, */
-
         calculateIncome(incomePosts) {
             const monthlyIncome = {};
 
@@ -492,8 +425,6 @@ Vue.createApp({
             this.calculateBalance();
 
             return monthlyExpenses;
-
-
         },
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
@@ -546,19 +477,22 @@ Vue.createApp({
         },
         checkDataLoaded() {
             if (this.incomePosts.length === 0 && this.expensesPosts.length === 0 && this.dataLoaded === true) {
-                this.clearDataLoaded();
+                this.dataLoaded = false; /* this.clearDataLoaded(); */
+                this.clearTestYears();
+
+            this.saveToLocalStorage();
             }
             else {
                 return
             }
         },
-        clearDataLoaded() {
-            this.dataLoaded = false;
+        /* clearDataLoaded() { */
+            /* this.dataLoaded = false; */
 
-            this.clearTestYears();
+            /* this.clearTestYears();
 
-            this.saveToLocalStorage();
-        },
+            this.saveToLocalStorage(); */
+        /* }, */
         deleteExpensePost(indexToDelete) {
 
             let thisPost = this.expensesPosts[indexToDelete];
@@ -583,13 +517,13 @@ Vue.createApp({
 
                     counter++;
                 }
-
             })
             if (counter === 0) {
 
                 this.testYears = this.testYears.filter(obj => obj.label !== expenseTestYear);
             }
         },
+        //Kopiera över motsvarande kod från deleteExpensesPost
         deleteIncomePost(indexToDelete) {
             this.incomePosts.splice(indexToDelete, 1)
 
@@ -628,6 +562,7 @@ Vue.createApp({
                     this.calculateIncome(this.incomePosts);
                     this.calculateExpenses(this.expensesPosts);
 
+                    //Ska motsvarande kod för incomePosts läggas in här?!
                     this.expensesPosts.forEach(expensesPost => {
                         this.testUpdateYear(expensesPost)
                     });
