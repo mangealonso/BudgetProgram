@@ -46,29 +46,6 @@ Vue.createApp({
             ,
 
             dataLoaded: false,
-
-            //Kan vi bara ta bort nedanstående kod?
-
-            /* selectedIncomeMonth: "Choose month",
-            selectedExpensesMonth: "Choose month", */
-
-            /*
-                        dropDownOptions: [],
-                        filteredByMonth: [],
-                        filterMonthlyExpenses: [],
-                        monthsWithExpenses: [],
-                        newFilter: [],
-            
-                        yearAndMonth: '',*/
-
-
-            /*perMonth: '', */
-
-            //monthlyExpenses: 0,
-            //someStuffExpenses: 0,            
-
-            /* picked: 'Year',
-            expensesHidden: true */
         }
     },
     mounted() {
@@ -119,18 +96,6 @@ Vue.createApp({
             },
             deep: true
           },
-    sortedMonthlyIncome: function () {
-        this.selectedIncomeMonth = "Choose month";
-        this.selectedExpensesMonth = "Choose month";
-        this.testSelectedYear = "Year";
-        this.testSelectedMonth = "Month";
-    },
-    sortedMonthlyExpenses: function () {
-        this.selectedIncomeMonth = "Choose month";
-        this.selectedExpensesMonth = "Choose month";
-        this.testSelectedYear = "Year";
-        this.testSelectedMonth = "Month";
-    },
      }, */
     computed: {
         hasIncomePosts() {
@@ -144,27 +109,8 @@ Vue.createApp({
                 month => month.label === this.testSelectedMonth
             );
             return selectedMonth ? selectedMonth.monthlyExpense : '';
-        }
-
-
-        // hiddenPerMonth() {
-        //   return this.perMonth ? '' : 'hidden';
-        // },
-
-        /* sortedMonthlyIncome() {
-            const months = Object.keys(this.monthlyIncome);
-            return months.sort((a, b) => new Date(b) - new Date(a));
-        },
-        sortedMonthlyExpenses() {
-            const months = Object.keys(this.monthlyExpenses);
-            return months.sort((a, b) => new Date(b) - new Date(a));
-        }, */
-
-        //     incomeCategoryPay() {
-        //         return this.incomePosts.filter(incomePosts => incomePosts.incomeCategory === 'Pay')
-        //     }        
+        }       
     },
-
     methods: {
         saveToLocalStorage() {
             localStorage.setItem('incomePosts', JSON.stringify(this.incomePosts));
@@ -212,7 +158,6 @@ Vue.createApp({
                 this.incomeDate = ''
 
             this.calculateIncome(this.incomePosts);
-
             this.saveToLocalStorage();
         },
         sortIncomePosts() {
@@ -249,7 +194,6 @@ Vue.createApp({
                 this.expenseDate = ''
 
             this.calculateExpenses(this.expensesPosts);
-
             this.saveToLocalStorage();
 
             //Testar en metod här - Jag borde inte behöva skicka in this.-variablerna väl?
@@ -393,12 +337,9 @@ Vue.createApp({
 
             this.totalIncome = Object.values(monthlyIncome).reduce((acc, income) => acc + income, 0);
 
-            //this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
-
             this.monthlyIncome = monthlyIncome;
 
             this.saveToLocalStorage();
-
             this.calculateBalance();
 
             return monthlyIncome;
@@ -418,10 +359,7 @@ Vue.createApp({
 
             this.monthlyExpenses = monthlyExpenses;
 
-            //this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
-
             this.saveToLocalStorage();
-
             this.calculateBalance();
 
             return monthlyExpenses;
@@ -438,7 +376,6 @@ Vue.createApp({
             this.totalIncome = 0;
 
             this.saveToLocalStorage();
-
             this.clearBalance();
         },
         clearExpensesPosts() {
@@ -447,11 +384,7 @@ Vue.createApp({
             this.expenseID = 0;
             this.totalExpenses = 0;
 
-            //Added this row - LINDA
-            /* this.testYears = []; */
-
             this.saveToLocalStorage();
-
             this.clearBalance();
         },
         clearBalance() {
@@ -466,7 +399,6 @@ Vue.createApp({
             }
 
             this.saveToLocalStorage();
-
             this.checkDataLoaded();
         },
         clearTestYears() {
