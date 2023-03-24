@@ -198,7 +198,6 @@ Vue.createApp({
 
         //Lägg till årtal i option-listan (dropdown för år)
 
-        //Uppdatera parametrar och lägg till i addIncomePosts
         testUpdateYear(incomeObject = {}, expenseObject = {}) {
 
             let testTemporaryYear = '';
@@ -462,9 +461,28 @@ Vue.createApp({
         },
         //Kopiera över motsvarande kod från deleteExpensesPost
         deleteIncomePost(indexToDelete) {
+            let thisPost = this.incomePosts[indexToDelete];
+            const incomeTestYear = new Date(thisPost.incomeDate).toLocaleString('default', { year: 'numeric' });
+
             this.incomePosts.splice(indexToDelete, 1)
 
             this.calculateIncome(this.incomePosts)
+
+            let counter = 0
+            this.incomePosts.forEach(post => {
+                const year = new Date(post.incomeDate).toLocaleString('default', { year: 'numeric' });
+
+                if (year === incomeTestYear) {
+
+                    counter++;
+                }
+            })
+            if (counter === 0) {
+
+                this.testYears = this.testYears.filter(obj => obj.label !== incomeTestYear);
+            }
+
+
         },
         showIncomeDeleteButton(index) {
             return this.incomePosts[index].isChecked;
