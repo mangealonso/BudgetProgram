@@ -108,32 +108,32 @@
 
         <section id="summarySection">
             <div id="summaryTotals">
-            <h2>Summary:</h2>
+                <h2>Summary:</h2>
 
-            <h3>Total income:</h3>
-            <p id="totalIncomeAmount">{{totalIncome}}</p>
+                <h3>Total income:</h3>
+                <p id="totalIncomeAmount">{{totalIncome}}</p>
 
-            <h3>Total expenses:</h3>
-            <p id="totalExpensesAmount">{{totalExpenses}}</p>
+                <h3>Total expenses:</h3>
+                <p id="totalExpensesAmount">{{totalExpenses}}</p>
 
-            <h3>Total balance:</h3>
-            <p id="totalBalance">{{totalBalance}}</p>
-        </div>
+                <h3>Total balance:</h3>
+                <p id="totalBalance">{{totalBalance}}</p>
+            </div>
 
-            
 
-                <!-- <div id="monthlyIncomeSection">
+
+            <!-- <div id="monthlyIncomeSection">
                 <h4>Income per month:</h4>
                 <ol>
                     <li class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
                        <label class="incomeMonthLabel">
                         {{ month }}: {{ income }}</label> </li>
                 </ol> -->
-                <!-- </div>
+            <!-- </div>
                 <div class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
                     {{ month }}: {{ income }}
                 </div> -->
-                <!-- 
+            <!-- 
                 <div id="monthlyExpensesSection">
                     <h4>Expenses per month:</h4>
                 <ol>
@@ -163,65 +163,65 @@
                     </select>
                 </div>-->
 
-                <div id="yearAndMonth">
-                    <h4>By year and month:</h4>
-                    <p><select v-model="selectedYear" @change="computeMonthlySummary">
-                            <option value="Year">Year</option>
-                            <option v-for="year in years" :label="year.label">
-                                {{year.label}}
-                            </option>
-                        </select>
+            <div id="yearAndMonth">
+                <h4>By year and month:</h4>
+                <p><select v-model="selectedYear" @change="computeMonthlySummary">
+                        <option value="Year">Year</option>
+                        <option v-for="year in years" :label="year.label">
+                            {{year.label}}
+                        </option>
+                    </select>
 
-                        <!-- <select v-model="testSelectedMonth" @change="testComputeMonthlyExpenses">
+                    <!-- <select v-model="testSelectedMonth" @change="testComputeMonthlyExpenses">
                             <option value="Month">Month</option>
                             <option v-for="month in testMonths" :key="month.id">
                                 {{ month.label }}
                             </option>
                         </select> -->
 
-                    <div v-if="selectedYear !== 'Year'">
-                        <!-- Jag vet att man normalt inte vill använda <br> men vågade inte riktigt 
+                <div v-if="selectedYear !== 'Year'">
+                    <!-- Jag vet att man normalt inte vill använda <br> men vågade inte riktigt 
                             göra om dessa till <p> utan att kolla med dig -->
 
-                        <ol>
-                            <li v-for="month in months" key:month.id>
-                                <p>{{month.label}}:</p>
-                                <p>Income: {{month.monthlyIncome}}, Expenses: {{month.monthlyExpense}}, Balance:
-                                    {{month.monthlyBalance}}</p>
-                            </li>
-                        </ol>
+                    <ol>
+                        <li v-for="month in months" key:month.id>
+                            <p>{{month.label}}:</p>
+                            <p>Income: {{month.monthlyIncome}}, Expenses: {{month.monthlyExpense}}, Balance:
+                                {{month.monthlyBalance}}</p>
+                        </li>
+                    </ol>
 
-                        <!-- <p>Selected year: {{testSelectedYear}} <br> Selected month: {{testSelectedMonth}} <br>
+                    <!-- <p>Selected year: {{testSelectedYear}} <br> Selected month: {{testSelectedMonth}} <br>
                             Expenses: {{selectedMonthExpenses}}</p> -->
 
-                        <!-- v-show="testSelectedMonth != month.value"> 
+                    <!-- v-show="testSelectedMonth != month.value"> 
                             {{ month.label}}: {{month.value}} -->
 
-                        <!-- <ol>
+                    <!-- <ol>
                             <li v-for="{label, value} in dropDownOptions">
                             {{label}} {{filterByMonthForOptions(value)}} </li>
                             </ol> -->
 
-                    </div>
+                </div>
 
-                    <!-- <div class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
+                <!-- <div class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
                     {{ month }}: {{ expense }}
                     </div> -->
 
-                    <!-- <button @click="toggleExpenses">Show Expenses Summary</button>
+                <!-- <button @click="toggleExpenses">Show Expenses Summary</button>
                     <div id="expensesPerMonth" :hidden="expensesHidden">
 
                     <label><input type="radio" id="year" value="Year" v-model="picked">Year</label> -->
-                    <!-- <label for="one">Income</label> -->
+                <!-- <label for="one">Income</label> -->
 
-                    <!-- <label><input type="radio" id="month" value="Month" v-model="picked">Month</label> -->
-                    <!-- <label for="two">Expense</label> -->
-                    <!-- @change="findUniqueMonths('expenseDate') -->
+                <!-- <label><input type="radio" id="month" value="Month" v-model="picked">Month</label> -->
+                <!-- <label for="two">Expense</label> -->
+                <!-- @change="findUniqueMonths('expenseDate') -->
 
-                    <!-- <h4>Summary:
+                <!-- <h4>Summary:
                         {{picked}}</h4>-->
 
-                    <!-- <div v-if="picked !== 'Month'">
+                <!-- <div v-if="picked !== 'Month'">
                         <p>Expenses:</p>
                         <ol>
                             <li v-for="{label, value} in dropDownOptions">
@@ -229,7 +229,7 @@
                         </ol>
                     </div> -->
 
-                    <!-- <div v-else-if="picked !== 'Year'">
+                <!-- <div v-else-if="picked !== 'Year'">
                         <label>
                             <select v-model="perMonth" @change="filterByMonth(perMonth),showAmount">
                                 <option value="">Month</option>
@@ -243,8 +243,8 @@
                         <p v-if="perMonth && perMonth !== ''">Expenses this month: {{monthlyExpenses}}</p>
                     </div>
                 </div> -->
-                </div>
-                
+            </div>
+
         </section>
 
     </div>
