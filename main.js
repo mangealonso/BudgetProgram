@@ -179,7 +179,7 @@ Vue.createApp({
 
             this.updateYear(undefined, expenseObject);
             this.updateMonthlyData();
-        },        
+        },
         sortIncomePosts() {
             this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate));
         },
@@ -256,7 +256,7 @@ Vue.createApp({
         },
 
         //is called each time you switch year in year-dropdown
-        computeMonthlySummary() { 
+        computeMonthlySummary() {
 
             //set all of the actual months expenses to 0 each time method is called
             if (this.selectedYear !== 'Year') {
