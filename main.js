@@ -139,10 +139,10 @@ Vue.createApp({
 
             this.calculateIncome(this.incomePosts);
             this.updateMonthlyData();
-            this.saveToLocalStorage();
 
             this.updateYear(incomeObject, undefined)
             this.updateMonthlyData();
+            this.saveToLocalStorage();
         },
         addExpensePost() {
             if (this.expenseText.trim() === '' || this.expenseAmount === ''
@@ -175,10 +175,10 @@ Vue.createApp({
                 this.expenseDate = ''
 
             this.calculateExpenses(this.expensesPosts);
-            this.saveToLocalStorage();
 
             this.updateYear(undefined, expenseObject);
             this.updateMonthlyData();
+            this.saveToLocalStorage();
         },
         sortIncomePosts() {
             this.incomePosts.sort((a, b) => new Date(b.incomeDate) - new Date(a.incomeDate));
@@ -310,16 +310,16 @@ Vue.createApp({
         calculateIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
 
-            this.saveToLocalStorage();
             this.calculateBalance();
+            this.saveToLocalStorage();
         },
 
         //calculate total expenses
         calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
 
-            this.saveToLocalStorage();
             this.calculateBalance();
+            this.saveToLocalStorage();
         },
 
         //calculate the total balance
@@ -335,7 +335,6 @@ Vue.createApp({
             this.incomeID = 0;
             this.totalIncome = 0;
 
-            this.saveToLocalStorage();
             this.clearBalance();
 
             this.years.forEach((year, index) => {
@@ -348,6 +347,7 @@ Vue.createApp({
             });
 
             this.updateAllMonthlyData();
+            this.saveToLocalStorage();
         },
 
         //will run when "delete all expense posts" is clicked
@@ -356,7 +356,6 @@ Vue.createApp({
             this.expenseID = 0;
             this.totalExpenses = 0;
 
-            this.saveToLocalStorage();
             this.clearBalance();
 
             this.years.forEach((year, index) => {
@@ -369,6 +368,7 @@ Vue.createApp({
             });
 
             this.updateAllMonthlyData();
+            this.saveToLocalStorage();
         },
         clearBalance() {
             if (this.incomePosts.length === 0) {
@@ -382,8 +382,8 @@ Vue.createApp({
                 clearYears();
             }
 
-            this.saveToLocalStorage();
             this.checkDataLoaded();
+            this.saveToLocalStorage();
         },
         checkDataLoaded() {
             if (this.incomePosts.length === 0 && this.expensesPosts.length === 0 && this.dataLoaded === true) {

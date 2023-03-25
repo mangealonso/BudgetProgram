@@ -50,7 +50,6 @@ header {
     /* text-align: center; */
     font-size: 12px;
     margin-left: 6px;
-    ;
 }
 
 #allExpensesPostsDiv li,
@@ -115,7 +114,8 @@ form {
 }
 
 #yearAndMonth {
-    border-top: 1px solid black;
+    /* 
+    border-top: 1px solid black; */
     grid-area: "g";
 }
 
@@ -180,17 +180,22 @@ h3 {
 
 #summarySection {
     color: beige;
-    background-color: rgb(31, 71, 108);
+    background-color: rgb(32, 60, 86);
 }
 
 #summarySection h2 {
     text-align: start;
 }
 
+#monthLabel {
+    color: beige;
+}
+
 h4 {
     margin-top: 5px;
     margin-bottom: 8px;
     display: grid;
+    color: beige;
 }
 
 
