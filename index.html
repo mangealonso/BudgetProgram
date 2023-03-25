@@ -47,7 +47,6 @@
 
         <section id="allIncomePostsSection">
             <h3 v-if="hasIncomePosts">All income posts:</h3>
-
             <h4 v-if="hasIncomePosts">Click on any post to delete</h4>
             <ul>
                 <li v-for="(income, index) in incomePosts" :key="income.incomeID">
@@ -94,9 +93,8 @@
         </section>
 
         <section id="allExpensesPostsSection">
-            <h3 v-if="hasExpensePosts">All expense posts:</h3>
-
-            <h4 v-if="hasExpensePosts">Click on any post to delete</h4>
+            <h3 v-if="hasExpensesPosts">All expenses posts:</h3>
+            <h4 v-if="hasExpensesPosts">Click on any post to delete</h4>
             <ul>
                 <li v-for="(expense, index) in expensesPosts" :key="expense.expenseID">
                     <label class="expenseLabel">
@@ -108,7 +106,7 @@
                         @click="deleteExpensePost(index)">Delete</button>
                 </li>
             </ul>
-            <button id="clearExpensesButton" class="clearButton" v-if="hasExpensePosts"
+            <button id="clearExpensesButton" class="clearButton" v-if="hasExpensesPosts"
                 @click="clearExpensesPosts">Delete all expenses posts</button>
         </section>
 
@@ -127,7 +125,7 @@
             </div>
         </section>
 
-        <section id="yearAndMonthSection">
+        <section v-if="hasIncomeOrExpensesPosts" id="yearAndMonthSection">
             <h3>By year and month:</h3>
             <p><select v-model="selectedYear" @change="computeMonthlySummary">
                     <option value="Year">Year</option>

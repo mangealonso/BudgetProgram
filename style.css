@@ -22,6 +22,7 @@ body {
         "a a a"
         "b c d"
         "e f g" / 3fr 3fr 3fr;
+        gap: 10px;
 }
 
 header {

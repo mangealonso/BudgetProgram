@@ -82,8 +82,11 @@ Vue.createApp({
         hasIncomePosts() {
             return this.incomePosts.length > 0;
         },
-        hasExpensePosts() {
+        hasExpensesPosts() {
             return this.expensesPosts.length > 0;
+        },
+        hasIncomeOrExpensesPosts() {
+            return this.incomePosts.length > 0 || this.expensesPosts.length > 0;
         },
         selectedMonthExpenses() {
             const selectedMonth = this.months.find(
