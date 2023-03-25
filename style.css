@@ -112,8 +112,8 @@ form {
 #yearAndMonthSection {
     /* 
     border-top: 1px solid black; */
-    grid-area: "g";
-    padding: 5px;
+    grid-area: "g";/* 
+    padding: 5px; */
 }
 
 /* #monthlySummary {
