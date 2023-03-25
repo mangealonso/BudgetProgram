@@ -21,8 +21,8 @@ body {
     display: grid;
     grid-template:
         "a a a"
-        "b c d" 
-        "e f g"/ 3fr 3fr 3fr;
+        "b c d"
+        "e f g" / 3fr 3fr 3fr;
 }
 
 header {
@@ -40,17 +40,21 @@ header {
     display: grid;
 }  */
 
-#allExpensesPostsDiv button, #allIncomePostsDiv button {
- margin-left: 6px;
+#allExpensesPostsDiv button,
+#allIncomePostsDiv button {
+    margin-left: 6px;
 }
 
-#allExpensesPostsDiv h4, #allIncomePostsDiv h4 {
+#allExpensesPostsDiv h4,
+#allIncomePostsDiv h4 {
     /* text-align: center; */
     font-size: 12px;
-    margin-left: 6px;;
+    margin-left: 6px;
+    ;
 }
 
-#allExpensesPostsDiv li, #allIncomePostsDiv li {
+#allExpensesPostsDiv li,
+#allIncomePostsDiv li {
     border-bottom: solid black 1px;
     font-size: 12px;
     margin-left: 6px;
@@ -64,14 +68,15 @@ header {
 
 form {
     display: grid;
-    justify-content:center;
+    justify-content: center;
 }
 
 #yearAndMonth li p {
     margin: 0px;
 }
 
-#addIncomePostSection p, #addExpensePostSection p {
+#addIncomePostSection p,
+#addExpensePostSection p {
     margin-bottom: 1px;
     margin-top: 4px;
 }
@@ -79,7 +84,7 @@ form {
 #addIncomePostSection {
     grid-area: b;
     padding: 10px;
-    
+
 }
 
 #addExpensePostSection {
@@ -94,12 +99,12 @@ form {
 }
 
 #allIncomePostsDiv {
-    
+
     grid-area: e;
 }
 
 #allExpensesPostsDiv {
-   
+
     grid-area: f;
 }
 
@@ -109,7 +114,7 @@ form {
     padding: 5px;
 }
 
-#yearAndMonth{
+#yearAndMonth {
     border-top: 1px solid black;
     grid-area: "g";
 }
@@ -149,7 +154,8 @@ h2 {
     text-align: center;
 }
 
-#allExpensesPostsDiv h3, #allIncomePostsDiv h3 {
+#allExpensesPostsDiv h3,
+#allIncomePostsDiv h3 {
     text-align: center;
 }
 
@@ -172,12 +178,12 @@ h4 {
 @media (min-width:700px) and (max-width:900px) {
 
     #app {
-        display:grid;
+        display: grid;
         grid-template:
             "a a"
             "b c"
             "d g"
-            "e f" /1fr 1fr ;
+            "e f" /1fr 1fr;
 
     }
 
@@ -190,7 +196,7 @@ h4 {
         align-self: center;
         justify-self: center;
     }
-   
+
 
 }
 
@@ -215,7 +221,8 @@ h4 {
         padding-right: 300px;
     }
 }
- /*
+
+/*
 @media (min-width:1500px) {
 
     header {
