@@ -56,7 +56,7 @@
                         {{income.incomeText}}, {{income.incomeCategory}}, {{income.incomeAmount}},
                         {{income.incomeDate}}
                     </label>
-                    <button id="deleteThisIncome" v-if="showIncomeDeleteButton(index)"
+                    <button class="deleteThisIncome" v-if="showIncomeDeleteButton(index)"
                         @click="deleteIncomePost(index)">Delete</button>
                 </li>
             </ul>
@@ -104,7 +104,7 @@
                         {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}},
                         {{expense.expenseDate}}
                     </label>
-                    <button id="deleteThisExpense" v-if="showExpenseDeleteButton(index)"
+                    <button class="deleteThisExpense" v-if="showExpenseDeleteButton(index)"
                         @click="deleteExpensePost(index)">Delete</button>
                 </li>
             </ul>
@@ -128,7 +128,7 @@
         </section>
 
         <section id="yearAndMonthSection">
-            <h4>By year and month:</h4>
+            <h3>By year and month:</h3>
             <p><select v-model="selectedYear" @change="computeMonthlySummary">
                     <option value="Year">Year</option>
                     <option v-for="year in years" :label="year.label">
@@ -148,4 +148,5 @@
         </section>
     </div>
 </body>
+
 </html>

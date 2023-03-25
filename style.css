@@ -14,7 +14,6 @@ body {
 }
 
 #app {
-
     padding-left: 50px;
     padding-right: 50px;
 
@@ -55,13 +54,13 @@ header {
 #allExpensesPostsSection li,
 #allIncomePostsSection li {
     border-bottom: solid black 1px;
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 6px;
-
+    margin-right: 2px;
 }
 
-#deleteThisExpense,
-#deleteThisIncome {
+.deleteThisExpense,
+.deleteThisIncome {
     font-size: 12px;
 }
 
@@ -70,7 +69,7 @@ form {
     justify-content: left;
 }
 
-#yearAndMonth li p {
+#yearAndMonthSection li p {
     margin: 0px;
 }
 
@@ -83,7 +82,6 @@ form {
 #addIncomePostSection {
     grid-area: b;
     padding: 10px;
-
 }
 
 #addExpensePostSection {
@@ -98,25 +96,23 @@ form {
 }
 
 #allIncomePostsSection {
-
     grid-area: e;
 }
 
 #allExpensesPostsSection {
-
     grid-area: f;
 }
 
 #monthlySummary {
-
     /* border: 2px solid black; */
     padding: 5px;
 }
 
-#yearAndMonth {
+#yearAndMonthSection {
     /* 
     border-top: 1px solid black; */
     grid-area: "g";
+    padding: 5px;
 }
 
 /* #monthlySummary {
@@ -148,8 +144,8 @@ button[type="submit"] {
 
 
 .clearButton,
-#deleteThisIncome,
-#deleteThisExpense {
+.deleteThisIncome,
+.deleteThisExpense {
     background-color: red;
     color: white;
 }
@@ -158,8 +154,8 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
-#deleteThisIncome,
-#deleteThisExpense {
+.deleteThisIncome,
+.deleteThisExpense {
     object-position: center;
 }
 
@@ -173,12 +169,12 @@ h1 {
 }
 
 h2 {
-    text-align: left;
+    text-align: start;
 }
 
 #allExpensesPostsSection h3,
 #allIncomePostsSection h3 {
-    text-align: left;
+    text-align: start;
     padding-left: 7px;
 }
 
@@ -187,7 +183,7 @@ h3 {
     margin-bottom: 5px;
 }
 
-#summarySection {
+#summaryTotals {
     color: beige;
     background-color: rgb(32, 60, 86);
 }
@@ -221,16 +217,14 @@ h4 {
     }
 
     #summarySection {
-        justify-self: center;
-        align-self: center;
+        justify-self: left;
+        align-self: left;
     }
 
-    #yearAndMonth {
-        align-self: center;
-        justify-self: center;
+    #yearAndMonthSection {
+        align-self: left;
+        justify-self: left;
     }
-
-
 }
 
 @media (min-width:1200px) {
