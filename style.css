@@ -32,28 +32,28 @@ header {
     grid-area: a;
 }
 
-/* #allIncomePostsDiv {
+/* #allIncomePostsSection {
     display: grid;
 }
 
-#allExpensesPostsDiv {
+#allExpensesPostsSection {
     display: grid;
 }  */
 
-#allExpensesPostsDiv button,
-#allIncomePostsDiv button {
+#allExpensesPostsSection button,
+#allIncomePostsSection button {
     margin-left: 6px;
 }
 
-#allExpensesPostsDiv h4,
-#allIncomePostsDiv h4 {
+#allExpensesPostsSection h4,
+#allIncomePostsSection h4 {
     /* text-align: center; */
     font-size: 12px;
     margin-left: 6px;
 }
 
-#allExpensesPostsDiv li,
-#allIncomePostsDiv li {
+#allExpensesPostsSection li,
+#allIncomePostsSection li {
     border-bottom: solid black 1px;
     font-size: 12px;
     margin-left: 6px;
@@ -97,12 +97,12 @@ form {
     /* justify-self: center; */
 }
 
-#allIncomePostsDiv {
+#allIncomePostsSection {
 
     grid-area: e;
 }
 
-#allExpensesPostsDiv {
+#allExpensesPostsSection {
 
     grid-area: f;
 }
@@ -154,12 +154,12 @@ button[type="submit"] {
     color: white;
 }
 
-.clearButton{
+.clearButton {
     margin-top: 10px;
 }
 
 #deleteThisIncome,
-#deleteThisExpense{
+#deleteThisExpense {
     object-position: center;
 }
 
@@ -176,8 +176,8 @@ h2 {
     text-align: left;
 }
 
-#allExpensesPostsDiv h3,
-#allIncomePostsDiv h3 {
+#allExpensesPostsSection h3,
+#allIncomePostsSection h3 {
     text-align: left;
     padding-left: 7px;
 }
