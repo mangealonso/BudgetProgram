@@ -47,8 +47,7 @@
 
         <div id="allIncomePostsDiv">
             <h3 v-if="hasIncomePosts">All income posts:</h3>
-
-            <button v-if="hasIncomePosts" @click="clearIncomePosts">Delete all income posts</button>
+            
             <h4 v-if="hasIncomePosts">Click on any post to delete</h4>
             <ul>
                 <li v-for="(income, index) in incomePosts" :key="income.incomeID">
@@ -61,6 +60,7 @@
                         @click="deleteIncomePost(index)">Delete</button>
                 </li>
             </ul>
+            <button id="clearIncomeButton" class="clearButton" v-if="hasIncomePosts" @click="clearIncomePosts">Delete all income posts</button>
         </div>
 
 
@@ -94,8 +94,7 @@
 
         <div id="allExpensesPostsDiv">
             <h3 v-if="hasExpensePosts">All expense posts:</h3>
-
-            <button v-if="hasExpensePosts" @click="clearExpensesPosts">Delete all expenses posts</button>
+            
             <h4 v-if="hasExpensePosts">Click on any post to delete</h4>
             <ul>
                 <li v-for="(expense, index) in expensesPosts" :key="expense.expenseID">
@@ -108,6 +107,7 @@
                         @click="deleteExpensePost(index)">Delete</button>
                 </li>
             </ul>
+            <button id="clearExpensesButton" class="clearButton" v-if="hasExpensePosts" @click="clearExpensesPosts">Delete all expenses posts</button>
         </div>
 
 

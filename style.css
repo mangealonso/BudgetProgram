@@ -68,7 +68,7 @@ header {
 
 form {
     display: grid;
-    justify-content: center;
+    justify-content: left;
 }
 
 #yearAndMonth li p {
@@ -140,7 +140,17 @@ button {
     justify-self: center;
 }
 
+button[type="submit"] {
+    background-color: rgb(36, 192, 36);
+    margin-top: 15px;
+    padding: 5px;
+  }
 
+
+.clearButton,#deleteThisIncome , #deleteThisExpense{
+    background-color: red;
+    color: white;
+}
 p {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -151,18 +161,24 @@ h1 {
 }
 
 h2 {
-    text-align: center;
+    text-align: left;
 }
 
 #allExpensesPostsDiv h3,
 #allIncomePostsDiv h3 {
-    text-align: center;
+    text-align: left;
+    padding-left: 7px;
 }
 
 h3 {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+/* #summarySection{
+    color: antiquewhite;
+    background-color: rgb(21, 47, 71);
+} */
 
 #summarySection h2 {
     text-align: start;
