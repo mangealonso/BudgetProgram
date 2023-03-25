@@ -154,6 +154,15 @@ button[type="submit"] {
     color: white;
 }
 
+.clearButton{
+    margin-top: 10px;
+}
+
+#deleteThisIncome,
+#deleteThisExpense{
+    object-position: center;
+}
+
 p {
     margin-top: 5px;
     margin-bottom: 5px;
