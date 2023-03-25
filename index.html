@@ -20,49 +20,49 @@
 
         <section id="addIncomePostSection">
             <div id="addIncome">
-            <h2>Add an income:</h2>
-            <form @submit.prevent="addIncomePost">
+                <h2>Add an income:</h2>
+                <form @submit.prevent="addIncomePost">
 
-                <p>Title:</p>
-                <input id="incomeTitle" type="text" v-model="incomeText">
+                    <p>Title:</p>
+                    <input id="incomeTitle" type="text" v-model="incomeText">
 
-                <p>Category:</p>
-                <select id="incomeCategory" v-model="incomeCategory">
-                    <option value="Pay">Pay</option>
-                    <option value="Benefit">Benefit</option>
-                    <option value="Gift">Gift</option>
-                    <option value="Selling things">Selling things</option>
-                </select>
+                    <p>Category:</p>
+                    <select id="incomeCategory" v-model="incomeCategory">
+                        <option value="Pay">Pay</option>
+                        <option value="Benefit">Benefit</option>
+                        <option value="Gift">Gift</option>
+                        <option value="Selling things">Selling things</option>
+                    </select>
 
-                <p>Amount:</p>
-                <input id="incomeAmount" type="number" v-model="incomeAmount">
+                    <p>Amount:</p>
+                    <input id="incomeAmount" type="number" v-model="incomeAmount">
 
-                <p>Date:</p>
-                <input id="incomeDate" type="date" v-model="incomeDate">
+                    <p>Date:</p>
+                    <input id="incomeDate" type="date" v-model="incomeDate">
 
-                <button type="submit">Save income</button>
-            </form>
-        </div>
+                    <button type="submit">Save income</button>
+                </form>
+            </div>
         </section>
 
-            <div id="allIncomePostsDiv">
-                <h3 v-if="hasIncomePosts">All income posts:</h3>
+        <div id="allIncomePostsDiv">
+            <h3 v-if="hasIncomePosts">All income posts:</h3>
 
-                <button v-if="hasIncomePosts" @click="clearIncomePosts">Delete all income posts</button>
-                <h4 v-if="hasIncomePosts">Click on any post to delete</h4>
-                <ul>
-                    <li v-for="(income, index) in incomePosts" :key="income.incomeID">
-                        <label>
-                            <input type="checkbox" v-model="income.isChecked">
-                            {{income.incomeText}}, {{income.incomeCategory}}, {{income.incomeAmount}},
-                            {{income.incomeDate}}
-                        </label>
-                        <button id="deleteThisIncome" v-if="showIncomeDeleteButton(index)"
-                            @click="deleteIncomePost(index)">Delete</button>
-                    </li>
-                </ul>
-            </div>
-       
+            <button v-if="hasIncomePosts" @click="clearIncomePosts">Delete all income posts</button>
+            <h4 v-if="hasIncomePosts">Click on any post to delete</h4>
+            <ul>
+                <li v-for="(income, index) in incomePosts" :key="income.incomeID">
+                    <label>
+                        <input type="checkbox" v-model="income.isChecked">
+                        {{income.incomeText}}, {{income.incomeCategory}}, {{income.incomeAmount}},
+                        {{income.incomeDate}}
+                    </label>
+                    <button id="deleteThisIncome" v-if="showIncomeDeleteButton(index)"
+                        @click="deleteIncomePost(index)">Delete</button>
+                </li>
+            </ul>
+        </div>
+
 
         <section id="addExpensePostSection">
             <div id="addExpense">
@@ -92,25 +92,25 @@
             </div>
         </section>
 
-            <div id="allExpensesPostsDiv">
-                <h3 v-if="hasExpensePosts">All expense posts:</h3>
+        <div id="allExpensesPostsDiv">
+            <h3 v-if="hasExpensePosts">All expense posts:</h3>
 
-                <button v-if="hasExpensePosts" @click="clearExpensesPosts">Delete all expenses posts</button>
-                <h4 v-if="hasExpensePosts">Click on any post to delete</h4>
-                <ul>
-                    <li v-for="(expense, index) in expensesPosts" :key="expense.expenseID">
-                        <label class="expenseLabel">
-                            <input class="expenseCheckbox" type="checkbox" v-model="expense.isChecked">
-                            {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}},
-                            {{expense.expenseDate}}
-                        </label>
-                        <button id="deleteThisExpense" v-if="showExpenseDeleteButton(index)"
-                            @click="deleteExpensePost(index)">Delete</button>
-                    </li>
-                </ul>
-            </div>
+            <button v-if="hasExpensePosts" @click="clearExpensesPosts">Delete all expenses posts</button>
+            <h4 v-if="hasExpensePosts">Click on any post to delete</h4>
+            <ul>
+                <li v-for="(expense, index) in expensesPosts" :key="expense.expenseID">
+                    <label class="expenseLabel">
+                        <input class="expenseCheckbox" type="checkbox" v-model="expense.isChecked">
+                        {{expense.expenseText}}, {{expense.expenseCategory}}, {{expense.expenseAmount}},
+                        {{expense.expenseDate}}
+                    </label>
+                    <button id="deleteThisExpense" v-if="showExpenseDeleteButton(index)"
+                        @click="deleteExpensePost(index)">Delete</button>
+                </li>
+            </ul>
+        </div>
 
-   
+
 
         <section id="summarySection">
             <div id="summaryTotals">
@@ -128,18 +128,18 @@
         </section>
 
 
-            <!-- <div id="monthlyIncomeSection">
+        <!-- <div id="monthlyIncomeSection">
                 <h4>Income per month:</h4>
                 <ol>
                     <li class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
                        <label class="incomeMonthLabel">
                         {{ month }}: {{ income }}</label> </li>
                 </ol> -->
-            <!-- </div>
+        <!-- </div>
                 <div class="incomeMonth" v-for="(income, month) in monthlyIncome" :key="month">
                     {{ month }}: {{ income }}
                 </div> -->
-            <!-- 
+        <!-- 
                 <div id="monthlyExpensesSection">
                     <h4>Expenses per month:</h4>
                 <ol>
@@ -169,65 +169,65 @@
                     </select>
                 </div>-->
 
-            <div id="yearAndMonth">
-                <h4>By year and month:</h4>
-                <p><select v-model="selectedYear" @change="computeMonthlySummary">
-                        <option value="Year">Year</option>
-                        <option v-for="year in years" :label="year.label">
-                            {{year.label}}
-                        </option>
-                    </select>
+        <div id="yearAndMonth">
+            <h4>By year and month:</h4>
+            <p><select v-model="selectedYear" @change="computeMonthlySummary">
+                    <option value="Year">Year</option>
+                    <option v-for="year in years" :label="year.label">
+                        {{year.label}}
+                    </option>
+                </select>
 
-                    <!-- <select v-model="testSelectedMonth" @change="testComputeMonthlyExpenses">
+                <!-- <select v-model="testSelectedMonth" @change="testComputeMonthlyExpenses">
                             <option value="Month">Month</option>
                             <option v-for="month in testMonths" :key="month.id">
                                 {{ month.label }}
                             </option>
                         </select> -->
 
-                <div v-if="selectedYear !== 'Year'">
-                    <!-- Jag vet att man normalt inte vill använda <br> men vågade inte riktigt 
+            <div v-if="selectedYear !== 'Year'">
+                <!-- Jag vet att man normalt inte vill använda <br> men vågade inte riktigt 
                             göra om dessa till <p> utan att kolla med dig -->
 
-                    <ol>
-                        <li v-for="month in months" key:month.id>
-                            <p>{{month.label}}:</p>
-                            <p>Income: {{month.monthlyIncome}}, Expenses: {{month.monthlyExpense}}, Balance:
-                                {{month.monthlyBalance}}</p>
-                        </li>
-                    </ol>
+                <ol>
+                    <li v-for="month in months" key:month.id>
+                        <p>{{month.label}}:</p>
+                        <p>Income: {{month.monthlyIncome}}, Expenses: {{month.monthlyExpense}}, Balance:
+                            {{month.monthlyBalance}}</p>
+                    </li>
+                </ol>
 
-                    <!-- <p>Selected year: {{testSelectedYear}} <br> Selected month: {{testSelectedMonth}} <br>
+                <!-- <p>Selected year: {{testSelectedYear}} <br> Selected month: {{testSelectedMonth}} <br>
                             Expenses: {{selectedMonthExpenses}}</p> -->
 
-                    <!-- v-show="testSelectedMonth != month.value"> 
+                <!-- v-show="testSelectedMonth != month.value"> 
                             {{ month.label}}: {{month.value}} -->
 
-                    <!-- <ol>
+                <!-- <ol>
                             <li v-for="{label, value} in dropDownOptions">
                             {{label}} {{filterByMonthForOptions(value)}} </li>
                             </ol> -->
 
-                </div>
+            </div>
 
-                <!-- <div class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
+            <!-- <div class="expenseMonth" v-for="(expense, month) in monthlyExpenses" :key="month">
                     {{ month }}: {{ expense }}
                     </div> -->
 
-                <!-- <button @click="toggleExpenses">Show Expenses Summary</button>
+            <!-- <button @click="toggleExpenses">Show Expenses Summary</button>
                     <div id="expensesPerMonth" :hidden="expensesHidden">
 
                     <label><input type="radio" id="year" value="Year" v-model="picked">Year</label> -->
-                <!-- <label for="one">Income</label> -->
+            <!-- <label for="one">Income</label> -->
 
-                <!-- <label><input type="radio" id="month" value="Month" v-model="picked">Month</label> -->
-                <!-- <label for="two">Expense</label> -->
-                <!-- @change="findUniqueMonths('expenseDate') -->
+            <!-- <label><input type="radio" id="month" value="Month" v-model="picked">Month</label> -->
+            <!-- <label for="two">Expense</label> -->
+            <!-- @change="findUniqueMonths('expenseDate') -->
 
-                <!-- <h4>Summary:
+            <!-- <h4>Summary:
                         {{picked}}</h4>-->
 
-                <!-- <div v-if="picked !== 'Month'">
+            <!-- <div v-if="picked !== 'Month'">
                         <p>Expenses:</p>
                         <ol>
                             <li v-for="{label, value} in dropDownOptions">
@@ -235,7 +235,7 @@
                         </ol>
                     </div> -->
 
-                <!-- <div v-else-if="picked !== 'Year'">
+            <!-- <div v-else-if="picked !== 'Year'">
                         <label>
                             <select v-model="perMonth" @change="filterByMonth(perMonth),showAmount">
                                 <option value="">Month</option>
@@ -249,11 +249,7 @@
                         <p v-if="perMonth && perMonth !== ''">Expenses this month: {{monthlyExpenses}}</p>
                     </div>
                 </div> -->
-            </div>
-        
-
-        
-
+        </div>
     </div>
 </body>
 
