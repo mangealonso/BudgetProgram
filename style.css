@@ -112,8 +112,8 @@ form {
 #yearAndMonthSection {
     /* 
     border-top: 1px solid black; */
-    grid-area: g;/* 
-    padding: 5px; */
+    grid-area: g;
+    padding: 10px;
 }
 
 /* #monthlySummary {
@@ -186,7 +186,7 @@ h3 {
 
 #summaryTotals {
     /* color: beige; */
-    background-color: rgb(32, 60, 86);
+    background-color: rgb(6, 24, 41);
 
     /* border: solid 5px rgb(32, 60, 86); */
 }
