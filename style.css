@@ -112,7 +112,7 @@ form {
 #yearAndMonthSection {
     /* 
     border-top: 1px solid black; */
-    grid-area: "g";/* 
+    grid-area: g;/* 
     padding: 5px; */
 }
 
@@ -185,8 +185,10 @@ h3 {
 }
 
 #summaryTotals {
-    color: beige;
+    /* color: beige; */
     background-color: rgb(32, 60, 86);
+
+    /* border: solid 5px rgb(32, 60, 86); */
 }
 
 #summarySection h2 {
@@ -205,26 +207,117 @@ h4 {
 }
 
 
-@media (min-width:700px) and (max-width:900px) {
+
+
+@media (max-width:1000px) {
 
     #app {
+        padding-left: 100px;
+        padding-right: 100px;
         display: grid;
         grid-template:
             "a a"
             "b c"
-            "d g"
+            "d d"
+            "g g"
             "e f" /1fr 1fr;
+            /* gap: 0px; */
 
     }
 
     #summarySection {
-        justify-self: left;
-        align-self: left;
+        justify-self: center;
+        /* align-self: left; */
     }
 
     #yearAndMonthSection {
-        align-self: left;
-        justify-self: left;
+        display:grid;
+        justify-self: center;
+    }
+
+    #yearAndMonthSection p {
+        justify-self: center;
+    }
+
+    
+    #yearAndMonthSection h3 { 
+        text-align:center;
+    }
+    #addIncomePostSection {
+        justify-self: center;
+    }
+    
+    #addExpensePostSection {
+        justify-self: center;
+    }
+}
+
+@media (max-width:800px) {
+
+    #app {
+        padding-left: 75px;
+        padding-right: 75px;
+    }
+
+} 
+
+@media (max-width:750px) {
+
+    #app {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+} 
+
+@media (max-width:700px) {
+
+    #app {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+} 
+
+@media (max-width:650px) {
+
+    #app {
+        padding-left: 65px;
+        padding-right: 65px;
+        display: grid;
+        grid-template:
+            "a a"
+            "b c"
+            "d d"
+            "g g"
+            "e e"
+            "f f" /1fr 1fr;
+    }
+
+} 
+
+@media (max-width:560px) {
+
+    #app {
+        padding-left: 75px;
+        padding-right: 75px;
+        display: grid;
+        grid-template:
+            "a"
+            "b"
+            "c"
+            "d"
+            "g"
+            "e"
+            "f" ;
+    }
+
+}
+
+@media (max-width:500px) {
+    #app {
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }
 
@@ -236,8 +329,8 @@ h4 {
     }
 
     #app {
-        padding-left: 150px;
-        padding-right: 150px;
+        padding-left: 125px;
+        padding-right: 125px;
     }
 }
 
@@ -245,22 +338,17 @@ h4 {
 @media (min-width:1400px) {
 
     #app {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+}
+
+@media (min-width:1600px) {
+
+    #app {
         padding-left: 300px;
         padding-right: 300px;
     }
 }
 
-/*
-@media (min-width:1500px) {
-
-    header {
-        margin-top: 100px;
-        margin-bottom: 40px;
-    }
-
-    #app {
-        padding-left: 350px;
-        padding-right: 350px;
-    } 
-
-} 
+ 
