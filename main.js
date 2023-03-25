@@ -382,7 +382,7 @@ Vue.createApp({
             }
             else {
                 this.totalBalance = 0;
-                clearYears();
+                /* clearYears(); */
             }
 
             this.checkDataLoaded();
@@ -391,7 +391,7 @@ Vue.createApp({
         checkDataLoaded() {
             if (this.incomePosts.length === 0 && this.expensesPosts.length === 0 && this.dataLoaded === true) {
                 this.dataLoaded = false;
-                this.clearYears();
+                /* this.clearYears(); */
 
                 this.saveToLocalStorage();
             }
@@ -399,12 +399,12 @@ Vue.createApp({
                 return
             }
         },
-        clearYears() {
+        /* clearYears() {
             this.years = [];
             this.selectedYear = 'Year';
 
             this.saveToLocalStorage();
-        },
+        }, */
 
         deleteExpensePost(indexToDelete) {
 
@@ -419,12 +419,14 @@ Vue.createApp({
 
             this.updateMonthlyData();
 
-            if (this.incomePosts.length === 0 && this.expensesPosts.length === 0) {
+            this.saveToLocalStorage();
+
+            /* if (this.incomePosts.length === 0 && this.expensesPosts.length === 0) {
                 this.clearYears();
             }
             else {
                 return
-            }
+            } */
         },
         deleteIncomePost(indexToDelete) {
             let thisPost = this.incomePosts[indexToDelete];
@@ -438,12 +440,14 @@ Vue.createApp({
 
             this.updateMonthlyData();
 
-            if (this.incomePosts.length === 0 && this.expensesPosts.length === 0) {
+            this.saveToLocalStorage();
+
+            /* if (this.incomePosts.length === 0 && this.expensesPosts.length === 0) {
                 this.clearYears();
             }
             else {
                 return
-            }
+            } */
         },
 
         //check if year needs to be removed from dropdown when you delete a single post
