@@ -465,6 +465,9 @@ Vue.createApp({
             if (!this.dataLoaded) {
                 this.fetchData();
             }
+            else{
+                return;
+            }
         },
         fetchData() {
             fetch('start-data.json')
