@@ -128,7 +128,7 @@
         <section v-if="hasIncomeOrExpensesPosts" id="yearAndMonthSection">
             <h3>By year and month:</h3>
             <p><select v-model="selectedYear" @change="computeMonthlySummary">
-                    <option value="Year" disabled>Year</option>
+                    <option value="Year">Year</option>
                     <option v-for="year in years" :label="year.label">
                         {{year.label}}
                     </option>
