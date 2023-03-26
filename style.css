@@ -32,14 +32,6 @@ header {
     grid-area: a;
 }
 
-/* #allIncomePostsSection {
-    display: grid;
-}
-
-#allExpensesPostsSection {
-    display: grid;
-}  */
-
 #allExpensesPostsSection button,
 #allIncomePostsSection button {
     margin-left: 6px;
@@ -47,7 +39,6 @@ header {
 
 #allExpensesPostsSection h4,
 #allIncomePostsSection h4 {
-    /* text-align: center; */
     font-size: 12px;
     margin-left: 6px;
 }
@@ -93,7 +84,6 @@ form {
 #summarySection {
     grid-area: d;
     padding: 10px;
-    /* justify-self: center; */
 }
 
 #allIncomePostsSection {
@@ -105,23 +95,13 @@ form {
 }
 
 #monthlySummary {
-    /* border: 2px solid black; */
     padding: 5px;
 }
 
 #yearAndMonthSection {
-    /* 
-    border-top: 1px solid black; */
     grid-area: g;
     padding: 10px;
 }
-
-/* #monthlySummary {
-    display:grid; 
-    grid-template: 
-    "a b"
-    "c c" /1fr 2fr;
-} */
 
 li {
     font-size: 14px;
@@ -185,10 +165,7 @@ h3 {
 }
 
 #summaryTotals {
-    /* color: beige; */
     background-color: rgb(6, 24, 41);
-
-    /* border: solid 5px rgb(32, 60, 86); */
 }
 
 #summarySection h2 {
@@ -207,7 +184,6 @@ h4 {
 }
 
 @media (max-width:1000px) {
-
     #app {
         padding-left: 100px;
         padding-right: 100px;
@@ -218,13 +194,10 @@ h4 {
             "d d"
             "g g"
             "e f" /1fr 1fr;
-        /* gap: 0px; */
-
     }
 
     #summarySection {
         justify-self: center;
-        /* align-self: left; */
     }
 
     #yearAndMonthSection {
@@ -251,34 +224,27 @@ h4 {
 }
 
 @media (max-width:800px) {
-
     #app {
         padding-left: 75px;
         padding-right: 75px;
     }
-
 }
 
 @media (max-width:750px) {
-
     #app {
         padding-left: 50px;
         padding-right: 50px;
     }
-
 }
 
 @media (max-width:700px) {
-
     #app {
         padding-left: 30px;
         padding-right: 30px;
     }
-
 }
 
 @media (max-width:650px) {
-
     #app {
         padding-left: 65px;
         padding-right: 65px;
@@ -291,11 +257,9 @@ h4 {
             "e e"
             "f f" /1fr 1fr;
     }
-
 }
 
 @media (max-width:560px) {
-
     #app {
         padding-left: 75px;
         padding-right: 75px;
@@ -309,7 +273,6 @@ h4 {
             "e"
             "f";
     }
-
 }
 
 @media (max-width:500px) {
@@ -320,7 +283,6 @@ h4 {
 }
 
 @media (min-width:1200px) {
-
     header {
         margin-top: 100px;
         margin-bottom: 40px;
@@ -334,7 +296,6 @@ h4 {
 
 
 @media (min-width:1400px) {
-
     #app {
         padding-left: 200px;
         padding-right: 200px;
@@ -342,7 +303,6 @@ h4 {
 }
 
 @media (min-width:1600px) {
-
     #app {
         padding-left: 300px;
         padding-right: 300px;
