@@ -311,7 +311,7 @@ Vue.createApp({
         },
         //calculate total expenses
         calculateExpenses(expensesPosts) {
-            this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
+            this.totalExpenses = expensesPosts.reduce((accumulator, expensesPosts) => accumulator + expensesPosts.expenseAmount, 0);
 
             this.calculateBalance();
             this.saveToLocalStorage();
