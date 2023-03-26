@@ -370,6 +370,7 @@ Vue.createApp({
             }
             else {
                 this.totalBalance = 0;
+                this.clearYears();
             }
 
             this.checkDataLoaded();
@@ -378,6 +379,7 @@ Vue.createApp({
         checkDataLoaded() {
             if (this.incomePosts.length === 0 && this.expensesPosts.length === 0 && this.dataLoaded === true) {
                 this.dataLoaded = false;
+                this.clearYears();
 
                 this.saveToLocalStorage();
             }
@@ -410,6 +412,12 @@ Vue.createApp({
             this.checkRemoveYear(currentYear);
 
             this.updateMonthlyData();
+
+            this.saveToLocalStorage();
+        },        
+        clearYears() {
+            this.years = [];
+            this.selectedYear = 'Year';
 
             this.saveToLocalStorage();
         },
