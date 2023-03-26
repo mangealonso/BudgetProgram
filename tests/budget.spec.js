@@ -1,3 +1,9 @@
+/////////////////////////////////////////////////
+//         OBS!                     
+//      Testerna misslyckas ibland vid första körning, troligtvis vid inläsning av LoadData. Testa gärna en andra gång. 
+///////////////////////////////////////////////
+
+
 const { test, expect } = require('@playwright/test');
 
 
