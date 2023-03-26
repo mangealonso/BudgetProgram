@@ -206,9 +206,6 @@ h4 {
     color: beige;
 }
 
-
-
-
 @media (max-width:1000px) {
 
     #app {
@@ -221,7 +218,7 @@ h4 {
             "d d"
             "g g"
             "e f" /1fr 1fr;
-            /* gap: 0px; */
+        /* gap: 0px; */
 
     }
 
@@ -231,7 +228,7 @@ h4 {
     }
 
     #yearAndMonthSection {
-        display:grid;
+        display: grid;
         justify-self: center;
     }
 
@@ -239,14 +236,15 @@ h4 {
         justify-self: center;
     }
 
-    
-    #yearAndMonthSection h3 { 
-        text-align:center;
+
+    #yearAndMonthSection h3 {
+        text-align: center;
     }
+
     #addIncomePostSection {
         justify-self: center;
     }
-    
+
     #addExpensePostSection {
         justify-self: center;
     }
@@ -259,7 +257,7 @@ h4 {
         padding-right: 75px;
     }
 
-} 
+}
 
 @media (max-width:750px) {
 
@@ -268,7 +266,7 @@ h4 {
         padding-right: 50px;
     }
 
-} 
+}
 
 @media (max-width:700px) {
 
@@ -277,7 +275,7 @@ h4 {
         padding-right: 30px;
     }
 
-} 
+}
 
 @media (max-width:650px) {
 
@@ -294,7 +292,7 @@ h4 {
             "f f" /1fr 1fr;
     }
 
-} 
+}
 
 @media (max-width:560px) {
 
@@ -309,7 +307,7 @@ h4 {
             "d"
             "g"
             "e"
-            "f" ;
+            "f";
     }
 
 }
@@ -350,5 +348,3 @@ h4 {
         padding-right: 300px;
     }
 }
-
- 
