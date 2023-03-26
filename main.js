@@ -144,7 +144,6 @@ Vue.createApp({
             this.updateMonthlyData();
 
             this.updateYear(incomeObject, undefined)
-            this.updateMonthlyData();
             this.saveToLocalStorage();
         },
         addExpensePost() {
@@ -177,10 +176,10 @@ Vue.createApp({
                 this.expenseAmount = '',
                 this.expenseDate = ''
 
-            this.calculateExpenses(this.expensesPosts);
+            this.calculateExpenses(this.expensesPosts);            
+            this.updateMonthlyData();
 
             this.updateYear(undefined, expenseObject);
-            this.updateMonthlyData();
             this.saveToLocalStorage();
         },
         sortIncomePosts() {
@@ -304,14 +303,14 @@ Vue.createApp({
         },
         //calculate total income
         calculateIncome(incomePosts) {
-            this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
+            this.totalIncome = incomePosts.reduce((accumulator, incomePost) => accumulator + incomePost.incomeAmount, 0);
 
             this.calculateBalance();
             this.saveToLocalStorage();
         },
         //calculate total expenses
         calculateExpenses(expensesPosts) {
-            this.totalExpenses = expensesPosts.reduce((accumulator, expensesPosts) => accumulator + expensesPosts.expenseAmount, 0);
+            this.totalExpenses = expensesPosts.reduce((accumulator, expensesPost) => accumulator + expensesPost.expenseAmount, 0);
 
             this.calculateBalance();
             this.saveToLocalStorage();
