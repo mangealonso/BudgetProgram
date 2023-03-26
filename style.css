@@ -118,7 +118,7 @@ button {
 }
 
 button[type="submit"] {
-    background-color: rgb(36, 192, 36);
+    background-color: rgb(118, 213, 118);
     margin-top: 15px;
     padding: 5px;
 }
@@ -162,10 +162,6 @@ h2 {
 h3 {
     margin-top: 5px;
     margin-bottom: 5px;
-}
-
-#summaryTotals {
-    background-color: rgb(6, 24, 41);
 }
 
 #summarySection h2 {
