@@ -214,7 +214,6 @@ Vue.createApp({
         },
         //find the id of the month based on to toLocaleString()
         findMonthIdFromMonthString(MonthString) {
-
             let monthId = '';
 
             if (MonthString === "January" || MonthString === "januari") {
@@ -257,7 +256,6 @@ Vue.createApp({
         },
         //is called each time you switch year in year-dropdown
         computeMonthlySummary() {
-
             //set all of the actual months expenses to 0 each time method is called
             if (this.selectedYear !== 'Year') {
                 this.months.forEach(month => {
@@ -389,7 +387,6 @@ Vue.createApp({
             }
         },
         deleteExpensePost(indexToDelete) {
-
             let thisPost = this.expensesPosts[indexToDelete];
             const currentYear = new Date(thisPost.expenseDate).toLocaleString('default', { year: 'numeric' });
 
