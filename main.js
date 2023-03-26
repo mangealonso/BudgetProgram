@@ -189,7 +189,6 @@ Vue.createApp({
         sortExpensesPosts() {
             this.expensesPosts.sort((a, b) => new Date(b.expenseDate) - new Date(a.expenseDate));
         },
-
         //Add year to option-list (year-dropdown)
         updateYear(incomeObject = {}, expenseObject = {}) {
 
@@ -213,7 +212,6 @@ Vue.createApp({
 
             this.saveToLocalStorage();
         },
-
         //find the id of the month based on to toLocaleString()
         findMonthIdFromMonthString(MonthString) {
 
@@ -257,7 +255,6 @@ Vue.createApp({
             }
             return monthId;
         },
-
         //is called each time you switch year in year-dropdown
         computeMonthlySummary() {
 
@@ -301,14 +298,12 @@ Vue.createApp({
                         this.months[incomeMonthId].monthlyIncome += post.incomeAmount;
                     }
                 })
-
                 //calculate balance for each month
                 this.months.forEach(post => {
                     post.monthlyBalance = post.monthlyIncome - post.monthlyExpense;
                 })
             }
         },
-
         //calculate total income
         calculateIncome(incomePosts) {
             this.totalIncome = incomePosts.reduce((accumulator, incomePosts) => accumulator + incomePosts.incomeAmount, 0);
@@ -316,7 +311,6 @@ Vue.createApp({
             this.calculateBalance();
             this.saveToLocalStorage();
         },
-
         //calculate total expenses
         calculateExpenses(expensesPosts) {
             this.totalExpenses = expensesPosts.reduce((accumulator, expense) => accumulator + expense.expenseAmount, 0);
@@ -324,14 +318,12 @@ Vue.createApp({
             this.calculateBalance();
             this.saveToLocalStorage();
         },
-
         //calculate the total balance
         calculateBalance() {
             this.totalBalance = this.totalIncome - this.totalExpenses;
 
             this.saveToLocalStorage();
         },
-
         //will run when "delete all income posts" is clicked
         clearIncomePosts() {
             this.incomePosts = [];
@@ -352,7 +344,6 @@ Vue.createApp({
             this.updateAllMonthlyData();
             this.saveToLocalStorage();
         },
-
         //will run when "delete all expense posts" is clicked
         clearExpensesPosts() {
             this.expensesPosts = [];
@@ -382,7 +373,6 @@ Vue.createApp({
             }
             else {
                 this.totalBalance = 0;
-                /* clearYears(); */
             }
 
             this.checkDataLoaded();
@@ -391,7 +381,6 @@ Vue.createApp({
         checkDataLoaded() {
             if (this.incomePosts.length === 0 && this.expensesPosts.length === 0 && this.dataLoaded === true) {
                 this.dataLoaded = false;
-                /* this.clearYears(); */
 
                 this.saveToLocalStorage();
             }
@@ -399,13 +388,6 @@ Vue.createApp({
                 return
             }
         },
-        /* clearYears() {
-            this.years = [];
-            this.selectedYear = 'Year';
-
-            this.saveToLocalStorage();
-        }, */
-
         deleteExpensePost(indexToDelete) {
 
             let thisPost = this.expensesPosts[indexToDelete];
@@ -420,13 +402,6 @@ Vue.createApp({
             this.updateMonthlyData();
 
             this.saveToLocalStorage();
-
-            /* if (this.incomePosts.length === 0 && this.expensesPosts.length === 0) {
-                this.clearYears();
-            }
-            else {
-                return
-            } */
         },
         deleteIncomePost(indexToDelete) {
             let thisPost = this.incomePosts[indexToDelete];
@@ -441,15 +416,7 @@ Vue.createApp({
             this.updateMonthlyData();
 
             this.saveToLocalStorage();
-
-            /* if (this.incomePosts.length === 0 && this.expensesPosts.length === 0) {
-                this.clearYears();
-            }
-            else {
-                return
-            } */
         },
-
         //check if year needs to be removed from dropdown when you delete a single post
         checkRemoveYear(currentYear) {
             let counter = 0
